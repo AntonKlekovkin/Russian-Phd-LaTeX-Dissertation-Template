@@ -1,17 +1,51 @@
 
 
-\section{\todo{Мобильный робот в форме эллипсоида}}
+\section{Мобильный робот в форме эллипсоида}
+\small
 
-\begin{frame}[plain, noframenumbering]
-	\begin{center}
-		\Huge
-		\todo{Мобильный робот в форме эллипсоида}
-	\end{center}
+%\begin{frame}[plain, noframenumbering]
+%	\begin{center}
+%		\Huge
+%		\todo{Мобильный робот в форме эллипсоида}
+%	\end{center}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Актуальность}
+	\begin{itemize}
+		\item В настоящее время существенное внимание уделяется разработке роботов не имеющих внешних подвижных элементов.
+		\item Водные роботы перемещаются за счет движения внутренних масс и/или вращения внутренних роторов. При этом форма оболочки робота остается неизменной.
+		\item Преимущества данного типа движения:
+			\begin{itemize}
+				\item отсутствие приводных элементов, взаимодействующих со средой;
+				\item возможность полной гидроизоляции;
+				\item низкий уровень гидродинамического шума при передвижении;
+				\item повышенная маневренность.
+			\end{itemize}
+		
+	\end{itemize}
+
+	В данной работе рассматриваются водные роботы без внешних приводных элементов, перемещающиеся в жидкости за счет вращения внутренних роторов.
+
 \end{frame}
 
 \begin{frame}
-\frametitle{Конструкция}
-Конструкция и корпусные элементы экспериментальной модели безвинтового подводного робота
+\frametitle{История проблематики}
+	\begin{itemize}
+		\item Первые работы данной тематики. Модель в рамках идеальной жидкости с учитывающая только эффект присоединенных масс. Показана возможность неограниченного продвижения при наличии анизотропии присоединенных масс. Академик РАН В.В. Козлов, доктор С.М. Рамоданов, доктор С.Д. Онищенко.
+		\item Развитие моделей движения, заданный закон трения. Академик РАН Ф.Л. Черноусько, доктор Н.Н. Болотник, доктор С.Ф. Яцун.
+		\item Численное моделирование гидродинамики движещегося объекта на основе совместного решения уравнений Навье-Стокса и уравнений динамики твердого тела. Доктор В.А. Тененев, доктор С.М. Рамоданов.
+		\item Экспериментальные работы: А.А. Килин, А.И. Кленов, В.А. Тененев. Управление движением тела с помощью внутренних масс в вязкой жидкости.
+		
+	\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{\todo{Мобильный робот в форме эллипсоида}}
+Конструкция и корпусные элементы экспериментальной модели безвинтового подводного робота \todo{Увеличить цифры}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{constr_BPR.png}%		
@@ -25,15 +59,14 @@
 \end{frame}
 
 
-\small
+
 \begin{frame}%[allowframebreaks]
 	\frametitle{Математическая модель}
 		\qquad Рассмотрим систему, состоящую из жесткой внешней оболочки и трех внутренних роторов. \todo{Нарисовать свой рисунок}
 		
 		\begin{figure}[h]
 			\begin{center}
-				\includegraphics[width=0.4\linewidth]{BPR_Scheme.png}
-				
+				\includegraphics[width=0.4\linewidth]{BPR_Scheme.png}				
 			\end{center}
 		\end{figure}		
 		
@@ -46,12 +79,12 @@
 			
 			%\framebreak
 			
-			\item $O_M e_1 e_2 e_3$ -- подвижная система координат, жестко связанная с оболочкой, так что оси совпадают с главными осями инерции оболочки.
+			%\item $O_M e_1 e_2 e_3$ -- подвижная система координат, жестко связанная с оболочкой, так что оси совпадают с главными осями инерции оболочки.
 			
 			% \item $\bV$ и ${\bOm}$ -- скорость центра оболочки и его угловую скорость.
 			
-			\item $O x y z$ -- неподвижная система координат; 
-			$\br = \bigl( x,\, y,\, z \bigr)$ -- координаты геометрического центра оболочки в этих осях. %${\bal}$, ${\bbe}$, ${\bga}$ -- орты неподвижных осей $O x y z$, спроецированные на подвижные оси $e_1$, $e_2$, $e_3$, тогда ортогональная матрица
+			%\item $O x y z$ -- неподвижная система координат; 
+			%$\br = \bigl( x,\, y,\, z \bigr)$ -- координаты геометрического центра оболочки в этих осях. %${\bal}$, ${\bbe}$, ${\bga}$ -- орты неподвижных осей $O x y z$, спроецированные на подвижные оси $e_1$, $e_2$, $e_3$, тогда ортогональная матрица
 %			\begin{gather}
 %			\bbQ =\begin{pmatrix}
 %			\alpha _1 & \beta _1 & \gamma _1\\
@@ -65,6 +98,21 @@
 			% \item Пара $\left( \br,\, \bm{Q} \right)$ однозначно определяет конфигурацию системы. 
 			
 			%\item Конфигурационное пространство системы шестимерно и представляет собой $\mathbb{R}^3 \times SO(3)$.
+			
+			\item Уравнения движения
+			\begin{gather}
+			\begin{split}
+			{\bbC} \dot{\bV} + {\bbB} \dot{{\bOm}} = & \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times {\bOm},\\
+			{\bbB}^T \dot{\bV} + {\bbI} \dot{{\bOm}} + \dot{\bK}(t) = & \bigl( {\bbB}^T \bV + {\bbI} {\bOm} + \bK(t) \bigr) \times {\bOm} + \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times \bV = 0
+			\end{split}
+			\end{gather}
+			
+			\item Кинематические соотношения и уравнения эволюции $\bigl( \br,\, {\bbQ} \bigr)$:
+			\begin{gather*}
+			\dot{{\bal}} = {\bal} \times {\bOm},\, \dot{{\bbe}} = {\bbe} \times {\bOm},\, \dot{{\bga}} = {\bga} \times {\bOm},\\
+			\dot{\br} = {\bbQ}^T \bV.
+			\end{gather*}
+			
 		\end{itemize}
 \end{frame}
 
@@ -74,6 +122,7 @@
 %	
 %	\end{itemize}
 %\end{frame}
+
 
 \begin{frame}
 	\frametitle{Математическая модель}
@@ -103,6 +152,7 @@
 		
 	\end{itemize}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Математическая модель}
@@ -161,52 +211,72 @@
 	\label{motion_ham}
 	\dot{\bP}= \bP \times {\bOm},\,\dot{\bM} = \bM \times {\bOm} + \bP \times \bV,
 	\end{gather}
-	где $\bP = \dfrac{\partial T}{\partial \bV}$ и $\bM = \dfrac{\partial T}{\partial {\bOm}}$ 
+	%где $\bP = \dfrac{\partial T}{\partial \bV}$ и $\bM = \dfrac{\partial T}{\partial {\bOm}}$ 
 	\item Связь $\bV$ и ${\bOm}$ с $ \bP $ и $\bM  $:
 	\begin{gather}
 	\label{p_and_M}
 	\begin{split}
-	\bP = & {\bbC} \bV + {\bbB} {\bOm},\, \bM = {\bbB}^T \bV + {\bbI} {\bOm} + \bK(t),\\
-	\bV = & {\bbC}^{-1} \bigl( \bP - {\bbB} {\bOm} \bigr),\, {\bOm} = \bigl({\bbI} - {\bbB}^T {\bbC}^{-1} {\bbB} \bigr)^{-1} \bigl( \bM - \bK(t) - {\bbB}^T {\bbC}^{-1} \bP \bigr)
+	\bP = & {\bbC} \bV + {\bbB} {\bOm},\, \quad \bM = {\bbB}^T \bV + {\bbI} {\bOm} + \bK(t),\\
+	\bV = & {\bbC}^{-1} \bigl( \bP - {\bbB} {\bOm} \bigr),\, \quad {\bOm} = \bigl({\bbI} - {\bbB}^T {\bbC}^{-1} {\bbB} \bigr)^{-1} \bigl( \bM - \bK(t) - {\bbB}^T {\bbC}^{-1} \bP \bigr)
 	\end{split}\nonumber
 	\end{gather}
-	
-	\item Уравнения \eqref{motion_ham} являются гамильтоновыми на алгебре $e(3)$ с гамильтонианом
-	\begin{gather}
-	H = \bigl( \bM,\, {\bOm} \bigr) - T \big| _{{\bOm},\, \bV \rightarrow \bM,\, \bP}\nonumber
-	\end{gather}
-	
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Математическая модель}
-\begin{itemize}
-	
 	
 	\item Уравнения допускают шесть геометрических интегралов движения:
 	\begin{gather}
 	{\bal}^2={\bbe}^2={\bga}^2=1,\, \bigl({\bal},\, {\bbe} \bigr) = \bigl({\bal},\, {\bga} \bigr) = \bigl({\bbe},\, {\bga} \bigr) = 0\nonumber
 	\end{gather}
 	
-	\item Как указано в \cite{Kozlov_Ramodanov_PMM_2001} уравнения (\ref{motion_ham}) допускают еще шесть интегралов
+	\item Уравнения (\ref{motion_ham}) допускают еще шесть интегралов
 	\begin{gather}
 	(\bP,\, {\bal}),\, (\bP,\, {\bbe}),\, (\bP,\, {\bga}),\, (\bM + \br \times \bP,\, {\bal}),\, (\bM + \br \times \bP,\, {\bbe}),\, (\bM + \br \times \bP,\, {\bga}) \label{integrals}
 	\end{gather}
 	
-	\item Данные интегралы движения имеют следующий смысл: при движении тела в идеальной жидкости векторы $\bP$ и $\bM + \br \times \bP$ сохраняются в абсолютном пространстве. В случае движения из состояния покоя первые интегралы \eqref{integrals} приобретают особенно простой вид
+	В случае движения из состояния покоя первые интегралы \eqref{integrals} приобретают особенно простой вид
 	\begin{gather}
 	\bP = 0, \quad \bM = 0 \nonumber
 	\end{gather}
 	а выражения для скоростей
 	\begin{gather}
-	\bV = - \bbC^{-1} \bbB \bOm, \label{v} \nonumber \\
-	\bOm = - \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t) \label{omega} \nonumber
+	\bV = - \bbC^{-1} \bbB \bOm,  \nonumber \quad
+	\bOm = - \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t) \nonumber
 	\end{gather}
 	
+%	\item Уравнения \eqref{motion_ham} являются гамильтоновыми на алгебре $e(3)$ с гамильтонианом
+%	\begin{gather}
+%	H = \bigl( \bM,\, {\bOm} \bigr) - T \big| _{{\bOm},\, \bV \rightarrow \bM,\, \bP}\nonumber
+%	\end{gather}
 	
 \end{itemize}
 \end{frame}
+
+%\begin{frame}
+%\frametitle{Математическая модель}
+%\begin{itemize}
+%	
+%	
+%	\item Уравнения допускают шесть геометрических интегралов движения:
+%	\begin{gather}
+%	{\bal}^2={\bbe}^2={\bga}^2=1,\, \bigl({\bal},\, {\bbe} \bigr) = \bigl({\bal},\, {\bga} \bigr) = \bigl({\bbe},\, {\bga} \bigr) = 0\nonumber
+%	\end{gather}
+%	
+%	\item Как указано в \cite{Kozlov_Ramodanov_PMM_2001} уравнения (\ref{motion_ham}) допускают еще шесть интегралов
+%	\begin{gather}
+%	(\bP,\, {\bal}),\, (\bP,\, {\bbe}),\, (\bP,\, {\bga}),\, (\bM + \br \times \bP,\, {\bal}),\, (\bM + \br \times \bP,\, {\bbe}),\, (\bM + \br \times \bP,\, {\bga}) \label{integrals}
+%	\end{gather}
+%	
+%	\item Данные интегралы движения имеют следующий смысл: при движении тела в идеальной жидкости векторы $\bP$ и $\bM + \br \times \bP$ сохраняются в абсолютном пространстве. В случае движения из состояния покоя первые интегралы \eqref{integrals} приобретают особенно простой вид
+%	\begin{gather}
+%	\bP = 0, \quad \bM = 0 \nonumber
+%	\end{gather}
+%	а выражения для скоростей
+%	\begin{gather}
+%	\bV = - \bbC^{-1} \bbB \bOm, \label{v} \nonumber \\
+%	\bOm = - \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t) \label{omega} \nonumber
+%	\end{gather}
+%	
+%	
+%\end{itemize}
+%\end{frame}
 
 
 
