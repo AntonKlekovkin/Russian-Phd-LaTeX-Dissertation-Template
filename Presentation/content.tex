@@ -12,65 +12,196 @@
 
 \begin{frame}
 \frametitle{Актуальность}
+	Способы перемещения роботов в жидкости:
 	\begin{itemize}
-		\item В настоящее время существенное внимание уделяется разработке роботов не имеющих внешних подвижных элементов.
-		\item Водные роботы перемещаются за счет движения внутренних масс и/или вращения внутренних роторов. При этом форма оболочки робота остается неизменной.
-		\item Преимущества данного типа движения:
+		\item Гребные винты. Самый распространенный способ передвижения.
+		\item Изменение формы тела. 
+		\item Реакивный привод.
+		\item Действие внутренних механизмов.		
+	\end{itemize}	
+
+	\begin{minipage}[t]{0.47\linewidth}
+		\center{\includegraphics[height=24mm]{ScrewRobot.png}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.47\linewidth}
+		\center{\includegraphics[height=24mm]{FishRobot.png}}
+	\end{minipage}	
+	\vspace{3mm}
+	
+	\begin{minipage}[t]{0.47\linewidth}
+		\center{\includegraphics[height=22mm]{JatsunRobot.png}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.47\linewidth}
+		\center{\includegraphics[height=22mm]{TolikRobot.png}}
+	\end{minipage}
+
+\end{frame}	
+	
+
+\begin{frame}
+\frametitle{Актуальность}
+	
+	Преимущества и недостатки использования гребных винтов
+	\begin{minipage}[t]{0.49\linewidth}
+		Преимущества
+		\begin{itemize}
+			\item Теория передвижения хорошо изучена.
+			\item Относительная простота конструкции
+			\item Скорость передвижения
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.49\linewidth}
+		Недостатки
+		\begin{itemize}
+			\item Наличие гидродинамических шумов.
+			%\item Низкая маневренность.
+			\item Поврежедение окружающей микрофлоры.
+			\item Выход вала с гребным винтом требует герметизации.
+		\end{itemize}
+	\end{minipage}
+
+	\vspace{2mm}
+	
+	Особенности водных роботов, перемещающихся за счет движения внутренних масс и/или вращения внутренних роторов%, у которых форма оболочки робота остается неизменной.
+	%Преимущества данного типа движения:
+		\begin{itemize}
+			\item отсутствие приводных элементов, взаимодействующих со средой;
+			\item возможность полной гидроизоляции;
+			%\item низкий уровень гидродинамического шума при передвижении;
+			\item повышенная маневренность.
+		\end{itemize}
+		
+
+
+	%В данной работе рассматриваются роботы без внешних приводных элементов, перемещающиеся в жидкости за счет вращения внутренних роторов.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Основные работы по тематике исследования}
+	
+	\begin{itemize}
+		\item Модель в рамках идеальной жидкости, учитывающая эффект присоединенных масс. Показана возможность неограниченного продвижения при наличии анизотропии присоединенных масс. В.В. Козлов, С.М. Рамоданов, Д.А. Онищенко.
+	\end{itemize}
+
+		\begin{minipage}[t]{0.6\linewidth}
+			\vspace{-13mm}
 			\begin{itemize}
-				\item отсутствие приводных элементов, взаимодействующих со средой;
-				\item возможность полной гидроизоляции;
-				\item низкий уровень гидродинамического шума при передвижении;
-				\item повышенная маневренность.
+				\item Модели движения с заданным законом сопротивления. Ф.Л. Черноусько, Н.Н. Болотник, С.Ф. Яцун.
 			\end{itemize}
-		
-	\end{itemize}
-
-	В данной работе рассматриваются водные роботы без внешних приводных элементов, перемещающиеся в жидкости за счет вращения внутренних роторов.
-
-\end{frame}
-
-\begin{frame}
-\frametitle{История проблематики}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.30\linewidth}
+			\center{\includegraphics[height=13mm]{ChernouskoRobot.png}}
+		\end{minipage}	
+	
 	\begin{itemize}
-		\item Первые работы данной тематики. Модель в рамках идеальной жидкости с учитывающая только эффект присоединенных масс. Показана возможность неограниченного продвижения при наличии анизотропии присоединенных масс. Академик РАН В.В. Козлов, доктор С.М. Рамоданов, доктор С.Д. Онищенко.
-		\item Развитие моделей движения, заданный закон трения. Академик РАН Ф.Л. Черноусько, доктор Н.Н. Болотник, доктор С.Ф. Яцун.
-		\item Численное моделирование гидродинамики движещегося объекта на основе совместного решения уравнений Навье-Стокса и уравнений динамики твердого тела. Доктор В.А. Тененев, доктор С.М. Рамоданов.
-		\item Экспериментальные работы: А.А. Килин, А.И. Кленов, В.А. Тененев. Управление движением тела с помощью внутренних масс в вязкой жидкости.
+		\item Численное моделирование гидродинамики движущегося объекта на основе совместного решения уравнений Навье-Стокса и уравнений динамики твердого тела. В.А. Тененев, С.М. Рамоданов, Е.В. Ветчанин.
 		
+		\item Влияние вязкости на самопродвижение твердого тела с движущейся внутри него массой. S. Childress
+		
+		\item Подробный обзор работ, посвященных движению твердого тела в жидкости, используя внутренние механизмы:
+		
+		Ветчанин Е. В., Килин А. А., Управляемое движение твердого тела с внутренними механизмами в идеальной несжимаемой жидкости, Труды Математического института имени В. А. Стеклова, 2016, т. 295, с. 321-351
+		%\item Экспериментальные работы: А.А. Килин, А.И. Кленов, В.А. Тененев. Управление движением тела с помощью внутренних масс в вязкой жидкости.		
 	\end{itemize}
 
 \end{frame}
 
-
-
 \begin{frame}
-\frametitle{\todo{Мобильный робот в форме эллипсоида}}
-Конструкция и корпусные элементы экспериментальной модели безвинтового подводного робота \todo{Увеличить цифры}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\linewidth]{constr_BPR.png}%		
-\end{figure}
-Фотографии робота в сборе и без половины оболочки
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\linewidth]{Photo_BPR.png}%
-\end{figure}
+\frametitle{Экспериментальные работы.}
+
+	\begin{itemize}
+		\item Работы Ф. Таллапрагада
+		\begin{figure}[h]
+			\center{\includegraphics[height=25mm]{TallapragadaRobot.png}}
+		\end{figure}
+		
+		\item А.А. Килин, А.И. Кленов, В.А. Тененев. Управление движением тела с помощью внутренних масс в вязкой жидкости.
+		\begin{figure}[h]
+			\center{\includegraphics[height=25mm]{TolikRobot.png}}
+		\end{figure}
+		
+
+	\end{itemize}
+
+%\begin{minipage}[t]{0.6\linewidth}
+%		
+%\end{minipage}
+%\hfill
+%\begin{minipage}[t]{0.37\linewidth}
+%	\center{\includegraphics[height=17mm]{ChernouskoRobot.png}}
+%\end{minipage}	
+%
+%\begin{itemize}
+%	\item Численное моделирование гидродинамики движещегося объекта на основе совместного решения уравнений Навье-Стокса и уравнений динамики твердого тела. Доктор В.А. Тененев, доктор С.М. Рамоданов.
+%	\item Экспериментальные работы: А.А. Килин, А.И. Кленов, В.А. Тененев. Управление движением тела с помощью внутренних масс в вязкой жидкости.		
+%\end{itemize}
 
 \end{frame}
+
+
 
 
 
 \begin{frame}%[allowframebreaks]
-	\frametitle{Математическая модель}
-		\qquad Рассмотрим систему, состоящую из жесткой внешней оболочки и трех внутренних роторов. \todo{Нарисовать свой рисунок}
+	\frametitle{Математическая модель. Уравнения движения}
+		\qquad Рассмотрим систему, состоящую из жесткой внешней оболочки и трех внутренних роторов.
 		
-		\begin{figure}[h]
-			\begin{center}
-				\includegraphics[width=0.4\linewidth]{BPR_Scheme.png}				
-			\end{center}
-		\end{figure}		
+		\begin{minipage}[t]{0.4\linewidth}
+			\begin{figure}[h]
+				\begin{center}
+					\includegraphics[height=0.8\linewidth]{Shell.eps}%BPR_Scheme.png}				
+				\end{center}
+			\end{figure}	
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.57\linewidth}
+			$O x y z$ -- неподвижная система координат;
+			
+			$O_M e_1 e_2 e_3$ -- подвижная система координат;
+			
+			$\br = \bigl( x,\, y,\, z \bigr)$ -- координаты геометрического центра оболочки;
+			
+			${\bal}$, ${\bbe}$, ${\bga}$ -- орты неподвижных осей $O x y z$, спроецированные на подвижные оси $e_1$, $e_2$, $e_3$;
+
+			$\bV$ и ${\bOm}$ -- скорость центра оболочки и его угловая скорость.
+			
+		\end{minipage}	
+	
+	Кинематические соотношения и уравнения эволюции $\bigl( \br,\, {\bbQ} \bigr)$:	
+	\begin{minipage}{0.47\linewidth}
+		%\vspace{-3mm}
+		\begin{gather*}
+		\dot{{\bal}} = {\bal} \times {\bOm},\, \dot{{\bbe}} = {\bbe} \times {\bOm},\, \dot{{\bga}} = {\bga} \times {\bOm},\\
+		\dot{\br} = {\bbQ}^T \bV.
+		\end{gather*}	
+	\end{minipage}
+	\begin{minipage}{0.47\linewidth}
+		\vspace{-3mm}
+		\begin{gather}
+		\bbQ =\begin{pmatrix}
+		\alpha _1 & \beta _1 & \gamma _1\\
+		\alpha _2 & \beta _2 & \gamma _2\\
+		\alpha _3 & \beta _3 & \gamma _3
+		\end{pmatrix}\nonumber \in SO(3)
+		\end{gather}
+	\end{minipage}
+	
+	Уравнения движения рассматриваемой системы имеют вид классических уравнений Кирхгофа
+	\begin{gather}
+	\frac{d}{dt} \biggl( \frac{\partial T}{\partial \bV} \biggr) + {\bOm} \times \frac{\partial T}{\partial \bV}=0, \quad \frac{d}{dt}\biggl( \frac{\partial T}{\partial {\bOm}} \biggr) + {\bOm} \times \frac{\partial T}{\partial {\bOm}} + \bV \times \frac{\partial T}{\partial \bV} = 0 \nonumber
+	\end{gather}
+	
+	
+
+	
+			
 		
-		\begin{itemize}
+%		\begin{itemize}
 			% \item Оболочка является однородной, положение ее центра масс совпадает с геометрическим центром оболочки.
 			% \item Центр масс всей системы находится не в геометрическом центре оболочки;
 			% \item Все роторы одинаковы, осесимметричны и оси вращения  совпадают с их осями симметрии, то есть вращение не изменяет распределение масс системы;
@@ -99,119 +230,138 @@
 			
 			%\item Конфигурационное пространство системы шестимерно и представляет собой $\mathbb{R}^3 \times SO(3)$.
 			
-			\item Уравнения движения
-			\begin{gather}
-			\begin{split}
-			{\bbC} \dot{\bV} + {\bbB} \dot{{\bOm}} = & \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times {\bOm},\\
-			{\bbB}^T \dot{\bV} + {\bbI} \dot{{\bOm}} + \dot{\bK}(t) = & \bigl( {\bbB}^T \bV + {\bbI} {\bOm} + \bK(t) \bigr) \times {\bOm} + \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times \bV = 0
-			\end{split}
-			\end{gather}
+%			\item Уравнения движения
+%			\begin{gather}
+%			\begin{split}
+%			{\bbC} \dot{\bV} + {\bbB} \dot{{\bOm}} = & \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times {\bOm},\\
+%			{\bbB}^T \dot{\bV} + {\bbI} \dot{{\bOm}} + \dot{\bK}(t) = & \bigl( {\bbB}^T \bV + {\bbI} {\bOm} + \bK(t) \bigr) \times {\bOm} + \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times \bV = 0
+%			\end{split}
+%			\end{gather}
 			
-			\item Кинематические соотношения и уравнения эволюции $\bigl( \br,\, {\bbQ} \bigr)$:
-			\begin{gather*}
-			\dot{{\bal}} = {\bal} \times {\bOm},\, \dot{{\bbe}} = {\bbe} \times {\bOm},\, \dot{{\bga}} = {\bga} \times {\bOm},\\
-			\dot{\br} = {\bbQ}^T \bV.
-			\end{gather*}
+%			\item 
 			
-		\end{itemize}
+%		\end{itemize}
 \end{frame}
-
-%\begin{frame}
-%\frametitle{Математическая модель}
-%	\begin{itemize}
-%	
-%	\end{itemize}
-%\end{frame}
 
 
 \begin{frame}
-	\frametitle{Математическая модель}
-	\begin{itemize}
-		\item Кинетическая энергия оболочки:
+	\frametitle{Кинетическая энергия}
+
+	\begin{minipage}{0.47\linewidth}
+		Кинетическая энергия оболочки:
 		\begin{gather}
 		T_s = \frac{1}{2} m_s  \bigl( \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bm I}_s {\bOm},\, {\bOm} \bigr),\nonumber
 		\end{gather}
-	
-		\item Кинетическая энергия жидкости:
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.47\linewidth}
+		Кинетическая энергия жидкости:
 		\begin{gather}
 		T_f = \frac{1}{2} \bigl( \bLam_1 \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bLam} _2 {\bOm},\, {\bOm} \bigr).\nonumber
 		\end{gather}
-		
-		\item Кинетическая энергия $k$-го ротора:
+	\end{minipage}
+	
+	\vspace{2mm}
+
+	Кинетическая энергия $k$-го ротора:
+	\begin{gather}
+	T_k = \frac{1}{2} m_R \bigl( \bV + {\bOm} \times \br_k, \bV + {\bOm} \times \br_k \bigr) + \frac{1}{2}\Bigl({\bm I}_k \bigl( {\bOm} + \omega_k \bn_k \bigr), {\bOm} + \omega_k \bn_k \Bigr),\nonumber
+	\end{gather}
+	
+	Суммарная кинетическая энергия всей системы: 		
+	\footnotesize
+	\begin{gather*}
+	\begin{split}
+	T = T_f + T_s + \sum _{k=1}^3 T_k = \frac{1}{2} \bigl( {\bbI} {\bOm},\, {\bOm} \bigr) + \bigl( {\bbB} {\bOm},\, \bV \bigr) + \frac{1}{2} \bigl( {\bbC} \bV,\, \bV \bigr) + \bigl( {\bOm},\, \bK(t) \bigr) + \frac{1}{2} \sum_{k=1}^3 i \omega_k^2 (t),
+	\end{split}
+	\end{gather*}
+	
+	\small
+	Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид:	
+	
+	\begin{minipage}{0.57\linewidth}
+		\vspace{-3mm}
 		\begin{gather}
-		T_k = \frac{1}{2} m_R \bigl( \bV + {\bOm} \times \br_k, \bV + {\bOm} \times \br_k \bigr) + \frac{1}{2}\Bigl({\bm I}_k \bigl( {\bOm} + \omega_k \bn_k \bigr), {\bOm} + \omega_k \bn_k \Bigr),\nonumber
+		{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
+		{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \quad	 m = m_s + 3 m_R		\nonumber
 		\end{gather}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.4\linewidth}
+		\vspace{-3mm}
+		\begin{gather}
+		{\bbB} = m \begin{pmatrix}\nonumber
+		0 & z_c & -y_c\\
+		-z_c & 0 & x_c\\
+		y_c & -x_c & 0
+		\end{pmatrix}\nonumber	,	
+		\end{gather}
+	\end{minipage}	
 	
-		\item Суммарная кинетическая энергия всей системы: 
-		\begin{gather*}
-		\begin{split}
-		T = & T_f + T_s + \sum _{k=1}^3 T_k = \\
-		= & \frac{1}{2} \bigl( {\bbI} {\bOm},\, {\bOm} \bigr) + \bigl( {\bbB} {\bOm},\, \bV \bigr) + \frac{1}{2} \bigl( {\bbC} \bV,\, \bV \bigr) + \bigl( {\bOm},\, \bK(t) \bigr) + \frac{1}{2} \sum_{k=1}^3 i \omega_k^2 (t),
-		\end{split}
-		\end{gather*}
-		
-	\end{itemize}
+	\vspace{2mm}
+	
+	где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы. 
+	
+	$\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
+	
+	
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Математическая модель}
-\begin{itemize}
-	
-	
-	\item $\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
-	
-	\item Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид		
-	\begin{gather}
-	{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
-	{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \\
-	{\bbB} = m \begin{pmatrix}\nonumber
-	0 & z_c & -y_c\\
-	-z_c & 0 & x_c\\
-	y_c & -x_c & 0
-	\end{pmatrix}\nonumber \\
-	m = m_s + 3 m_R,\nonumber
-	\end{gather}
-	%где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы.
+%\begin{frame}
+%\frametitle{Математическая модель}
+%\begin{itemize}
+%	
+%	
+%	\item $\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
+%	
+%	\item Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид		
+%	\begin{gather}
+%	{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
+%	{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \\
+%	{\bbB} = m \begin{pmatrix}\nonumber
+%	0 & z_c & -y_c\\
+%	-z_c & 0 & x_c\\
+%	y_c & -x_c & 0
+%	\end{pmatrix}\nonumber \\
+%	m = m_s + 3 m_R,\nonumber
+%	\end{gather}
+%	%где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы.
+%
+%\end{itemize}
+%\end{frame}
 
-\end{itemize}
-\end{frame}
-
 \begin{frame}
-\frametitle{Математическая модель}
+\frametitle{Уравнения движения}
 \begin{itemize}
-	\item Уравнения движения рассматриваемой системы имеют вид классических уравнений Кирхгофа
-	\begin{gather}
-	\frac{d}{dt} \biggl( \frac{\partial T}{\partial \bV} \biggr) + {\bOm} \times \frac{\partial T}{\partial \bV}=0, \quad \frac{d}{dt}\biggl( \frac{\partial T}{\partial {\bOm}} \biggr) + {\bOm} \times \frac{\partial T}{\partial {\bOm}} + \bV \times \frac{\partial T}{\partial \bV} = 0 \nonumber
-	\end{gather}
+%	\item Уравнения движения рассматриваемой системы имеют вид классических уравнений Кирхгофа
+%	\begin{gather}
+%	\frac{d}{dt} \biggl( \frac{\partial T}{\partial \bV} \biggr) + {\bOm} \times \frac{\partial T}{\partial \bV}=0, \quad \frac{d}{dt}\biggl( \frac{\partial T}{\partial {\bOm}} \biggr) + {\bOm} \times \frac{\partial T}{\partial {\bOm}} + \bV \times \frac{\partial T}{\partial \bV} = 0 \nonumber
+%	\end{gather}
 	
-	\item После подстановки кинетисекой энергии принимают вид
-	\begin{gather}
+	\item После подстановки кинетической энергии в уравнения Кирхгоффа уравнения движения принимают вид
+	\begin{gather*}
 	\begin{split}
 	{\bbC} \dot{\bV} + {\bbB} \dot{{\bOm}} = & \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times {\bOm},\\
 	{\bbB}^T \dot{\bV} + {\bbI} \dot{{\bOm}} + \dot{\bK}(t) = & \bigl( {\bbB}^T \bV + {\bbI} {\bOm} + \bK(t) \bigr) \times {\bOm} + \bigl( {\bbC} \bV + {\bbB} {\bOm} \bigr) \times \bV = 0
 	\end{split}
-	\end{gather}
+	\end{gather*}
 	
-	\item Данные уравнения необходимо дополнить уравнениями эволюции переменных $\bigl( \br,\, {\bbQ} \bigr)$, которые описываются уравнениями Пуассона и кинематическими соотношениями следующего вида
+	\item Для полного описания движения системы данные уравнения необходимо дополнить уравнениями эволюции переменных $\bigl( \br,\, {\bbQ} \bigr)$%, которые описываются уравнениями Пуассона 
+	и кинематическими соотношениями 
 	\begin{gather*}
 	\dot{{\bal}} = {\bal} \times {\bOm},\, \dot{{\bbe}} = {\bbe} \times {\bOm},\, \dot{{\bga}} = {\bga} \times {\bOm},\\
 	\dot{\br} = {\bbQ}^T \bV.
 	\end{gather*}
 	
-	
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Математическая модель}
-\begin{itemize}
-	\item Уравнения в гамильтоновой форме
-	\begin{gather}
+	\item Уравнения в форме импульса и момента импульса:
+	\begin{gather*}
 	\label{motion_ham}
 	\dot{\bP}= \bP \times {\bOm},\,\dot{\bM} = \bM \times {\bOm} + \bP \times \bV,
-	\end{gather}
-	%где $\bP = \dfrac{\partial T}{\partial \bV}$ и $\bM = \dfrac{\partial T}{\partial {\bOm}}$ 
+	\end{gather*}
+	
+	где $\bP = \dfrac{\partial T}{\partial \bV}$ и $\bM = \dfrac{\partial T}{\partial {\bOm}}$ 
+	
 	\item Связь $\bV$ и ${\bOm}$ с $ \bP $ и $\bM  $:
 	\begin{gather}
 	\label{p_and_M}
@@ -221,25 +371,43 @@
 	\end{split}\nonumber
 	\end{gather}
 	
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Первые интегралы}
+\begin{itemize}
+	
+	
+
+	
 	\item Уравнения допускают шесть геометрических интегралов движения:
 	\begin{gather}
 	{\bal}^2={\bbe}^2={\bga}^2=1,\, \bigl({\bal},\, {\bbe} \bigr) = \bigl({\bal},\, {\bga} \bigr) = \bigl({\bbe},\, {\bga} \bigr) = 0\nonumber
 	\end{gather}
 	
-	\item Уравнения (\ref{motion_ham}) допускают еще шесть интегралов
-	\begin{gather}
+	\item Уравнения в гамильтоновой форме допускают еще шесть интегралов
+	\begin{gather*}
 	(\bP,\, {\bal}),\, (\bP,\, {\bbe}),\, (\bP,\, {\bga}),\, (\bM + \br \times \bP,\, {\bal}),\, (\bM + \br \times \bP,\, {\bbe}),\, (\bM + \br \times \bP,\, {\bga}) \label{integrals}
-	\end{gather}
+	\end{gather*}
 	
-	В случае движения из состояния покоя первые интегралы \eqref{integrals} приобретают особенно простой вид
+	\item В случае движения из состояния покоя первые интегралы приобретают особенно простой вид:
 	\begin{gather}
-	\bP = 0, \quad \bM = 0 \nonumber
+	\bP = 0, \quad \bM = 0 \nonumber,
 	\end{gather}
-	а выражения для скоростей
+	а выражения для скоростей:
 	\begin{gather}
 	\bV = - \bbC^{-1} \bbB \bOm,  \nonumber \quad
 	\bOm = - \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t) \nonumber
 	\end{gather}
+	
+	\item Уравнения движения на нулевом уровне
+	\begin{gather*}
+	\dot{{\bal}} = {\bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t)}  \times {\bal},\\
+	\dot{{\bbe}} = {\bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t)}  \times {\bbe},\\
+	\dot{{\bga}} = {\bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t)}  \times {\bga},\\
+	\dot{\br} =  {\bbQ}^T \bbC^{-1} \bbB \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t).
+	\end{gather*}
 	
 %	\item Уравнения \eqref{motion_ham} являются гамильтоновыми на алгебре $e(3)$ с гамильтонианом
 %	\begin{gather}
@@ -278,20 +446,67 @@
 %\end{itemize}
 %\end{frame}
 
-
-
 \begin{frame}
-\frametitle{Система управления}
-В полученных математических моделях управление роторами задается в виде вектора внутреннего гиростатического момента $\bK$. Для управления отдельным двигателем разработана следующая схема
+\frametitle{Результаты моделирования}
+\begin{itemize}
+	\item Борисов А. В., Ветчанин Е. В., Килин А. А., Управление движением трехосного эллипсоида в жидкости с помощью роторов, Математические заметки, 2017, т. 102, № 4, с. 503-513
+	\item В работе описаны комбинации управляющих воздействий, которые позволяют реализовать неограниченное движение в произвольном направлении.
+	
+	Движение тела представляет собой стационарное винтовое движение с постоянной угловой и линейной скоростями. 
+\end{itemize}
+
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\linewidth]{Control_system.png}%
+	\includegraphics[width=0.65\linewidth]{ModellingTrBPR.png}%		
 \end{figure}
 
-Схема управления отдельным двигателем, где $\bK_{set}$ -- вектор внутреннего гиростатического момента; $\bOm_{set}$ -- угловая скорость вращения двигателя; $\hat{\bOm}_{set}$ -- фактическая скорость вращения двигателя; $PWM$ -- широтно-импульсная модуляция, рассчитаная для заданной скорости вращения; $U$ -- напряжение, подаваемое на двигатель; $\varphi$ -- фактическое положение ротора
+
 
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Создание прототипа робота}
+
+При создании робота имеются следующие технические ограничения:
+\begin{itemize}
+	\item Размер робота не может превышать 200х300 мм -- ограничение литьевой машины, на которой изготовлена оболочка робота. 
+	\item Диаметр роторов -- ограничивается размерами оболочки.
+	\item Масса и момент инерции роторов -- ограничивается двигателем -- ограничивается размерами оболочки.
+\end{itemize}
+
+Для решения уравнений движения необходимо:
+\begin{itemize}
+	\item Определить значения тензоров присоединенных масс и присоединенных моментов инерции. Для робота в форме эллипсоида вращения данные коэффициенты можно расчитать используя справочные материалы.
+	\item Определить оптимальные значения масс и моментов инерции роторов, учитывая существующие ограничения.	
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Безвинтовой подводный робот с внутренними роторами}
+
+Конструкция и корпусные элементы экспериментальной модели безвинтового подводного робота.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.65\linewidth]{ConstrBPR2.eps}%		
+\end{figure}
+
+Фотографии робота в сборе и без половины оболочки
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{Photo_BPR.png}%
+\end{figure}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Система управления}
@@ -304,6 +519,23 @@
 \end{figure}
 
 \end{frame}
+
+
+
+%\begin{frame}
+%\frametitle{Система управления}
+%В полученных математических моделях управление роторами задается в виде вектора внутреннего гиростатического момента $\bK$. Для управления отдельным двигателем разработана следующая схема
+%
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.9\linewidth]{Control_system.png}%
+%\end{figure}
+%
+%Схема управления отдельным двигателем, где $\bK_{set}$ -- вектор внутреннего гиростатического момента; $\bOm_{set}$ -- угловая скорость вращения двигателя; $\hat{\bOm}_{set}$ -- фактическая скорость вращения двигателя; $PWM$ -- широтно-импульсная модуляция, рассчитаная для заданной скорости вращения; $U$ -- напряжение, подаваемое на двигатель; $\varphi$ -- фактическое положение ротора
+%
+%\end{frame}
+
+
 
 \begin{frame}
 \frametitle{Экспериментальные исследования}
@@ -402,114 +634,77 @@
 	\end{tabular}
 \end{table}
 
-\begin{center}
-	$\Delta x_{exp}=0.106\; \mbox{м}, \; \Delta y_{exp}=0.050\; \mbox{м},\; \Delta z_{exp}=0.053\; \mbox{м}, \;$ \\
-	%\item $|r|=0.129$ м;
-	$\Delta \theta_{exp}=17^{\circ},\; \Delta \psi_{exp}=90^{\circ},\; \Delta \varphi_{exp}=51^{\circ}.$
-\end{center}
+%\begin{center}
+%	$\Delta x_{exp}=0.106\; \mbox{м}, \; \Delta y_{exp}=0.050\; \mbox{м},\; \Delta z_{exp}=0.053\; \mbox{м}, \;$ \\
+%	%\item $|r|=0.129$ м;
+%	$\Delta \theta_{exp}=17^{\circ},\; \Delta \psi_{exp}=90^{\circ},\; \Delta \varphi_{exp}=51^{\circ}.$
+%\end{center}
 
 \end{frame}
 
 
-%\begin{frame}
-%\frametitle{Оценка экспериментальных данных}
-%1. Вращение пары больших роторов. $\bK=(2i_1\omega_{max},  0,  0)$
-%
-%Моделирование движения в течение 3 секунд:
-%\begin{itemize}
-%	\item $\bV_t=\begin{pmatrix} 0.0916,  0, 0 \end{pmatrix}$ м/с, ${\bOm}_t=\begin{pmatrix} 41.0125, 0, 0 \end{pmatrix}$ об/мин
-%	\item Перемещение: $|\br_t|=0.275$ м, $|\br_{exp}|=0.128$ м.
-%\end{itemize}
-%
-%\begin{figure}[h!]
-%	\begin{center}
-%		\includegraphics[width=0.45\linewidth]{Exp_BPR_1.png}
-%	\end{center}
-%\end{figure}
-%Теоретическая (сплошная линия) и экспериментальные (штриховые линии) траектории движения безвинтового подводного робота 
-%
-%\end{frame}
-%
-%
-%\begin{frame}
-%\frametitle{Оценка экспериментальных данных}
-%2. Вращение одной пары малых роторов. $\bK=\begin{pmatrix} 0,  2i_2\omega_{max}, 0 \end{pmatrix}$
-%
-%Моделирование движения в течение 3 секунд:
-%\begin{itemize}
-%	\item $\bV_t=\begin{pmatrix} 0, 0.0018, 0 \end{pmatrix}$ м/с, ${\bOm}_t=\begin{pmatrix} 0, 1.9436, 0 \end{pmatrix}$ об/мин
-%	\item Перемещение: $|\br_t|=0.005$ м, $|\br_{exp}|=0.087$ м.
-%\end{itemize}
-%
-%\begin{figure}[h!]
-%	\begin{center}
-%		\includegraphics[width=0.45\linewidth]{Exp_BPR_2.png}
-%	\end{center}
-%\end{figure}
-%Теоретическая (сплошная линия) и экспериментальные (штриховые линии) траектории движения безвинтового подводного робота
-%
-%\end{frame}
-%
-%
-%\begin{frame}
-%\frametitle{Оценка экспериментальных данных}
-%3.	Вращение пары больших роторов и одной пары малых роторов. $\bK=\begin{pmatrix} 2i_1\omega_{max}, 2i_2\omega_{max}, 0 \end{pmatrix}$
-%
-%Моделирование движения в течение 3 секунд:
-%\begin{itemize}
-%	\item $\bV_t=\begin{pmatrix} 0.0916,  0.0018, 0 \end{pmatrix}$ м/с, ${\bOm}_t=\begin{pmatrix} 41.0125, 1.9436, 0 \end{pmatrix}$ об/мин
-%	\item Перемещение: $|\br_t|=0.275$ м, $|\br_{exp}|=0.129$ м.
-%\end{itemize}
-%
-%\begin{figure}[h!]
-%	\begin{center}
-%		\includegraphics[width=0.42\linewidth]{Exp_BPR_3.png}
-%	\end{center}
-%\end{figure}
-%Теоретическая (сплошная линия) и экспериментальные (штриховые линии) траектории движения безвинтового подводного робота
-%\end{frame}
-
-
-\begin{frame}[allowframebreaks]
+\begin{frame}
 \frametitle{Выводы}
 
 \begin{itemize}
-	\item	Управляемое движение продолжается до тех пор, пока обеспечивается ускоренное вращение роторов. Чем больше ускорение роторов, тем быстрее движется робот. Однако, технически, максимальная угловая скорость вращения роторов ограничена, и после ее достижения робот продолжает движение по инерции.
-	\item Разгон маховиков до максимальной скорости занимает определенное время (разгон большего маховика --- $t=0.9$ секунды, разгон малого маховика --- $t=0.7$ секунды), что не учитывается в теоретической модели и вносит свой вклад в траекторию движения безвинтового подводного робота.
+	\item	Управляемое движение продолжается до тех пор, пока обеспечивается ускоренное вращение роторов. Однако, технически, максимальная угловая скорость вращения роторов ограничена, и после ее достижения робот продолжает движение по инерции.
+	\item Разгон маховиков до максимальной скорости занимает определенное время, что не учитывается в теоретической модели и вносит свой вклад в траекторию движения безвинтового подводного робота.
 	\item В теоретической модели используется идеализированная модель вязкости, что так же вносит несоответствия теоретической и реальной траектории движения.
 	
-		\framebreak
+	%	\framebreak
 	
 	\item	Движение безвинтового подводного робота сопровождается образованием вихревых структур. Обеспечить безвихревое движение, как этого требует теория с помощью роторов крайне затруднительно. 
 	
 	
-		\begin{center}
-			\includegraphics[width=0.4\linewidth]{piv.eps}
-		\end{center}
-
+%		\begin{center}
+%			\includegraphics[width=0.4\linewidth]{piv.eps}
+%		\end{center}
 
 	
 	\item Подобную схему и алгоритмы управления в качестве практического применения можно использовать для реализации различных маневров (например, разворот на месте) в управлении подводными роботами.
+	
+	\item \textbf{Модель качественно описывает движение, но на количественное согласование влияет точность определения большого количества параметров. Движение возможно, однако, его эффективность не высока.}
 \end{itemize}
 
 \end{frame}
 
+%\begin{frame}
+%\frametitle{Переход}
+%
+%Ассиметрия тела
+%периодическое управление
+%Вихри помогают, оболочка с участием вихрей - острая кромка.
+%Наводный для простоты.
+%
+%
+%
+%
+%\end{frame}
 
 
-\section{\todo{Недеформируемый рыбоподобный робот}}
+%\section{Недеформируемый водный робот с внутренним ротором}
+%
+%\begin{frame}[plain, noframenumbering]
+%\begin{center}
+%	\Huge
+%	Недеформируемый водный робот с внутренним ротором
+%\end{center}
+%\end{frame}
 
-\begin{frame}[plain, noframenumbering]
-\begin{center}
-	\Huge
-	\todo{Недеформируемый рыбоподобный робот}
-\end{center}
-\end{frame}
+%\begin{frame}
+%\frametitle{Краткая история}
+%
+%Краткая история
+%
+%\end{frame}
 
 \begin{frame}
-\frametitle{Конструкция}
+\frametitle{Недеформируемый водный робот с острой кромкой}
 
-\centering
-\includegraphics[width=1\linewidth]{Photo_NACA.png}%
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=25mm]{Photo_NACA1.png} \hspace{10mm} \includegraphics[height=25mm]{Kinematic_Scheme2.eps}
+\end{figure}
 
 \begin{table}[h]
 	\centering
@@ -530,104 +725,186 @@
 \end{frame}
 
 
-
 \begin{frame}
-\frametitle{Математическая модель}
+\frametitle{Система управления}
+Для управления безвинтовым недеформируемым рыбоподобным надводным роботом была разработана система управления, структурная схема которой представлена на рисунке
 
-\begin{itemize}
-	\item Для описания движения робота рассмотрим систему представленную на рисунке:  
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\linewidth]{ControlSystem.eps}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+\frametitle{Математическая модель. Уравнения движения}
+%\qquad Для описания движения робота рассмотрим систему представленную на рисунке:
+
+\begin{minipage}[t]{0.35\linewidth}
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[width=0.9\linewidth]{coords.eps}
+		\end{center}
+	\end{figure}	
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.63\linewidth}
+	$Oxy$ -- неподвижная система координат,
 	
-	\begin{center}
-		\includegraphics[width=0.4\linewidth]{coords.eps}
-	\end{center}
-
-	\item Две системы координат: неподвижная $Oxy$ и подвижная $Cx_1x_2$ жестко связанную с телом
-	\item Радиус-вектор $\bs r = (x,\, y)$ точки $C$ определяет положение системы
-	\item Угол $\alpha$ определяет ориентацию системы
-	\item	Справедливы следующие кинематические соотношения:
-	\begin{gather*}
-	\begin{gathered}
-	\dot{x} = v_1 \cos\alpha - v_2 \sin\alpha,\quad \dot{y} = v_1 \sin\alpha + v_2 \cos\alpha,\quad \dot{\alpha} = \omega,
-	\end{gathered}
+	$Cx_1x_2$ -- подвижная система координат.%, жестко связанная с телом.
+	
+	$\bs r = (x,\, y)$ радиус-вектор точки $C$, определяющий положение системы.
+	
+	Угол $\alpha$ определяет ориентацию системы.
+	
+	Справедливы следующие кинематические соотношения:
+	\vspace{-3mm}
+	\begin{gather*}	
+	%\begin{gathered}
+	\dot{x} = v_1 \cos\alpha - v_2 \sin\alpha,\quad \dot{y} = v_1 \sin\alpha + v_2 \cos\alpha, \\
+	\dot{\alpha} = \omega.
+	%\end{gathered}
 	\end{gather*}
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Математическая модель}
-
-	\begin{itemize}
 	
-		%где $m$, $I$ --- масса и момент инерции робота соответственно, $f_1$, $f_2$ --- проекции силы реакции жидкости на подвижные оси, связанные с телом, $g$ --- момент силы реакции жидкости.
-		\item Движение твердого тела в идеальной жидкости при нулевой циркуляции описывается уравнениями Кирхгофа. % их необходимо дополнить слагаемыми, описывающими вязкое трение \cite{Borisov_et_al_2016}:
-		\begin{equation*}
-		\begin{gathered}
-		\der{}{t} \pder{T}{v_1} = \omega \pder{T}{v_2} - c_1 v_1 |v_1|,\quad \der{}{t} \pder{T}{v_2} = - \omega \pder{T}{v_1} - c_2 v_2 |v_2|,\\
-		\der{}{t} \pder{T}{\omega} = v_2 \pder{T}{v_1} - v_1 \pder{T}{v_2} - c_3 \omega |\omega|,
-		\end{gathered}\label{eq.kirchhoff}
-		\end{equation*}
-		где $T$ --- кинетическая энергия системы (корпус + ротор + жидкость), $c_1$, $c_2$, $c_3$ --- коэффициенты сопротивления.
-		
-		Кинетическая энергия системы с точностью до некоторой функции времени имеет вид
-		\begin{gather*}
-		T = \frac{1}{2}(m + \lambda_{11}) v_1^2 + \frac{1}{2}(m + \lambda_{22}) v_2^2 + \frac{1}{2} (I + \lambda_{33}) \omega^2 + \lambda_{23} v_2\omega + \omega k(t),\label{eq.T}\\
-		\begin{gathered}
-		m = m_s + m_r,\quad
-		I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
-		\end{gathered}\notag
-		\end{gather*}
-	\end{itemize}
+\end{minipage}	
+
+Описание движения -- уравнения Ньютона-Эйлера в подвижных осях: %, жестко связанных с телом:
+\begin{gather*}
+\begin{gathered}
+m \dot{v}_1 = m v_2 \omega + f_1 (v_1,\, v_2,\, \omega,\, \dot{v}_1,\, \dot{v}_2,\, \dot \omega),\quad m \dot{v}_2 = -m v_1 \omega + f_2 (v_1,\, v_2,\, \omega,\, \dot{v}_1,\, \dot{v}_2,\, \dot \omega),\\
+I \dot{\omega} = g (v_1,\, v_2,\, \omega,\, \dot{v}_1,\, \dot{v}_2,\, \dot \omega),
+\end{gathered}\label{eq.NE}
+\end{gather*}
+
+Для определения вида $ f_1 $, $ f_2 $ и $ g $ воспользуемся уравнениями Кирхгофа, дополнеными слагаемыми, описывающими вязкое сопротивление:% \cite{Borisov_et_al_2016}:
+\begin{equation*}
+\begin{gathered}
+\der{}{t} \pder{T}{v_1} = \omega \pder{T}{v_2} - c_1 v_1 |v_1|,\quad \der{}{t} \pder{T}{v_2} = - \omega \pder{T}{v_1} - c_2 v_2 |v_2|,\\
+\der{}{t} \pder{T}{\omega} = v_2 \pder{T}{v_1} - v_1 \pder{T}{v_2} - c_3 \omega |\omega|,
+\end{gathered}\label{eq.kirchhoff}
+\end{equation*}
+%где $T$ --- кинетическая энергия системы (корпус + ротор + жидкость); $c_1$, $c_2$, $c_3$ --- коэффициенты сопротивления.
+
+
 
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Математическая модель}
 
-\begin{itemize}
-	\item Полная система уравнений рассматриваемой системы может быть записана в следующей форме:
-	\begin{subequations}\label{eq.fullEqs}
-		\begin{equation}
+%\begin{frame}
+%\frametitle{Математическая модель}
+%
+%	\begin{itemize}
+%	
+%		%где $m$, $I$ --- масса и момент инерции робота соответственно, $f_1$, $f_2$ --- проекции силы реакции жидкости на подвижные оси, связанные с телом, $g$ --- момент силы реакции жидкости.
+%		\item Движение твердого тела в идеальной жидкости при нулевой циркуляции описывается уравнениями Кирхгофа. % их необходимо дополнить слагаемыми, описывающими вязкое трение \cite{Borisov_et_al_2016}:
+%		\begin{equation*}
+%		\begin{gathered}
+%		\der{}{t} \pder{T}{v_1} = \omega \pder{T}{v_2} - c_1 v_1 |v_1|,\quad \der{}{t} \pder{T}{v_2} = - \omega \pder{T}{v_1} - c_2 v_2 |v_2|,\\
+%		\der{}{t} \pder{T}{\omega} = v_2 \pder{T}{v_1} - v_1 \pder{T}{v_2} - c_3 \omega |\omega|,
+%		\end{gathered}\label{eq.kirchhoff}
+%		\end{equation*}
+%		где $T$ --- кинетическая энергия системы (корпус + ротор + жидкость), $c_1$, $c_2$, $c_3$ --- коэффициенты сопротивления.
+%		
+%		Кинетическая энергия системы с точностью до некоторой функции времени имеет вид
+%		\begin{gather*}
+%		T = \frac{1}{2}(m + \lambda_{11}) v_1^2 + \frac{1}{2}(m + \lambda_{22}) v_2^2 + \frac{1}{2} (I + \lambda_{33}) \omega^2 + \lambda_{23} v_2\omega + \omega k(t),\label{eq.T}\\
+%		\begin{gathered}
+%		m = m_s + m_r,\quad
+%		I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
+%		\end{gathered}\notag
+%		\end{gather*}
+%	\end{itemize}
+%
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Математическая модель. Уравнения движения}
+
+Кинетическая энергия системы с точностью до некоторой функции времени имеет вид:
+\begin{gather*}
+T = \frac{1}{2}(m + \lambda_{11}) v_1^2 + \frac{1}{2}(m + \lambda_{22}) v_2^2 + \frac{1}{2} (I + \lambda_{33}) \omega^2 + \lambda_{23} v_2\omega + \omega k(t),\label{eq.T}\\
+\begin{gathered}
+m = m_s + m_r,\quad
+I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
+\end{gathered}\notag
+\end{gather*}
+
+Полная система уравнений рассматриваемой системы может быть записана в следующей форме:
+		\begin{equation*}
 		\begin{split}\label{eq.dyn}
 		(m + \lambda_{11}) \dot{v}_1 = {} & {} (m + \lambda_{22}) v_2 \omega + \lambda_{23}\omega^2 - c_1 v_1 |v_1|,\\
 		(m + \lambda_{22}) \dot{v}_2 + \lambda_{23} \dot{\omega} = {} & {} - (m + \lambda_{11}) v_1 \omega - c_2 v_2 |v_2|,\\
-		\lambda_{23}\dot{v}_2 + (I + \lambda_{33}) \dot{\omega} = {} & {} (\lambda_{11} - \lambda_{22}) v_1 v_2 - \lambda_{23} v_1\omega - c_3 \omega |\omega| - \dot{k}(t),
+		\lambda_{23,l}\dot{v}_2 + (I + \lambda_{33}) \dot{\omega} = {} & {} (\lambda_{11} - \lambda_{22}) v_1 v_2 - \lambda_{23,r} v_1\omega - c_3 \omega |\omega| - \dot{k}(t),
 		\end{split}
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 		\dot{x} = v_1 \cos\alpha - v_2 \sin\alpha,\quad \dot{y} = v_1 \sin\alpha + v_2 \cos\alpha,\quad \dot{\alpha} = \omega.
-		\end{equation}
-	\end{subequations}
+		\end{equation*}
+
 	
-	\item Уравнения Ньютона-Эйлера в подвижных осях, жестко связанных с телом:
-	\begin{gather}
-	\begin{gathered}
-	m \dot{v}_1 = m v_2 \omega + f_1 (v_1,\, v_2,\, \omega,\, \dot{v}_1,\, \dot{v}_2,\, \dot \omega),\quad m \dot{v}_2 = -m v_1 \omega + f_2 (v_1,\, v_2,\, \omega,\, \dot{v}_1,\, \dot{v}_2,\, \dot \omega),\\
-	I \dot{\omega} = g (v_1,\, v_2,\, \omega,\, \dot{v}_1,\, \dot{v}_2,\, \dot \omega),
-	\end{gathered}\label{eq.NE}
-	\end{gather}
 	
-	\item Сравнивая уравнения \eqref{eq.dyn} с уравнениями Ньютона-Эйлера \eqref{eq.NE}, запишем выражения для сил $f_1$, $f_2$ и момента $g$:
-	\begin{gather}
+	 %Сравнивая уравнения \eqref{eq.dyn} с уравнениями Ньютона-Эйлера \eqref{eq.NE}, запишем 
+	 Выражения для сил $f_1$, $f_2$ и момента $g$:
+	\begin{gather*}
 	\begin{gathered}\label{eq.forceTorque}
-	f_1 = - \lambda_{11}\dot{v}_1 + \lambda_{22} v_2 \omega + \lambda_{23}\omega^2 - c_1 v_1 |v_1|, \\
+	f_1 = - \lambda_{11}\dot{v}_1 + \lambda_{22} v_2 \omega + \lambda_{23}\omega^2 - c_1 v_1 |v_1|, \quad
 	f_2 = - \lambda_{22} \dot{v}_2 - \lambda_{23} \dot{\omega} - \lambda_{11} v_1 \omega - c_2 v_2 |v_2|,\\
-	g = -\lambda_{23}\dot{v}_2 - \lambda_{33} \dot{\omega} + (\lambda_{11} - \lambda_{22}) v_1 v_2 - \lambda_{23} v_1\omega - c_3 \omega |\omega| - \dot{k}(t),
+	g = -\lambda_{23}\dot{v}_2 - \lambda_{33} \dot{\omega} + (\lambda_{11} - \lambda_{22}) v_1 v_2 - \lambda_{23} v_1\omega - c_3 \omega |\omega| - \dot{k}(t).
 	\end{gathered}
-	\end{gather}
+	\end{gather*}
 	%где коэффициенты $\lambda_{ij}$ и $c_i$ подлежат определению, а $\dot{k}(t)$ --- определяется управляющим воздействием на ротор.
-\end{itemize}
+
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Математическая модель}
+\frametitle{Методика определения коэффициентов}
 
-\begin{itemize}
-	\item Про уравнения Навье-Стокса...
-	
+	Уравнения Навье-Стокса, записанные относительно криволинейной системы координат $(\xi,\, \eta)$, связанной с движущимся профилем имеют вид:
+	\begin{gather*}
+	\begin{gathered}
+	\pder{Du_1}{\xi} + \pder{Du_2}{\eta} = 0,\\
+	\begin{split}
+	\pder{u_1}{t} + \frac{1}{D^2} \biggl( \pder{D(u_1 - w_1)u_1}{\xi} + & \pder{D(u_2 - w_2)u_1}{\eta} \biggr) = \\
+	= - \frac{1}{D\rho} \pder{p}{\xi} + & \frac{\nu}{D^2} \left( \pdder{u_1}{\xi}{2} + \pdder{u_1}{\eta}{2} \right) + \beta_1 + 2 u_2 \omega
+	\end{split}\\
+	\begin{split}
+	\pder{u_2}{t} + \frac{1}{D^2} \biggl( \pder{D(u_1 - w_1)u_2}{\xi} + & \pder{D(u_2 - w_2)u_2}{\eta} \biggr) = \\
+	= - \frac{1}{D\rho} \pder{p}{\eta} + & \frac{1}{D^2} \left( \pdder{u_2}{\xi}{2} + \pdder{u_2}{\eta}{2} \right) + \beta_2 - 2 u_1 \omega,
+	\end{split}
+	\end{gathered}
+	\end{gather*}
+	где $u_1$, $u_2$ --- проекции вектора скорости жидкости на криволинейные оси, $p$ --- давление, $\rho$ --- плотность жидкости, $\nu$ --- кинематическая вязкость, $w_1 = v_1 - \omega x_2(\xi,\, \eta)$, $w_2 = v_2 + \omega x_1(\xi,\, \eta)$ --- компоненты переносной скорости. 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Методика определения коэффициентов}
+
+
+Коэффициент Ламэ $D$ и члены $\beta_1$, $\beta_2$, возникающие вследствие искривления сеточных линий, имеют вид:
+\begin{gather*}
+D = \sqrt{\left( \pder{x_1}{\xi}\right)^2 + \left( \pder{x_2}{\xi}\right)^2  } =\sqrt{\left( \pder{x_1}{\eta}\right)^2 + \left( \pder{x_2}{\eta}\right)^2  },\\
+\begin{split}
+\beta_1 = \frac{\nu}{D^3} \Biggl( u_1\left( \pdder{D}{\xi}{2} + \pdder{D}{\eta}{2} \right) + {} & {} 2 \pder{u_1}{\xi} \pder{D}{\xi} + 2 \pder{u_2}{\xi} \pder{D}{\eta} + \\
++ {} & {} \frac{2u_2}{D} \pder{D}{\xi} \pder{D}{\eta} - \frac{2u_1}{D} \left( \pder{D}{\eta} \right)^2  \Biggr)
+\end{split}\\
+\begin{split}
+\beta_2 = \frac{\nu}{D^3} \Biggl( u_2\left( \pdder{D}{\xi}{2} + \pdder{D}{\eta}{2} \right) + {} & {} 2 \pder{u_1}{\eta} \pder{D}{\xi} + 2 \pder{u_2}{\eta} \pder{D}{\eta} + \\
++ {} & {} \frac{2u_1}{D} \pder{D}{\xi} \pder{D}{\eta} - \frac{2u_2}{D} \left( \pder{D}{\xi}\right)^2 \Biggr)
+\end{split}
+\end{gather*}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Методика определения коэффициентов}
+
 	При известных распределениях $u_1$, $u_2$, $p$ cилы $f_1$, $f_2$ и момент $g$, действующие на тело со стороны жидкости, определяются следующими интегралами по контуру $L$ профиля:
 	\begin{gather*}
 	\begin{gathered}
@@ -637,7 +914,15 @@
 	\end{gathered}\label{eq.fgNS}
 	\end{gather*}
 	
-	\item \begin{gather}
+	Поскольку движение робота является существенно нестационарным, оказывается невозможным определение коэффициентов $\lambda_{11}$, $\lambda_{22}$, $\lambda_{33}$, $\lambda_{23}$, $c_1$, $c_2$, $c_3$ по-отдельности. Таким образом данные коэффициенты должны определяться совместно с учетом нестационарности движение профиля.
+	
+%	Для задания граничных условий, соответствующих нестационарному движению профиля, будем использовать экспериментальные данные для прототипа, описанного в разделе 1 с периодом управляющего воздействия $T = 1$ с, которые представляют собой таблицу значений:
+%	\begin{gather}
+%	(t_i,\, x_i,\, y_i,\, \alpha_i),\quad i = 0,\, \ldots,\, N.\label{eq.expXYPhi}
+%	\end{gather}
+%	Здесь $t_i$ --- момент времени, $(x_i,\, y_i)$ --- положение центра масс профиля в момент времени $t_i$, $\alpha_i$ --- ориентация профиля в момент времени $t_i$.
+%	
+	 \begin{gather*}
 	\begin{gathered}
 	\lambda_{11}^{(1)} \approx 0.3087, \quad 
 	\lambda_{22}^{(1)} \approx -0.5796,\quad 
@@ -651,22 +936,20 @@
 	\lambda_{23,r}^{(3)} \approx 1.4488,\\
 	c_1 = 0.04715,\quad c_2 = 17.702,\quad c_3 = 0.092872.
 	\end{gathered}\label{eq.coeffs2}
-	\end{gather}
-	
-\end{itemize}
+	\end{gather*}
+
 
 \end{frame}
+
 
 
 \begin{frame}
 \frametitle{Закон изменения угловой скорости ротора}
 
-
-
-	\begin{itemize}
-		\item В общем случае, зависимость угловой скорости ротора от времени будет иметь характерные переходные интервалы, соответствующие разгону и торможению 
-	\end{itemize}
+	В общем случае, зависимость угловой скорости ротора от времени будет иметь характерные переходные интервалы, соответствующие разгону и торможению 
+	
 		\scriptsize 
+		\vspace{-4mm}
 		\begin{equation*}
 		\omega_r(t) =
 		\begin{cases}
@@ -688,61 +971,105 @@
 		
 			%\framebreak
 		
-		Графически данная зависимость приведена на рисунке
+		%Графически данная зависимость приведена на рисунке
 		
-		\begin{figure}[!ht]
+		\begin{minipage}[t]{0.47\linewidth}
+			\begin{figure}[!ht]
+				\centering
+				\includegraphics[height=33mm]{ControlAction.eps}
+			\end{figure}
+			
+		\end{minipage}	
+		\hfill
+		\begin{minipage}[t]{0.47\linewidth}
+			\begin{figure}[!ht]
+				\centering
+				\includegraphics[height=33mm]{ControlActionEpsilon.eps}
+			\end{figure}
+		\end{minipage}	
+%		\begin{figure}[!ht]
+%			\centering
+%			\includegraphics[width=0.4\linewidth]{ControlAction.eps}
+%		\end{figure}
+	
+	
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Результаты моделирования}
+%
+%Моделирование различных управляющих воздействий
+%
+%\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Методика проведения экспериментов}
+
+	\begin{itemize}
+		\item Эксперименты проводились в бассейне размерами $2 \times 1.2$ метра. 
+		\item Траектория движения робота и его ориентация в процессе движения восстанавливались с помощью системы захвата движения фирмы Vicon, включающей 7 камер, расположенных по периметру бассейна. 
+		\item Типовая траектория движения, восстановленная с помощью системы захвата движения и наложенная на кадр с видеозаписи в бассейне
+		
+		\begin{figure}[!h]
 			\centering
-			\includegraphics[width=0.4\linewidth]{ControlAction.eps}
+			\includegraphics[width=0.8\linewidth]{Frame1col.png}
 		\end{figure}
-	
-	
+	\end{itemize}
+
+
+
 \end{frame}
 
 
-
-
 \begin{frame}
-\frametitle{Система управления}
-Для управления безвинтовым недеформируемым рыбоподобным надводным роботом была разработана система управления, структурная схема которой представлена на рисунке
+\frametitle{Движение вдоль прямой}
 
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.8\linewidth]{ControlSystem.eps}
-\end{figure}
+\begin{minipage}[t]{0.6\linewidth}
+	\begin{itemize}
+		\item $t_1=t_3$, $ t_2 = t_4 \approx 0.1 $ секунды
+		\item $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $. 
+		\item Таким образом, в качестве изменяемого параметра в экспериментах движения вдоль прямой выступает период $ T $, а $t_1=t_3 = 0.5(T - 2t_2)$. 
+		%Тогда функция $ \omega_r(t) $ примет вид 
+		
+		
+	\end{itemize}	
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.37\linewidth}
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=1\linewidth]{ControlActionLine.eps}
+	\end{figure}
+	
+\end{minipage}	
 
-\end{frame}
-
-\begin{frame}
-\frametitle{Экспериментальные исследования. Движение по прямой}
-\begin{itemize}
-	\item $t_1=t_3$, $ t_2 = t_4 \approx 0.1 $ секунды
-	\item $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $. 
-	\item Таким образом, в качестве изменяемого параметра в экспериментах движения вдоль прямой выступает период $ T $, а $t_1=t_3 = 0.5(T - 2t_2)$. 
-	Тогда функция $ \omega_r(t) $ примет вид 
-
-
-\end{itemize}
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.5\linewidth]{ControlActionLine.eps}
+	\includegraphics[width=0.8\linewidth]{AllTrajectories_new.eps}
 \end{figure}
+
+%Траектории движения робота при  $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $ и различных  управляющих воздействий, пунктирной линией обозначены траектории, полученные по результатам численного моделирования, сплошной - экспериментальные траектории.
+
+
 
 \end{frame}
 
 
+%\begin{frame}
+%\frametitle{Экспериментальные исследования. Движение по прямой}
+%\begin{figure}[!ht]
+%	\centering
+%	\includegraphics[width=1\linewidth]{AllTrajectories_new.eps}
+%\end{figure}
+%
+%Траектории движения робота при  $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $ и различных  управляющих воздействий, пунктирной линией обозначены траектории, полученные по результатам численного моделирования, сплошной - экспериментальные траектории.
+%\end{frame}
+
+
 \begin{frame}
-\frametitle{Экспериментальные исследования. Движение по прямой}
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=1\linewidth]{AllTrajectories_new.eps}
-\end{figure}
-
-Траектории движения робота при  $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $ и различных  управляющих воздействий, пунктирной линией обозначены траектории, полученные по результатам численного моделирования, сплошной - экспериментальные траектории.
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Экспериментальные исследования. Движение по прямой}
+\frametitle{Движение вдоль прямой}
 \begin{itemize}
 	\item $ t_2=t_4=0.1 $ $ t_1=t_3=0.9 $, $T = 2$ с.
 	\item Вращение ротора по часовой и против часовой стрелки с разными угловыми скоростями, при $ \omega_1 - \omega_2 = const$
@@ -756,9 +1083,6 @@
 		Экспериментальные траектории движения робота
 		\center{\includegraphics[width=0.7\linewidth]{Plots3.eps} \\ б)}
 	\end{minipage}
-	
-	
-	
 	
 	
 \end{itemize}
@@ -778,27 +1102,27 @@
 %\end{frame}
 
 
-\begin{frame}
-\frametitle{Движение по прямой. Выводы}
-	\begin{itemize}
-		\item Рассматриваемая теоретическая модель управляемого движения водного робота качественно правильно  описывает его движение вдоль прямой, которое реализуется симметричным управляющим воздействием.
-		\item Сдвиг управляющего воздействия $\omega(t) \rightarrow \omega_0 + \omega(t)$ не влияет на форму траектории, она остается прямой, но меняется направление движение.
-		\item Количественного согласования результатов моделирования и экспериментов можно достичь для конкретных тестов, проводя перерасчет коэффициентов под конкретные экспериментальные данные.
-	\end{itemize}
-	
-\end{frame}
+%\begin{frame}
+%\frametitle{Движение вдоль прямой. Выводы}
+%	\begin{itemize}
+%		\item Рассматриваемая теоретическая модель управляемого движения водного робота качественно правильно  описывает его движение вдоль прямой, которое реализуется симметричным управляющим воздействием.
+%		\item Сдвиг управляющего воздействия $\omega(t) \rightarrow \omega_0 + \omega(t)$ не влияет на форму траектории, она остается прямой, но меняется направление движение.
+%		\item Количественного согласования результатов моделирования и экспериментов можно достичь для конкретных тестов, проводя перерасчет коэффициентов под конкретные экспериментальные данные.
+%	\end{itemize}
+%	
+%\end{frame}
 
 
 \begin{frame}
-\frametitle{Экспериментальные исследования. Движение по окружности}
-	\begin{itemize}
-		\item $t_1 \neq t_3$, $t_2 = t_4$ с.
-		\item $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $. 
-		\item $ k_1 = t_3 / t_1 $
-	\end{itemize}
+\frametitle{Движение вдоль окружности}
+
+	$t_1 \neq t_3$, $t_2 = t_4$ с; \quad	$ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $; \quad $ k_1 = t_3 / t_1 $
+		
+	\vspace{4mm}
 		
 	 \begin{minipage}[t]{0.47\linewidth}
 		{Зависимость угловой скорости ротора от времени \\}
+		\vspace{2mm}
 		\center{\includegraphics[width=1\linewidth]{ControlActionCircle.eps}}
 	\end{minipage}
 	\hfill
@@ -810,17 +1134,13 @@
 \end{frame}
 
 
-
-
-
 \begin{frame}
-\frametitle{Экспериментальные исследования. Движение по окружности}
-\begin{itemize}
-	\item $t_1 = t_3$, $t_2 \neq t_4$ с.
-	\item $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $. 
-	\item $ k_2 = t_2 / t_4 $
-\end{itemize}
+\frametitle{Движение вдоль окружности}
+	
+	 $t_1 = t_3$, $t_2 \neq t_4$ с; \quad $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $ \quad $ k_2 = t_2 / t_4 $
 
+	\vspace{4mm}
+	
 \begin{minipage}[t]{0.47\linewidth}
 	{Зависимость угловой скорости ротора от времени \\}
 	\center{\includegraphics[width=1\linewidth]{ControlActionOur1.eps}}
@@ -834,7 +1154,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Экспериментальные исследования. Движение по окружности}
+\frametitle{Движение вдоль окружности}
 
 %{Зависимость радиуса траектории движения робота от $k_1 = \frac{t_3}{t_1}$ при эксперименте (штриховая линия) и моделировании (сплошная линия) построенная по экспериментам при $k_1 = 2, 3, 5, 10$}
 %\center{\includegraphics[width=0.9\linewidth]{kRDependence+Theor_T=3,W=max.eps}}
@@ -858,11 +1178,17 @@
 %\end{frame}
 
 \begin{frame}
-\frametitle{Движение по окружности. Выводы}
+\frametitle{Выводы}
 \begin{itemize}
-	\item Рассматриваемая теоретическая модель управляемого движения водного робота качественно правильно  описывает его движение вдоль окружности, которое реализуется асимметричным на периоде управляющим воздействием.
-	\item На размер и форму траектории движения влияет асимметрия управляющего воздействия на его периоде. Изменение направления движения -- поворот, может быть реализован либо при изменении продолжительности интервала вращения с постоянной угловой скоростью, либо вращением ротора по и против часовой стрелки с различными угловыми ускорениями.
-	\item Количественного согласования результатов моделирования и экспериментов, как и в при движении вдоль прямой, можно достичь для конкретных тестов, проводя перерасчет коэффициентов под конкретные экспериментальные данные, полученные при движении вдоль окружности.
+	\item Рассматриваемая теоретическая модель управляемого движения водного робота качественно правильно описывает его движение. Cимметричное управляющее воздействие -- движение вдоль прямой. Асимметричное управляющее воздействие -- движение вдоль окружности.
+	
+	\item Сдвиг управляющего воздействия $\omega(t) \rightarrow \omega_0 + \omega(t)$ не влияет на форму траектории. На размер и форму траектории движения влияет асимметрия управляющего воздействия на его периоде.
+	
+	\item Количественного согласования результатов моделирования и экспериментов можно достичь для конкретных тестов, проводя перерасчет коэффициентов под конкретные экспериментальные данные.
+	
+	%\item Рассматриваемая теоретическая модель управляемого движения водного робота качественно правильно  описывает его движение вдоль окружности, которое реализуется асимметричным на периоде управляющим воздействием.
+	%\item На размер и форму траектории движения влияет асимметрия управляющего воздействия на его периоде. Изменение направления движения -- поворот, может быть реализован либо при изменении продолжительности интервала вращения с постоянной угловой скоростью, либо вращением ротора по и против часовой стрелки с различными угловыми ускорениями.
+	%\item Количественного согласования результатов моделирования и экспериментов, как и в при движении вдоль прямой, можно достичь для конкретных тестов, проводя перерасчет коэффициентов под конкретные экспериментальные данные, полученные при движении вдоль окружности.
 \end{itemize}
 
 \end{frame}
@@ -872,7 +1198,7 @@
 \frametitle{Экспериментальные исследования. Движение вдоль сложных траекторий}
 
 
-	{Управления для слалома}
+	{Управление для слалома}
 	\centering
 	\includegraphics[width=0.7\linewidth]{ControlActionComplexTr.eps}
 
@@ -886,6 +1212,17 @@
 \begin{frame}
 \frametitle{Экспериментальные исследования. Видео.}
 
+\begin{figure}[ht]
+	%\vspace{-7pt}
+	%\hspace*{-28.5pt}
+	\includemovie[
+	%autoplay,
+	%repeat,
+	%poster=ComplexTr1.png,
+	inline=false,
+	text={Video}
+	]{\textwidth}{0.6\textwidth}{ComplexTr1.avi}
+\end{figure}
 
 %\movie[width=0.5\textwidth]{\includegraphics[width=0.5\textwidth]{ComplexTr1.png}}{123.mp4}
 %\includemedia[activate=onclick, width=0.5\textwidth]{\includegraphics{ComplexTr1.png}}{123.mp4}
