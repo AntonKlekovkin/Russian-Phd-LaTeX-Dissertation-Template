@@ -10,6 +10,8 @@
 *.cb
 *.cb2
 .*.lb
+*.avi
+*.mp4
 
 ## Intermediate documents:
 *.dvi
