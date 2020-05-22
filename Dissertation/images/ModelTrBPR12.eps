@@ -1,0 +1,6833 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 20 251 575 540
+%%Creator: FreeHEP Graphics2D Driver
+%%Producer: com.maplesoft.mathdoc.view.plot.paint.PlotPSGraphics2D Revision: 12753 
+%%For: 
+%%Title: 
+%%CreationDate: 22 Май 2020 г. 8:13:45 VET
+%%LanguageLevel: 3
+%%EndComments
+%%BeginProlog
+100 dict dup begin
+
+%
+% File: org/freehep/graphicsio.ps/PSProlog.txt
+% Author: Charles Loomis
+%
+
+% Redefinitions which save some space in the output file.  These are also
+% the same as the PDF operators.
+/q {gsave} def
+/Q {grestore} def
+
+/n {newpath} def
+/m {moveto} def
+/l {lineto} def
+/c {curveto} def
+/h {closepath} def
+
+/re {4 -2 roll moveto
+     dup 0 exch rlineto exch 0 rlineto
+     neg 0 exch rlineto closepath} def
+
+/f {fill} def
+/f* {eofill} def
+/F {gsave vg&FC fill grestore} def
+/F* {gsave vg&FC eofill grestore} def
+
+/s {closepath stroke} def
+/S {stroke} def
+
+/b {closepath gsave vg&FC fill grestore
+    gsave stroke grestore newpath} def
+/B {gsave vg&FC fill grestore gsave stroke grestore newpath} def
+/b* {closepath gsave vg&FC eofill grestore
+    gsave stroke grestore newpath} def
+/B* {gsave vg&FC eofill grestore gsave stroke grestore newpath} def
+
+/g {1 array astore /vg&fcolor exch def} def
+/G {setgray} def
+/k {4 array astore /vg&fcolor exch def} def
+/K {setcmykcolor} def
+/rg {3 array astore /vg&fcolor exch def} def
+/RG {setrgbcolor} def
+
+% Initialize the fill color.
+0 0 0 rg
+
+/vg&FC {mark vg&fcolor aload pop
+        counttomark 1 eq {G} if
+        counttomark 3 eq {RG} if
+        counttomark 4 eq {K} if
+        cleartomark } def
+
+/vg&DFC {/vg&fcolor exch def} def
+
+/vg&C {mark exch aload pop
+       counttomark 1 eq {G} if
+       counttomark 3 eq {RG} if
+       counttomark 4 eq {K} if
+       cleartomark } def
+
+/w {setlinewidth} def
+/j {setlinejoin} def
+/J {setlinecap} def
+/M {setmiterlimit} def
+/d {setdash} def
+/i {setflat} def
+
+/W {clip} def
+/W* {eoclip} def
+
+% Setup the default graphics state.
+% (black; 1 pt. linewidth; miter join; butt-ends; solid)
+/defaultGraphicsState {0 g 1 w 0 j 0 J [] 0 d} def
+
+% Emulation of the rectangle operators for PostScript implementations
+% which do not implement all Level 2 features.  This is an INCOMPLETE
+% emulation; only the "x y width height rect..." form is emulated.
+/*rf {gsave newpath re fill grestore} def
+/*rs {gsave newpath re stroke grestore} def
+/*rc {newpath re clip} def
+/rf  /rectfill where {pop /rectfill}{/*rf} ifelse load def
+/rs  /rectstroke where {pop /rectstroke}{/*rs} ifelse load def
+/rc  /rectclip where {pop /rectclip}{/*rc} ifelse load def
+
+% Emulation of the selectfont operator.  This includes a 20% increase in
+% the fontsize which is necessary to get sizes similar to the Java fonts.
+/*sf {exch findfont exch
+      dup type /arraytype eq {makefont}{scalefont} ifelse setfont} bind def
+/sf /selectfont where {pop {1.2 mul selectfont}}{{1.2 mul *sf}} ifelse def
+
+% Special version of stroke which allows the dash pattern to continue
+% across path segments.  (This may be needed for PostScript although
+% modern printers seem to do this correctly.)
+/vg&stroke {
+  currentdash pop length 0 eq
+  {stroke}
+  {
+    currentdash /vg&doffset exch def pop
+    flattenpath
+    {m vg&resetdash}
+    {2 copy
+     currentpoint
+     3 -1 roll sub dup mul
+     3 1 roll sub dup mul
+     add sqrt
+     3 1 roll l
+     currentdash 3 -1 roll add setdash}
+     {}
+     {h vg&resetdash}
+     pathforall
+     stroke
+     vg&resetdash
+  } ifelse
+} def
+/vg&resetdash {currentdash pop vg&doffset setdash} def
+
+% Initialize variables for safety.
+/delta 0 def
+/xv 0 def  /yv 0 def  /width 0 def  /height 0 def
+
+% Initialize to portrait INTERNATIONAL (Letter-height, A4-width) page.
+/pw 595 def  /ph 791  def  /po true def /ftp false def
+
+% Initialize margins to 20 points.
+/ml 20 def  /mr 20 def  /mt 20 def  /mb 20 def
+
+% Temporary matrices.
+/smatrix 0 def  /nmatrix 0 def
+
+% set page size (usage: <page width><page height> setpagesize)
+/setpagesize {/ph exch def /pw exch def} def
+
+% set page orientation (usage: portrait or landscape)
+/portrait {/po true def} def
+/landscape {/po false def} def
+
+% force natural size for image (usage: naturalsize)
+/naturalsize {/ftp false def} def
+
+% resize image to fill page (usage: fittopage)
+/fittopage {/ftp true def} def
+
+% set margins of the page (usage: <left><bottom><top><right> setmargins)
+/setmargins {/mr exch def /mt exch def /mb exch def /ml exch def} def
+
+% set the graphic's size (usage: <width><height> setsize)
+/setsize {/gh exch def /gw exch def} def
+
+% set the graphic's origin (usage: <x0><y0> setorigin)
+/setorigin {/gy exch def /gx exch def} def
+
+% calculate image center
+/imagecenter {pw ml sub mr sub 2 div ml add
+              ph mt sub mb sub 2 div mb add} def
+
+% calculate the necessary scaling
+/imagescale {po {gw}{gh} ifelse pw ml sub mr sub div
+             po {gh}{gw} ifelse ph mt sub mb sub div
+             2 copy lt {exch} if pop
+             ftp not {1 2 copy lt {exch} if pop} if
+             1 exch div /sfactor exch def
+             /gw gw sfactor mul def /gh gh sfactor mul def} def
+
+% calculate image origin
+/imageorigin {pw ml sub mr sub 2 div ml add
+              po {gw}{gh} ifelse 2 div sub
+              ph mt sub mb sub 2 div mb add
+              po {gh}{gw} ifelse 2 div po {add}{sub} ifelse} def
+
+% calculate the clipping origin
+/cliporigin  {pw ml sub mr sub 2 div ml add
+              po {gw}{gh} ifelse 2 div sub floor
+              ph mt sub mb sub 2 div mb add
+              po {gh}{gw} ifelse 2 div sub floor} def
+
+% Set the clipping region to the bounding box.
+/cliptobounds {cliporigin po {gw}{gh} ifelse 1 add
+                          po {gh}{gw} ifelse 1 add rc} def
+
+% set the base transformation matrix (usage: setbasematrix)
+/setbasematrix {imageorigin translate
+                po {0}{90} ifelse rotate
+                sfactor sfactor neg scale
+                /defaultmatrix matrix currentmatrix def} def
+
+% The lower-right bias in drawing 1 pt. wide lines.
+/bias  {q 0.5 0.5 translate} def
+/unbias {Q} def
+
+% Draw a line. (x0 y0 x1 y1 line)
+/L {bias n m l S unbias} def
+
+% Polyline primitive.
+/polyline  {n m 1 exch 1 exch
+           {pop currentfile token pop currentfile token pop l} for
+           } def
+
+% Draw a polyline (n x0 y0 OPL x1 y1 x2 y2 ... ... xn yn)
+/OPL {bias polyline S unbias} def
+
+% Draw a closed polyline (n x0 y0 CPL x1 y1 x2 y2 ... ... xn yn)
+/CPL {bias polyline s unbias} def
+
+% Draw a filled polyline (n x0 y0 FPL x1 y1 x2 y2 ... ... xn yn)
+/FPL {polyline h f*} def
+
+% Draw an oval. (x y w h OVL)
+/OVL {matrix currentmatrix /smatrix exch def
+      /height exch def /width exch def
+      /yv exch def /xv exch def
+      width 2 div xv add height 2 div yv add translate
+      width currentlinewidth sub 2 div
+      height currentlinewidth sub 2 div neg
+      scale n 0 0 1 5 -2 roll arc
+      smatrix setmatrix S} def
+
+% Draw a filled oval. (x y w h FOVL)
+/FOVL {matrix currentmatrix /smatrix exch def
+      /height exch def /width exch def
+      /yv exch def /xv exch def
+      width 2 div xv add height 2 div yv add translate
+      width 2 div
+      height 2 div neg
+      scale n 0 0 m 0 0 1 5 -2 roll arc
+      h smatrix setmatrix f} def
+
+% Draw a rounded rectangle. (x y w h arcwidth archeight RREC)
+/RREC {matrix currentmatrix /smatrix exch def
+      2 div /ah exch def
+      2 div /aw exch def
+      /height exch def /width exch def
+      /yv exch def /xv exch def
+      aw ah scale matrix
+      currentmatrix /nmatrix exch def
+      smatrix setmatrix
+      n xv width add aw sub yv m
+      nmatrix setmatrix
+      currentpoint exch 1 add exch
+      currentpoint 1 add exch 1 add exch
+      1 arct smatrix setmatrix
+      xv width add yv height add ah sub l
+      nmatrix setmatrix
+      currentpoint 1 add
+      currentpoint exch 1 sub exch 1 add
+      1 arct smatrix setmatrix
+      xv aw add yv height add l
+      nmatrix setmatrix
+      currentpoint exch 1 sub exch
+      currentpoint exch 1 sub exch 1 sub
+      1 arct smatrix setmatrix
+      xv yv ah add l
+      nmatrix setmatrix
+      currentpoint 1 sub
+      currentpoint exch 1 add exch 1 sub
+      1 arct smatrix setmatrix
+      s} def
+
+% Draw a filled rounded rectangle. (x y w h arcwidth archeight FRREC)
+/FRREC{matrix currentmatrix /smatrix exch def
+      2 div /ah exch def
+      2 div /aw exch def
+      /height exch def /width exch def
+      /yv exch def /xv exch def
+      aw ah scale matrix
+      currentmatrix /nmatrix exch def
+      smatrix setmatrix
+      n xv width add aw sub yv m
+      nmatrix setmatrix
+      currentpoint exch 1 add exch
+      currentpoint 1 add exch 1 add exch
+      1 arct smatrix setmatrix
+      xv width add yv height add ah sub l
+      nmatrix setmatrix
+      currentpoint 1 add
+      currentpoint exch 1 sub exch 1 add
+      1 arct smatrix setmatrix
+      xv aw add yv height add l
+      nmatrix setmatrix
+      currentpoint exch 1 sub exch
+      currentpoint exch 1 sub exch 1 sub
+      1 arct smatrix setmatrix
+      xv yv ah add l
+      nmatrix setmatrix
+      currentpoint 1 sub
+      currentpoint exch 1 add exch 1 sub
+      1 arct smatrix setmatrix
+      h f} def
+
+% Draw a string.  (string x y STR)
+/STR {q m 1 -1 scale recshow Q} def
+
+% Define basic plot symbols.
+/xys   {/siz exch def /yv exch def /xv exch def} def
+/hline {xys n xv siz 2. div sub yv m siz 0 rlineto S} def
+/vline {xys n xv yv siz 2. div sub m 0 siz rlineto S} def
+/plus  {xys n xv yv siz 2. div sub m 0 siz rlineto
+                    xv siz 2. div sub yv m siz 0 rlineto S} def
+/dot   {n 2. div 0 360 arc s} def
+/fdot  {n 2. div 0 360 arc h f} def
+/box   {xys n xv siz 2 sqrt div 2 div sub yv siz 2 sqrt div 2 div sub
+                    siz 2 sqrt div dup rs} def
+/fbox  {xys n xv siz 2 sqrt div 2 div sub yv siz 2 sqrt div 2 div sub
+                       siz 2 sqrt div dup rf} def
+/tridn{xys n xv yv siz 3 sqrt div add m
+                       siz 2. div neg 3 sqrt 2. div siz mul neg rlineto
+                       siz 0 rlineto s} def
+/ftridn{xys n xv yv siz 3 sqrt div add m
+                       siz 2. div neg 3 sqrt 2. div siz mul neg rlineto
+                       siz 0 rlineto h f} def
+
+% Symbols defined in terms of the others.
+/star     {3 copy cross plus} def
+/cross    {xys q xv yv translate 45 rotate 0 0 siz plus Q} def
+/diamond  {xys q xv yv translate 45 rotate 0 0 siz box Q} def
+/fdiamond {xys q xv yv translate 45 rotate 0 0 siz fbox Q} def
+/triup    {xys q xv yv translate 180 rotate 0 0 siz tridn Q} def
+/ftriup   {xys q xv yv translate 180 rotate 0 0 siz ftridn Q} def
+
+% Define the composite fonts used to print Unicode strings.
+% Undefine particular values in an encoding array.
+/vg&undef { {exch dup 3 -1 roll /.notdef put} forall } def
+/vg&redef { {3 -1 roll dup 4 2 roll put} forall } def
+
+% usage: key encoding basefontname vg&newbasefont font
+/vg&newbasefont {
+findfont dup length dict copy
+  begin
+    currentdict /FID undef
+    /Encoding exch def
+    dup /FontName exch def
+    currentdict
+  end
+definefont
+} def
+
+% usage: key encoding basefontname vg&newskewedbasefont font
+/vg&newskewedbasefont {
+findfont dup length dict copy
+  begin
+    currentdict /FID undef
+    /Encoding exch def
+    dup /FontName exch def
+    exch FontMatrix exch matrix concatmatrix /FontMatrix exch def
+    currentdict
+  end
+definefont
+} def
+
+% usage: basekey suffix vg&nconcat name
+/vg&nconcat {
+  2 {dup length string cvs exch} repeat
+  dup length 3 -1 roll dup length 3 -1 roll add string
+  dup 0 4 -1 roll dup length 5 1 roll putinterval
+  dup 4 -2 roll exch putinterval cvn
+} def
+
+%usage: fontname vg&skewmatrix matrix
+/vg&skewmatrix {
+findfont dup /FontInfo known
+  {
+    /FontInfo get dup /ItalicAngle known
+    {
+      [ 1 0 4 -1 roll /ItalicAngle get neg dup sin exch cos div 1 0 0 ]
+    }
+    {pop matrix} ifelse
+  }
+  {pop matrix} ifelse
+} def
+
+% usage: newfontname basefontname vg&newcompositefont --
+/vg&newcompositefont {
+/vg&fstyle exch def
+/vg&bfont exch def
+/vg&fname exch def
+<<
+/FontStyleBits vg&fstyle
+/FontType 0
+/FontMatrix matrix
+/FontName vg&fname
+/FMapType 2
+/Encoding [ 0 1 255 {pop 6} for ]
+          dup 16#00 0 put % Latin
+          dup 16#03 1 put % Greek
+          dup 16#20 2 put % Punctuation
+          dup 16#21 3 put % Arrows
+          dup 16#22 4 put % MathOps
+          dup 16#27 5 put % Dingbats
+
+/FDepVector [
+vg&bfont /-UC-Latin vg&nconcat UCLatinEncoding
+vg&bfont vg&newbasefont
+
+vg&bfont vg&skewmatrix
+vg&bfont /-UC-Greek vg&nconcat UCGreekEncoding
+/Symbol vg&newskewedbasefont
+
+vg&bfont /-UC-Punctuation vg&nconcat UCPunctuationEncoding
+vg&bfont vg&newbasefont
+
+/Arrows-UC findfont
+/MathOps-UC findfont
+/Dingbats-UC findfont
+/Undefined-UC findfont ]
+>>
+vg&fname exch definefont pop
+} def
+
+% Null encoding vector (all elements set to .notdef)
+/NullEncoding [ 256 {/.notdef} repeat ] def
+
+% Unicode Latin encoding (unicode codes \u0000-\u00ff)
+/UCLatinEncoding
+  ISOLatin1Encoding dup length array copy
+  dup 16#60 /grave put
+  [ 16#90 16#91 16#92 16#93 16#94 16#95 16#96
+    16#97 16#98 16#9a 16#9b 16#9d 16#9e 16#9f
+  ] vg&undef
+  def
+
+% Unicode Greek encoding (unicode codes \u0370-\u03ff)
+/UCGreekEncoding
+  NullEncoding dup length array copy
+  << 16#91 /Alpha    16#92 /Beta      16#93 /Gamma    16#94 /Delta
+     16#95 /Epsilon  16#96 /Zeta      16#97 /Eta      16#98 /Theta
+     16#99 /Iota     16#9a /Kappa     16#9b /Lambda   16#9c /Mu
+     16#9d /Nu       16#9e /Xi        16#9f /Omicron  16#a0 /Pi
+     16#a1 /Rho      16#a3 /Sigma     16#a4 /Tau      16#a5 /Upsilon
+     16#a6 /Phi      16#a7 /Chi       16#a8 /Psi      16#a9 /Omega
+     16#b1 /alpha    16#b2 /beta      16#b3 /gamma    16#b4 /delta
+     16#b5 /epsilon  16#b6 /zeta      16#b7 /eta      16#b8 /theta
+     16#b9 /iota     16#ba /kappa     16#bb /lambda   16#bc /mu
+     16#bd /nu       16#be /xi        16#bf /omicron  16#c0 /pi
+     16#c1 /rho      16#c2 /sigma1    16#c3 /sigma    16#c4 /tau
+     16#c5 /upsilon  16#c6 /phi1      16#c7 /chi      16#c8 /psi
+     16#c9 /omega    16#7e /semicolon 16#87 /dotmath  16#d1 /theta1
+     16#d2 /Upsilon1 16#d5 /phi       16#d6 /omega1
+  >> vg&redef
+  def
+
+% Unicode punctuation encoding (unicode codes \u2000-\u206f)
+/UCPunctuationEncoding
+  NullEncoding dup length array copy
+  << 16#10 /hyphen          16#11 /hyphen              16#12 /endash
+     16#13 /emdash          16#18 /quoteleft           16#19 /quoteright
+     16#1a /quotesinglbase  16#1b /quotesingle         16#1c /quotedblleft
+     16#1d /quotedblright   16#1e /quotedblbase        16#1f /quotedbl
+     16#20 /dagger          16#21 /daggerdbl           16#22 /bullet
+     16#24 /period          16#26 /ellipsis            16#27 /periodcentered
+     16#30 /perthousand     16#44 /fraction
+     16#70 /zerosuperior    16#74 /foursuperior        16#75 /fivesuperior
+     16#76 /sixsuperior     16#77 /sevensuperior       16#78 /eightsuperior
+     16#79 /ninesuperior    16#7b /hyphensuperior      16#7d /parenleftsuperior
+     16#7e /parenrightsuperior
+     16#80 /zeroinferior    16#84 /fourinferior        16#85 /fiveinferior
+     16#81 /oneinferior     16#82 /twoinferior         16#83 /threeinferior
+     16#86 /sixinferior     16#87 /seveninferior       16#88 /eightinferior
+     16#89 /nineinferior    16#8b /hypheninferior      16#8d /parenleftinferior
+     16#8e /parenrightinferior
+  >> vg&redef
+  def
+
+% Unicode mathematical operators encoding (unicode codes \u2200-\u22ff)
+/UCMathOpsEncoding
+  NullEncoding dup length array copy
+  << 16#00 /universal       16#02 /partialdiff         16#03 /existential
+     16#05 /emptyset        16#06 /Delta               16#07 /gradient
+     16#08 /element         16#09 /notelement          16#0b /suchthat
+     16#0f /product         16#11 /summation           16#12 /minus
+     16#15 /fraction        16#17 /asteriskmath        16#19 /bullet
+     16#1a /radical         16#1d /proportional        16#1e /infinity
+     16#20 /angle           16#23 /bar                 16#27 /logicaland
+     16#28 /logicalor       16#29 /intersection        16#2a /union
+     16#2b /integral        16#34 /therefore           16#36 /colon
+     16#3c /similar         16#45 /congruent           16#48 /approxequal
+     16#60 /notequal        16#61 /equivalence         16#64 /lessequal
+     16#65 /greaterequal    16#82 /propersubset        16#83 /propersuperset
+     16#86 /reflexsubset    16#87 /reflexsuperset      16#95 /circleplus
+     16#97 /circlemultiply  16#a5 /perpendicular       16#03 /existential
+     16#c0 /logicaland      16#c1 /logicalor           16#c2 /intersection
+     16#c3 /union           16#c4 /diamond             16#c5 /dotmath
+  >> vg&redef
+  def
+
+% Unicode arrows encoding (unicode codes \u2190-\u21ff)
+% Also includes those "Letterlike" unicode characters
+% which are available in the symbol font. (unicode codes \u2100-\u214f)
+/UCArrowsEncoding
+  NullEncoding dup length array copy
+  << 16#11 /Ifraktur        16#1c /Rfraktur            16#22 /trademarkserif
+     16#35 /aleph
+     16#90 /arrowleft       16#91 /arrowup             16#92 /arrowright
+     16#93 /arrowdown       16#94 /arrowboth           16#d0 /arrowdblleft
+     16#d1 /arrowdblup      16#d2 /arrowdblright       16#d3 /arrowdbldown
+     16#d4 /arrowdblboth
+  >> vg&redef
+  def
+
+/ZapfDingbats findfont /Encoding get
+dup length array copy /UCDingbatsEncoding exch def
+16#20 1 16#7f {
+  dup 16#20 sub exch
+  UCDingbatsEncoding exch get
+  UCDingbatsEncoding 3 1 roll put
+} for
+16#a0 1 16#ff {
+  dup 16#40 sub exch
+  UCDingbatsEncoding exch get
+  UCDingbatsEncoding 3 1 roll put
+} for
+UCDingbatsEncoding [ 16#c0 1 16#ff {} for ] vg&undef
+[ 16#00  16#05 16#0a 16#0b  16#28 16#4c 16#4e  16#53 16#54 16#55  16#57 16#5f
+  16#60  16#68 16#69 16#6a  16#6b 16#6c 16#6d  16#6e 16#6f 16#70  16#71 16#72
+  16#73  16#74 16#75 16#95  16#96 16#97 16#b0  16#bf
+] vg&undef pop
+
+% Define the base fonts which don't change.
+/Undefined-UC NullEncoding       /Helvetica    vg&newbasefont pop
+/MathOps-UC   UCMathOpsEncoding  /Symbol       vg&newbasefont pop
+/Arrows-UC    UCArrowsEncoding   /Symbol       vg&newbasefont pop
+/Dingbats-UC  UCDingbatsEncoding /ZapfDingbats vg&newbasefont pop
+
+% Make the SansSerif composite fonts.
+/SansSerif /Helvetica 16#00 vg&newcompositefont
+/SansSerif-Bold /Helvetica-Bold 16#01 vg&newcompositefont
+/SansSerif-Italic /Helvetica-Oblique 16#02 vg&newcompositefont
+/SansSerif-BoldItalic /Helvetica-BoldOblique 16#03 vg&newcompositefont
+
+% Make the Serif composite fonts.
+/Serif /Times-Roman 16#00 vg&newcompositefont
+/Serif-Bold /Times-Bold 16#01 vg&newcompositefont
+/Serif-Italic /Times-Italic 16#02 vg&newcompositefont
+/Serif-BoldItalic /Times-BoldItalic 16#03 vg&newcompositefont
+
+% Make the Monospaced composite fonts.
+/Monospaced /Courier 16#00 vg&newcompositefont
+/Monospaced-Bold /Courier-Bold 16#01 vg&newcompositefont
+/Monospaced-Italic /Courier-Oblique 16#02 vg&newcompositefont
+/Monospaced-BoldItalic /Courier-BoldOblique 16#03 vg&newcompositefont
+
+% Make the Dialog composite fonts.
+/Dialog /Helvetica 16#00 vg&newcompositefont
+/Dialog-Bold /Helvetica-Bold 16#01 vg&newcompositefont
+/Dialog-Italic /Helvetica-Oblique 16#02 vg&newcompositefont
+/Dialog-BoldItalic /Helvetica-BoldOblique 16#03 vg&newcompositefont
+
+% Make the DialogInput composite fonts.
+/DialogInput /Helvetica 16#00 vg&newcompositefont
+/DialogInput-Bold /Helvetica-Bold 16#01 vg&newcompositefont
+/DialogInput-Italic /Helvetica-Oblique 16#02 vg&newcompositefont
+/DialogInput-BoldItalic /Helvetica-BoldOblique 16#03 vg&newcompositefont
+
+% Make the Typewriter composite fonts (JDK 1.1 only).
+/Typewriter /Courier 16#00 vg&newcompositefont
+/Typewriter-Bold /Courier-Bold 16#01 vg&newcompositefont
+/Typewriter-Italic /Courier-Oblique 16#02 vg&newcompositefont
+/Typewriter-BoldItalic /Courier-BoldOblique 16#03 vg&newcompositefont
+
+
+/cfontH {
+ dup /fontsize exch def /SansSerif exch sf
+ /vg&fontstyles [{cfontH} {cfontHB} {cfontHI} {cfontHBI}] def
+} def
+/cfontHB {
+  dup /fontsize exch def /SansSerif-Bold exch sf
+ /vg&fontstyles [{cfontH} {cfontHB} {cfontHI} {cfontHBI}] def
+} def
+/cfontHI {
+ dup /fontsize exch def /SansSerif-Italic exch sf
+ /vg&fontstyles [{cfontH} {cfontHB} {cfontHI} {cfontHBI}] def
+} def
+/cfontHBI {
+ dup /fontsize exch def /SansSerif-BoldItalic exch sf
+ /vg&fontstyles [{cfontH} {cfontHB} {cfontHI} {cfontHBI}] def
+} def
+
+/cfontT {
+ dup /fontsize exch def /Serif exch sf
+ /vg&fontstyles [{cfontT} {cfontTB} {cfontTI} {cfontTBI}] def
+} def
+/cfontTB {
+ dup /fontsize exch def /Serif-Bold exch sf
+ /vg&fontstyles [{cfontT} {cfontTB} {cfontTI} {cfontTBI}] def
+} def
+/cfontTI {
+ dup /fontsize exch def /Serif-Italic exch sf
+ /vg&fontstyles [{cfontT} {cfontTB} {cfontTI} {cfontTBI}] def
+} def
+/cfontTBI {
+ dup /fontsize exch def /Serif-BoldItalic exch sf
+ /vg&fontstyles [{cfontT} {cfontTB} {cfontTI} {cfontTBI}] def
+} def
+
+/cfontC {
+ dup /fontsize exch def /Typewriter exch sf
+ /vg&fontstyles [{cfontC} {cfontCB} {cfontCI} {cfontCBI}] def
+} def
+/cfontCB {
+ dup /fontsize exch def /Typewriter-Bold exch sf
+ /vg&fontstyles [{cfontC} {cfontCB} {cfontCI} {cfontCBI}] def
+} def
+/cfontCI {
+ dup /fontsize exch def /Typewriter-Italic exch sf
+ /vg&fontstyles [{cfontC} {cfontCB} {cfontCI} {cfontCBI}] def
+} def
+/cfontCBI {
+ dup /fontsize exch def /Typewriter-BoldItalic exch sf
+ /vg&fontstyles [{cfontC} {cfontCB} {cfontCI} {cfontCBI}] def
+} def
+
+% Darken or lighten the current color.
+/darken {0.7 exch exp 3 copy
+         q 4 -1 roll vg&C
+         currentrgbcolor 3 {4 -2 roll mul} repeat
+         3 array astore Q} def
+
+/displayColorMap
+<< /Cr   [1.00 0.00 0.00]       /Cg     [0.00 1.00 0.00]
+   /Cb   [0.00 0.00 1.00]       /Cc     [1.00 0.00 0.00 0.00]
+   /Cm   [0.00 1.00 0.00 0.00]  /Cy     [0.00 0.00 1.00 0.00]
+   /Co   [1.00 0.78 0.00]       /Cp     [1.00 0.67 0.67]
+   /Cw   [1   ]                 /Cgrl   [0.75]
+   /Cgr  [0.50]                 /Cgrd   [0.25]
+   /Ck   [0   ]
+   /CGr  [1.00 0.00 0.00]       /CGg    [0.00 1.00 0.00]
+   /CGb  [0.00 0.00 1.00]       /CGc    [1.00 0.00 0.00 0.00]
+   /CGm  [0.00 1.00 0.00 0.00]  /CGy    [0.00 0.00 1.00 0.00]
+   /CGo  [1.00 0.78 0.00]       /CGp    [1.00 0.67 0.67]
+   /CGw  [1   ]                 /CGgrl  [0.75]
+   /CGgr [0.50]                 /CGgrd  [0.25]
+   /CGk  [0   ]
+   /CIr  [1.00 0.00 0.00]       /CIg    [0.00 1.00 0.00]
+   /CIb  [0.00 0.00 1.00]       /CIc    [1.00 0.00 0.00 0.00]
+   /CIm  [0.00 1.00 0.00 0.00]  /CIy    [0.00 0.00 1.00 0.00]
+   /CIo  [1.00 0.78 0.00]       /CIp    [1.00 0.67 0.67]
+   /CIw  [1   ]                 /CIgrl  [0.75]
+   /CIgr [0.50]                 /CIgrd  [0.25]
+   /CIk  [0   ]
+>> def
+
+/printColorMap
+<< /Cr   [1.00 0.33 0.33]       /Cg     [0.33 1.00 0.33]
+   /Cb   [0.33 0.33 1.00]       /Cc     [1.00 0.00 0.00 0.00]
+   /Cm   [0.00 1.00 0.00 0.00]  /Cy     [0.00 0.00 1.00 0.00]
+   /Co   [1.00 0.78 0.00]       /Cp     [1.00 0.67 0.67]
+   /Cw   [1   ]                 /Cgrl   [0.75]
+   /Cgr  [0.50]                 /Cgrd   [0.25]
+   /Ck   [0   ]
+   /CGr  [1.00 0.33 0.33]       /CGg    [0.33 1.00 0.33]
+   /CGb  [0.33 0.33 1.00]       /CGc    [1.00 0.00 0.00 0.00]
+   /CGm  [0.00 1.00 0.00 0.00]  /CGy    [0.00 0.00 1.00 0.00]
+   /CGo  [1.00 0.78 0.00]       /CGp    [1.00 0.67 0.67]
+   /CGw  [1   ]                 /CGgrl  [0.75]
+   /CGgr [0.50]                 /CGgrd  [0.25]
+   /CGk  [0   ]
+   /CIr  [1.00 0.33 0.33]       /CIg    [0.33 1.00 0.33]
+   /CIb  [0.33 0.33 1.00]       /CIc    [1.00 0.00 0.00 0.00]
+   /CIm  [0.00 1.00 0.00 0.00]  /CIy    [0.00 0.00 1.00 0.00]
+   /CIo  [1.00 0.78 0.00]       /CIp    [1.00 0.67 0.67]
+   /CIw  [1   ]                 /CIgrl  [0.75]
+   /CIgr [0.50]                 /CIgrd  [0.25]
+   /CIk  [0   ]
+>> def
+
+/grayColorMap
+<< /Cr   [0   ]                 /Cg     [0   ]
+   /Cb   [0   ]                 /Cc     [0   ]
+   /Cm   [0   ]                 /Cy     [0   ]
+   /Co   [0   ]                 /Cp     [0   ]
+   /Cw   [0   ]                 /Cgrl   [0   ]
+   /Cgr  [0   ]                 /Cgrd   [0   ]
+   /Ck   [0   ]
+   /CGr  [0.75]                 /CGg    [1   ]
+   /CGb  [0.50]                 /CGc    [0.75]
+   /CGm  [0.50]                 /CGy    [1   ]
+   /CGo  [0.75]                 /CGp    [1   ]
+   /CGw  [0   ]                 /CGgrl  [0.25]
+   /CGgr [0.50]                 /CGgrd  [0.75]
+   /CGk  [1   ]
+   /CIr  [1   ]                 /CIg    [1   ]
+   /CIb  [1   ]                 /CIc    [1   ]
+   /CIm  [1   ]                 /CIy    [1   ]
+   /CIo  [1   ]                 /CIp    [1   ]
+   /CIw  [1   ]                 /CIgrl  [1   ]
+   /CIgr [1   ]                 /CIgrd  [1   ]
+   /CIk  [1   ]
+>> def
+
+/bwColorMap
+<< /Cr   [0   ]                 /Cg     [0   ]
+   /Cb   [0   ]                 /Cc     [0   ]
+   /Cm   [0   ]                 /Cy     [0   ]
+   /Co   [0   ]                 /Cp     [0   ]
+   /Cw   [0   ]                 /Cgrl   [0   ]
+   /Cgr  [0   ]                 /Cgrd   [0   ]
+   /Ck   [0   ]
+   /CGr  [1   ]                 /CGg    [1   ]
+   /CGb  [1   ]                 /CGc    [1   ]
+   /CGm  [1   ]                 /CGy    [1   ]
+   /CGo  [1   ]                 /CGp    [1   ]
+   /CGw  [0   ]                 /CGgrl  [1   ]
+   /CGgr [1   ]                 /CGgrd  [1   ]
+   /CGk  [1   ]
+   /CIr  [1   ]                 /CIg    [1   ]
+   /CIb  [1   ]                 /CIc    [1   ]
+   /CIm  [1   ]                 /CIy    [1   ]
+   /CIo  [1   ]                 /CIp    [1   ]
+   /CIw  [1   ]                 /CIgrl  [1   ]
+   /CIgr [1   ]                 /CIgrd  [1   ]
+   /CIk  [1   ]
+>> def
+
+%
+% The following routines handle the alignment of and printing of
+% tagged strings.
+%
+
+% Predefine the bounding box values.
+/bbllx 0 def /bblly 0 def /bburx 0 def /bbury 0 def
+
+% This routine pops the first unicode character off of a string and returns
+% the remainder of the string, the character code of first character,
+% and a "true" if the string was non-zero length.
+% <string>      popfirst <remaining string> <true>
+% <null string> popfirst <false>
+/popfirst {
+  dup length 1 gt
+    {dup 0 get /vg&fbyte exch def
+     dup 1 get /vg&cbyte exch def
+     dup length 2 sub 2 exch getinterval true}
+    {pop false} ifelse
+} def
+
+% This routine shows a single unicode character given the font and
+% character codes.
+% <font code> <char code> unicharshow --
+/unicharshow {
+  2 string
+  dup 0 5 -1 roll put
+  dup 1 4 -1 roll put
+  internalshow
+} def
+
+% This is an internal routine to alternate between determining the
+% bounding box for stringsize and showing the string for recshow.
+% <string> internalshow --
+/internalshow {show} def
+
+% This is an internal routine to alternate between determining the
+% bounding box for stringsize and stroking various ornaments.
+% <string> internalstroke --
+/internalstroke {S} def
+
+% Sets up internalshow to use the null device to determine string size.
+% -- nullinternalshow --
+/nullinternalshow {/internalshow {false charpath flattenpath
+                                  pathbbox updatebbox} def} def
+
+% Sets up internalstroke to use the null device to determine string size.
+% -- nullinternalstroke --
+/nullinternalstroke {
+ /internalstroke {flattenpath pathbbox updatebbox} def} def
+
+% This routine tests to see if the character code matches the first
+% character of a string.
+% <char code> <string> testchar <char code> <true or false>
+/testchar {exch dup 3 -1 roll 0 get eq} def
+
+% Raise the text baseline for superscripts.
+% -- raise --
+/raise {
+  0 fontsize 2 div rmoveto
+  /fontsize fontsize 2 mul 3 div def
+  currentfont /FontName get fontsize sf
+} def
+
+% Un-raise the text baseline for superscripts.
+% -- unraise --
+/unraise {
+  /fontsize fontsize 1.5 mul def
+  0 fontsize 2 div neg rmoveto
+} def
+
+% Lower the text baseline for subscripts.
+% -- lower --
+/lower {
+  0 fontsize 3 div neg rmoveto
+  /fontsize fontsize 2 mul 3 div def
+  currentfont /FontName get fontsize sf
+} def
+
+% Un-lower the text baseline for subscripts.
+% -- unlower --
+/unlower {
+  /fontsize fontsize 1.5 mul def
+  0 fontsize 3 div rmoveto
+} def
+
+% Compare the top two elements on the stack and leave only the
+% larger one.
+/maxval {2 copy gt {pop} {exch pop} ifelse} def
+
+% Tokenize a string.  Do not use the usual PostScript token because
+% parentheses will not be interpreted correctly because of rescanning
+% of the string.
+/vg&token {/vg&string exch def /vg&index -1 def /vg&level 0 def
+0 2 vg&string length 2 sub {
+  dup dup 1 add exch vg&string exch get 8 bitshift vg&string 3 -1 roll get or
+  dup 16#f0fe eq {pop 1}{16#f0ff eq {-1}{0} ifelse} ifelse
+  /vg&level exch vg&level add def
+  vg&level 0 eq {/vg&index exch def exit} if pop
+} for
+vg&index 0 ge {
+  vg&string vg&index 2 add dup vg&string length exch sub getinterval
+  vg&index 2 gt {vg&string 2 vg&index 2 sub getinterval}{()} ifelse
+  true}
+{false} ifelse
+} bind def
+
+% Recursively show an unicode string.
+% <string> recshow --
+/recshow {
+  popfirst
+  {
+    % Test to see if this is a string attribute.
+    vg&fbyte 16#f0 and 16#e0 eq
+    {
+      q
+
+      % Font style.
+      currentfont dup /FontStyleBits known {/FontStyleBits get}{pop 0} ifelse
+      vg&cbyte or vg&fontstyles exch get fontsize exch exec
+
+      vg&token pop recshow currentpoint Q m recshow
+    }
+    {
+      vg&fbyte 16#F8 and 16#F0 eq {
+
+        % Superscript and/or subscript.
+        vg&cbyte 16#00 eq {
+          vg&token pop exch vg&token pop 3 -1 roll
+          q raise recshow unraise currentpoint pop Q exch
+          q lower recshow unlower currentpoint pop Q
+          maxval currentpoint exch pop m recshow } if
+
+        % Strikeout.
+        vg&cbyte 16#01 eq {
+          vg&token pop currentpoint 3 -1 roll recshow
+          q 0 J vg&underline vg&uthick w
+          currentpoint 4 -2 roll fontsize 3 div add moveto
+          fontsize 3 div add lineto internalstroke Q
+          recshow} if
+
+        % Underline.
+        vg&cbyte 16#02 eq {
+          vg&token pop currentpoint 3 -1 roll recshow
+          q 0 J vg&underline vg&uthick w
+          currentpoint 4 -2 roll vg&uoffset add moveto
+          vg&uoffset add lineto internalstroke Q
+          recshow} if
+
+        % Dashed underline.
+        vg&cbyte 16#03 eq {
+          vg&token pop currentpoint 3 -1 roll recshow
+          q 0 J [ vg&uthick 5 mul vg&uthick 2 mul] 0 d
+          vg&underline vg&uthick w
+          currentpoint 4 -2 roll vg&uoffset add moveto
+          vg&uoffset add lineto internalstroke Q
+          recshow} if
+
+        % Dotted underline.
+        vg&cbyte 16#04 eq {
+          vg&token pop currentpoint 3 -1 roll recshow
+          q 1 J [ 0 vg&uthick 3 mul] 0 d
+          vg&underline vg&uthick w
+          currentpoint 4 -2 roll vg&uoffset add moveto
+          vg&uoffset add lineto internalstroke Q
+          recshow} if
+
+        % Thick underline.
+        vg&cbyte 16#05 eq {
+          vg&token pop currentpoint 3 -1 roll recshow
+          q 0 J vg&underline vg&uthick 2 mul w
+          currentpoint 4 -2 roll vg&uoffset vg&uthick 2 div sub add moveto
+          vg&uoffset vg&uthick 2 div sub add lineto internalstroke Q
+          recshow} if
+
+        % Gray thick underline.
+        vg&cbyte 16#06 eq {
+          vg&token pop currentpoint 3 -1 roll recshow
+          q 0 J vg&underline vg&uthick 2 mul w 0.5 setgray
+          currentpoint 4 -2 roll vg&uoffset vg&uthick 2 div sub add moveto
+          vg&uoffset vg&uthick 2 div sub add lineto internalstroke Q
+          recshow} if
+
+        % Overbar.
+        vg&cbyte 16#07 eq {
+          vg&token pop dup stringsize relative 4 1 roll pop pop exch
+          3 -1 roll recshow
+          q 0 J vg&underline vg&uthick w
+          vg&uoffset neg add dup currentpoint pop exch m l internalstroke Q
+          recshow} if
+      }
+      {
+        vg&fbyte vg&cbyte unicharshow recshow
+      } ifelse
+    } ifelse
+  } if
+} def
+
+% Get the underline position and thickness from the current font.
+/vg&underline {
+
+currentfont dup /FontType get 0 eq {/FDepVector get 0 get} if
+dup dup /FontInfo known {
+  /FontInfo get dup
+  dup /UnderlinePosition known {
+    /UnderlinePosition get /vg&uoffset exch def
+  }
+  {
+    pop /vg&uoffset 0 def
+  } ifelse
+  dup /UnderlineThickness known {
+    /UnderlineThickness get /vg&uthick exch def
+  }
+  {
+    pop /vg&uthick 0 def
+  } ifelse
+}
+{
+  pop /vg&uoffset 0 def /vg&uthick 0 def
+} ifelse
+/FontMatrix get
+currentfont dup /FontType get 0 eq
+{/FontMatrix get matrix concatmatrix}{pop} ifelse
+dup 0 vg&uoffset 3 -1 roll transform /vg&uoffset exch def pop
+0 vg&uthick 3 -1 roll transform /vg&uthick exch def pop
+} def
+
+% Make a frame with the coordinates on the stack.
+% <llx> <lly> <urx> <ury> frame --
+/frame {4 copy m 3 1 roll exch l 4 -2 roll l l h} def
+
+% Resets the accumulated bounding box to a degenerate box at the
+% current point.
+% -- resetbbox --
+/resetbbox {
+  currentpoint 2 copy
+  /bbury exch def
+  /bburx exch def
+  /bblly exch def
+  /bbllx exch def
+} def
+
+% Update the accumulated bounding box.
+% <llx'> <lly'> <urx'> <ury'> updatebbox --
+/updatebbox {
+  dup bbury gt {/bbury exch def} {pop} ifelse
+  dup bburx gt {/bburx exch def} {pop} ifelse
+  dup bblly lt {/bblly exch def} {pop} ifelse
+  dup bbllx lt {/bbllx exch def} {pop} ifelse
+} def
+
+% Set the bounding box to the values on the stack.
+% <llx'> <lly'> <urx'> <ury'> updatebbox --
+/restorebbox {
+  /bbury exch def /bburx exch def /bblly exch def /bbllx exch def
+} def
+
+% Push the accumulated bounding box onto the stack.
+% -- pushbbox <llx> <lly> <urx> <ury>
+/pushbbox {bbllx bblly bburx bbury} def
+
+% Make the relative bounding box relative to the currentpoint.
+% <llx'> <lly'> <urx'> <ury'> inflate <llx> <lly> <urx> <ury>
+/inflate {
+  2 {fontsize 0.2 mul add 4 1 roll} repeat
+  2 {fontsize 0.2 mul sub 4 1 roll} repeat
+} def
+
+% Make the relative bounding box relative to the currentpoint.
+% <llx'> <lly'> <urx'> <ury'> relative <llx> <lly> <urx> <ury>
+/relative {
+  currentpoint 3 -1 roll add 3 1 roll add exch 4 2 roll
+  currentpoint 3 -1 roll add 3 1 roll add exch 4 2 roll
+} def
+
+% Returns the size of a string appropriate for recshow.
+% <string> stringsize <llx> <lly> <urx> <ury>
+/stringsize {
+  pushbbox /internalshow load /internalstroke load 7 -1 roll
+  q
+  nulldevice 0 0 m
+  nullinternalshow nullinternalstroke
+  resetbbox
+  recshow
+  /internalstroke exch def /internalshow exch def
+  pushbbox 8 -4 roll restorebbox
+  Q
+} def
+
+% Calculate values for string positioning.
+/calcval {4 copy
+  3 -1 roll sub /widy exch def sub neg /widx exch def
+  pop pop /dy exch def /dx exch def} def
+
+% Utilities to position a string.
+% First letter (U=upper, C=center, B=baseline, L=lower)
+% Second letter (L=left, C=center, R=right)
+/align [
+{calcval dx neg widy dy add neg rmoveto} % UL
+{calcval dx neg widy 2 div dy add neg rmoveto} % CL
+{calcval dx neg 0 rmoveto} % BL
+{calcval dx neg dy neg rmoveto} % LL
+{calcval widx dx add neg widy dy add neg rmoveto} % UR
+{calcval widx dx add neg widy 2 div dy add neg rmoveto} % CR
+{calcval widx dx add neg 0 rmoveto} % BR
+{calcval widx dx add neg dy neg rmoveto} % LR
+{calcval widx 2 div dx add neg widy dy add neg rmoveto} % UC
+{calcval widx 2 div dx add neg widy 2 div dy add neg rmoveto} % CC
+{calcval widx 2 div dx add neg 0 rmoveto} % BC
+{calcval widx 2 div dx add neg dy neg rmoveto} % LC
+] def
+
+/vg&str {m q 1 -1 scale dup stringsize 4 copy align 11 -1 roll get exec
+         q inflate relative frame exch exec Q recshow Q} def
+
+end /procDict exch def
+%%EndProlog
+
+%%BeginSetup
+save
+procDict begin
+printColorMap begin
+595 791 setpagesize
+20 20 20 20 setmargins
+0 0 setorigin
+770 400 setsize
+fittopage
+portrait
+imagescale
+cliptobounds
+setbasematrix
+/Helvetica 10 sf
+defaultGraphicsState
+%%EndSetup
+
+0 0 0 RG
+[ 1.00000 0 0 1.00000 0 0 ] defaultmatrix matrix concatmatrix setmatrix
+cliprestore
+1.00000 1.00000 1.00000 RG
+newpath
+0 0 m
+770.000 0 l
+770.000 400.000 l
+0 400.000 l
+0 0 l
+h
+f
+0 0 0 RG
+1.50000 w
+0 J
+1 j
+[ 1.00000 0 0 1.00000 0 0 ] concat
+[ 1.00000 0 0 1.00000 0 0 ] concat
+q
+q
+q
+1.00000 w
+[ 1.00000 0 0 1.00000 5.00000 5.00000 ] concat
+q
+[ 1.00000 0 0 1.00000 0 0 ] concat
+q
+474 363 48 27 rc
+newpath
+478.296 374.718 m
+483.140 374.718 l
+483.140 375.125 l
+482.838 375.125 482.625 375.177 482.500 375.281  c
+482.375 375.385 482.312 375.526 482.312 375.703  c
+482.312 375.880 482.442 376.156 482.703 376.531  c
+482.786 376.656 482.911 376.843 483.078 377.093  c
+483.812 378.265 l
+484.656 377.093 l
+485.187 376.354 485.453 375.885 485.453 375.687  c
+485.453 375.531 485.390 375.398 485.265 375.289  c
+485.140 375.179 484.937 375.125 484.656 375.125  c
+484.656 374.718 l
+488.125 374.718 l
+488.125 375.125 l
+487.760 375.145 487.442 375.250 487.171 375.437  c
+486.807 375.687 486.307 376.239 485.671 377.093  c
+484.265 378.968 l
+486.828 382.656 l
+487.453 383.562 487.901 384.106 488.171 384.289  c
+488.442 384.471 488.791 384.572 489.218 384.593  c
+489.218 385.000 l
+484.375 385.000 l
+484.375 384.593 l
+484.708 384.593 484.968 384.520 485.156 384.375  c
+485.302 384.270 485.375 384.130 485.375 383.953  c
+485.375 383.786 485.135 383.354 484.656 382.656  c
+483.140 380.453 l
+481.500 382.656 l
+480.989 383.333 480.734 383.734 480.734 383.859  c
+480.734 384.046 480.817 384.213 480.984 384.359  c
+481.151 384.505 481.401 384.583 481.734 384.593  c
+481.734 385.000 l
+478.375 385.000 l
+478.375 384.593 l
+478.645 384.562 478.885 384.468 479.093 384.312  c
+479.375 384.093 479.854 383.541 480.531 382.656  c
+482.687 379.781 l
+480.734 376.953 l
+480.171 376.151 479.739 375.645 479.437 375.437  c
+479.135 375.229 478.755 375.125 478.296 375.125  c
+478.296 374.718 l
+h
+490.734 388.828 m
+490.734 388.328 l
+491.505 388.078 492.101 387.684 492.523 387.148  c
+492.945 386.612 493.156 386.046 493.156 385.453  c
+493.156 385.307 493.125 385.187 493.062 385.093  c
+493.010 385.020 492.958 384.984 492.906 384.984  c
+492.822 384.984 492.640 385.062 492.359 385.218  c
+492.224 385.281 492.083 385.312 491.937 385.312  c
+491.572 385.312 491.281 385.203 491.062 384.984  c
+490.843 384.765 490.734 384.468 490.734 384.093  c
+490.734 383.729 490.875 383.414 491.156 383.148  c
+491.437 382.882 491.781 382.750 492.187 382.750  c
+492.677 382.750 493.114 382.966 493.500 383.398  c
+493.885 383.830 494.078 384.401 494.078 385.109  c
+494.078 385.880 493.809 386.596 493.273 387.257  c
+492.737 387.919 491.890 388.442 490.734 388.828  c
+h
+504.781 376.593 m
+505.520 375.843 505.958 375.416 506.093 375.312  c
+506.437 375.020 506.802 374.796 507.187 374.640  c
+507.572 374.484 507.958 374.406 508.343 374.406  c
+508.989 374.406 509.544 374.593 510.007 374.968  c
+510.471 375.343 510.781 375.885 510.937 376.593  c
+511.708 375.697 512.359 375.109 512.890 374.828  c
+513.421 374.546 513.968 374.406 514.531 374.406  c
+515.083 374.406 515.570 374.546 515.992 374.828  c
+516.414 375.109 516.750 375.567 517.000 376.203  c
+517.156 376.640 517.234 377.322 517.234 378.250  c
+517.234 382.671 l
+517.234 383.317 517.286 383.760 517.390 384.000  c
+517.463 384.166 517.601 384.307 517.804 384.421  c
+518.007 384.536 518.338 384.593 518.796 384.593  c
+518.796 385.000 l
+513.718 385.000 l
+513.718 384.593 l
+513.921 384.593 l
+514.369 384.593 514.713 384.510 514.953 384.343  c
+515.130 384.218 515.255 384.026 515.328 383.765  c
+515.359 383.640 515.375 383.276 515.375 382.671  c
+515.375 378.250 l
+515.375 377.416 515.276 376.822 515.078 376.468  c
+514.786 375.989 514.317 375.750 513.671 375.750  c
+513.276 375.750 512.877 375.851 512.476 376.054  c
+512.075 376.257 511.588 376.625 511.015 377.156  c
+511.000 377.281 l
+511.015 377.765 l
+511.015 382.671 l
+511.015 383.380 511.054 383.820 511.132 383.992  c
+511.210 384.164 511.359 384.307 511.578 384.421  c
+511.796 384.536 512.166 384.593 512.687 384.593  c
+512.687 385.000 l
+507.484 385.000 l
+507.484 384.593 l
+508.057 384.593 508.450 384.526 508.664 384.390  c
+508.877 384.255 509.026 384.052 509.109 383.781  c
+509.151 383.656 509.171 383.286 509.171 382.671  c
+509.171 378.250 l
+509.171 377.416 509.046 376.812 508.796 376.437  c
+508.463 375.958 508.000 375.718 507.406 375.718  c
+507.010 375.718 506.614 375.828 506.218 376.046  c
+505.593 376.380 505.114 376.750 504.781 377.156  c
+504.781 382.671 l
+504.781 383.349 504.825 383.789 504.914 383.992  c
+505.002 384.195 505.140 384.346 505.328 384.445  c
+505.515 384.544 505.890 384.593 506.453 384.593  c
+506.453 385.000 l
+501.359 385.000 l
+501.359 384.593 l
+501.828 384.593 502.156 384.544 502.343 384.445  c
+502.531 384.346 502.674 384.184 502.773 383.960  c
+502.872 383.737 502.921 383.307 502.921 382.671  c
+502.921 378.750 l
+502.921 377.614 502.885 376.880 502.812 376.546  c
+502.760 376.307 502.679 376.140 502.570 376.046  c
+502.460 375.953 502.307 375.906 502.109 375.906  c
+501.901 375.906 501.651 375.963 501.359 376.078  c
+501.187 375.671 l
+504.296 374.406 l
+504.781 374.406 l
+504.781 376.593 l
+h
+f
+Q
+cliprestore
+Q
+[ 1.00000 0 0 1.00000 5.00000 5.00000 ] defaultmatrix matrix concatmatrix setmatrix
+[ 1.00000 0 0 1.00000 -5.00000 -5.00000 ] concat
+q
+q
+newpath
+365.828 382.468 m
+365.828 380.739 366.091 379.247 366.617 377.992  c
+367.143 376.737 367.838 375.802 368.703 375.187  c
+369.380 374.697 370.078 374.453 370.796 374.453  c
+371.963 374.453 373.010 375.052 373.937 376.250  c
+375.104 377.718 375.687 379.713 375.687 382.234  c
+375.687 384.005 375.432 385.507 374.921 386.742  c
+374.411 387.976 373.760 388.872 372.968 389.429  c
+372.177 389.987 371.416 390.265 370.687 390.265  c
+369.229 390.265 368.020 389.411 367.062 387.703  c
+366.239 386.255 365.828 384.510 365.828 382.468  c
+h
+368.031 382.750 m
+368.031 384.854 368.291 386.567 368.812 387.890  c
+369.239 389.005 369.875 389.562 370.718 389.562  c
+371.125 389.562 371.544 389.380 371.976 389.015  c
+372.408 388.651 372.739 388.041 372.968 387.187  c
+373.312 385.906 373.484 384.093 373.484 381.750  c
+373.484 380.010 373.302 378.562 372.937 377.406  c
+372.666 376.541 372.317 375.927 371.890 375.562  c
+371.588 375.322 371.218 375.203 370.781 375.203  c
+370.270 375.203 369.817 375.432 369.421 375.890  c
+368.880 376.505 368.513 377.479 368.320 378.812  c
+368.127 380.145 368.031 381.458 368.031 382.750  c
+h
+f
+Q
+q
+newpath
+421.828 366.468 m
+421.828 364.739 422.091 363.247 422.617 361.992  c
+423.143 360.737 423.838 359.802 424.703 359.187  c
+425.380 358.697 426.078 358.453 426.796 358.453  c
+427.963 358.453 429.010 359.052 429.937 360.250  c
+431.104 361.718 431.687 363.713 431.687 366.234  c
+431.687 368.005 431.432 369.507 430.921 370.742  c
+430.411 371.976 429.760 372.872 428.968 373.429  c
+428.177 373.987 427.416 374.265 426.687 374.265  c
+425.229 374.265 424.020 373.411 423.062 371.703  c
+422.239 370.255 421.828 368.510 421.828 366.468  c
+h
+424.031 366.750 m
+424.031 368.854 424.291 370.567 424.812 371.890  c
+425.239 373.005 425.875 373.562 426.718 373.562  c
+427.125 373.562 427.544 373.380 427.976 373.015  c
+428.408 372.651 428.739 372.041 428.968 371.187  c
+429.312 369.906 429.484 368.093 429.484 365.750  c
+429.484 364.010 429.302 362.562 428.937 361.406  c
+428.666 360.541 428.317 359.927 427.890 359.562  c
+427.588 359.322 427.218 359.203 426.781 359.203  c
+426.270 359.203 425.817 359.432 425.421 359.890  c
+424.880 360.505 424.513 361.479 424.320 362.812  c
+424.127 364.145 424.031 365.458 424.031 366.750  c
+h
+435.375 371.828 m
+435.729 371.828 436.026 371.947 436.265 372.187  c
+436.505 372.427 436.625 372.718 436.625 373.062  c
+436.625 373.406 436.502 373.700 436.257 373.945  c
+436.013 374.190 435.718 374.312 435.375 374.312  c
+435.031 374.312 434.737 374.190 434.492 373.945  c
+434.247 373.700 434.125 373.406 434.125 373.062  c
+434.125 372.718 434.247 372.427 434.492 372.187  c
+434.737 371.947 435.031 371.828 435.375 371.828  c
+h
+440.953 360.265 m
+444.656 358.453 l
+445.015 358.453 l
+445.015 371.312 l
+445.015 372.166 445.052 372.697 445.125 372.906  c
+445.197 373.114 445.346 373.276 445.570 373.390  c
+445.794 373.505 446.250 373.567 446.937 373.578  c
+446.937 374.000 l
+441.218 374.000 l
+441.218 373.578 l
+441.937 373.567 442.401 373.507 442.609 373.398  c
+442.817 373.289 442.963 373.143 443.046 372.960  c
+443.130 372.778 443.171 372.229 443.171 371.312  c
+443.171 363.093 l
+443.171 361.989 443.135 361.281 443.062 360.968  c
+443.010 360.729 442.914 360.552 442.773 360.437  c
+442.632 360.322 442.463 360.265 442.265 360.265  c
+441.994 360.265 441.609 360.380 441.109 360.609  c
+440.953 360.265 l
+h
+f
+Q
+q
+newpath
+478.828 350.468 m
+478.828 348.739 479.091 347.247 479.617 345.992  c
+480.143 344.737 480.838 343.802 481.703 343.187  c
+482.380 342.697 483.078 342.453 483.796 342.453  c
+484.963 342.453 486.010 343.052 486.937 344.250  c
+488.104 345.718 488.687 347.713 488.687 350.234  c
+488.687 352.005 488.432 353.507 487.921 354.742  c
+487.411 355.976 486.760 356.872 485.968 357.429  c
+485.177 357.987 484.416 358.265 483.687 358.265  c
+482.229 358.265 481.020 357.411 480.062 355.703  c
+479.239 354.255 478.828 352.510 478.828 350.468  c
+h
+481.031 350.750 m
+481.031 352.854 481.291 354.567 481.812 355.890  c
+482.239 357.005 482.875 357.562 483.718 357.562  c
+484.125 357.562 484.544 357.380 484.976 357.015  c
+485.408 356.651 485.739 356.041 485.968 355.187  c
+486.312 353.906 486.484 352.093 486.484 349.750  c
+486.484 348.010 486.302 346.562 485.937 345.406  c
+485.666 344.541 485.317 343.927 484.890 343.562  c
+484.588 343.322 484.218 343.203 483.781 343.203  c
+483.270 343.203 482.817 343.432 482.421 343.890  c
+481.880 344.505 481.513 345.479 481.320 346.812  c
+481.127 348.145 481.031 349.458 481.031 350.750  c
+h
+492.375 355.828 m
+492.729 355.828 493.026 355.947 493.265 356.187  c
+493.505 356.427 493.625 356.718 493.625 357.062  c
+493.625 357.406 493.502 357.700 493.257 357.945  c
+493.013 358.190 492.718 358.312 492.375 358.312  c
+492.031 358.312 491.737 358.190 491.492 357.945  c
+491.247 357.700 491.125 357.406 491.125 357.062  c
+491.125 356.718 491.247 356.427 491.492 356.187  c
+491.737 355.947 492.031 355.828 492.375 355.828  c
+h
+505.796 355.062 m
+504.734 358.000 l
+495.750 358.000 l
+495.750 357.578 l
+498.385 355.171 500.242 353.205 501.320 351.679  c
+502.398 350.153 502.937 348.755 502.937 347.484  c
+502.937 346.526 502.643 345.734 502.054 345.109  c
+501.466 344.484 500.760 344.171 499.937 344.171  c
+499.187 344.171 498.515 344.390 497.921 344.828  c
+497.328 345.265 496.885 345.911 496.593 346.765  c
+496.187 346.765 l
+496.375 345.380 496.854 344.315 497.625 343.570  c
+498.395 342.825 499.364 342.453 500.531 342.453  c
+501.760 342.453 502.789 342.851 503.617 343.648  c
+504.445 344.445 504.859 345.380 504.859 346.453  c
+504.859 347.224 504.682 347.994 504.328 348.765  c
+503.776 349.984 502.875 351.270 501.625 352.625  c
+499.760 354.656 498.599 355.880 498.140 356.296  c
+502.109 356.296 l
+502.921 356.296 503.489 356.268 503.812 356.210  c
+504.135 356.153 504.429 356.033 504.695 355.851  c
+504.960 355.669 505.187 355.406 505.375 355.062  c
+505.796 355.062 l
+h
+f
+Q
+q
+newpath
+535.828 334.468 m
+535.828 332.739 536.091 331.247 536.617 329.992  c
+537.143 328.737 537.838 327.802 538.703 327.187  c
+539.380 326.697 540.078 326.453 540.796 326.453  c
+541.963 326.453 543.010 327.052 543.937 328.250  c
+545.104 329.718 545.687 331.713 545.687 334.234  c
+545.687 336.005 545.432 337.507 544.921 338.742  c
+544.411 339.976 543.760 340.872 542.968 341.429  c
+542.177 341.987 541.416 342.265 540.687 342.265  c
+539.229 342.265 538.020 341.411 537.062 339.703  c
+536.239 338.255 535.828 336.510 535.828 334.468  c
+h
+538.031 334.750 m
+538.031 336.854 538.291 338.567 538.812 339.890  c
+539.239 341.005 539.875 341.562 540.718 341.562  c
+541.125 341.562 541.544 341.380 541.976 341.015  c
+542.408 340.651 542.739 340.041 542.968 339.187  c
+543.312 337.906 543.484 336.093 543.484 333.750  c
+543.484 332.010 543.302 330.562 542.937 329.406  c
+542.666 328.541 542.317 327.927 541.890 327.562  c
+541.588 327.322 541.218 327.203 540.781 327.203  c
+540.270 327.203 539.817 327.432 539.421 327.890  c
+538.880 328.505 538.513 329.479 538.320 330.812  c
+538.127 332.145 538.031 333.458 538.031 334.750  c
+h
+549.375 339.828 m
+549.729 339.828 550.026 339.947 550.265 340.187  c
+550.505 340.427 550.625 340.718 550.625 341.062  c
+550.625 341.406 550.502 341.700 550.257 341.945  c
+550.013 342.190 549.718 342.312 549.375 342.312  c
+549.031 342.312 548.737 342.190 548.492 341.945  c
+548.247 341.700 548.125 341.406 548.125 341.062  c
+548.125 340.718 548.247 340.427 548.492 340.187  c
+548.737 339.947 549.031 339.828 549.375 339.828  c
+h
+553.421 329.671 m
+553.849 328.640 554.395 327.846 555.062 327.289  c
+555.729 326.731 556.557 326.453 557.546 326.453  c
+558.765 326.453 559.697 326.849 560.343 327.640  c
+560.843 328.234 561.093 328.869 561.093 329.546  c
+561.093 330.651 560.395 331.796 559.000 332.984  c
+559.937 333.349 560.645 333.872 561.125 334.554  c
+561.604 335.237 561.843 336.036 561.843 336.953  c
+561.843 338.276 561.421 339.416 560.578 340.375  c
+559.484 341.635 557.901 342.265 555.828 342.265  c
+554.807 342.265 554.112 342.138 553.742 341.882  c
+553.372 341.627 553.187 341.354 553.187 341.062  c
+553.187 340.843 553.273 340.653 553.445 340.492  c
+553.617 340.330 553.828 340.250 554.078 340.250  c
+554.265 340.250 554.458 340.281 554.656 340.343  c
+554.781 340.375 555.067 340.507 555.515 340.742  c
+555.963 340.976 556.276 341.119 556.453 341.171  c
+556.724 341.255 557.020 341.296 557.343 341.296  c
+558.104 341.296 558.765 341.000 559.328 340.406  c
+559.890 339.812 560.171 339.114 560.171 338.312  c
+560.171 337.718 560.041 337.140 559.781 336.578  c
+559.593 336.161 559.380 335.843 559.140 335.625  c
+558.817 335.322 558.377 335.049 557.820 334.804  c
+557.263 334.559 556.692 334.437 556.109 334.437  c
+555.750 334.437 l
+555.750 334.109 l
+556.333 334.036 556.924 333.822 557.523 333.468  c
+558.122 333.114 558.554 332.690 558.820 332.195  c
+559.085 331.700 559.218 331.156 559.218 330.562  c
+559.218 329.791 558.979 329.169 558.500 328.695  c
+558.020 328.221 557.421 327.984 556.703 327.984  c
+555.536 327.984 554.562 328.604 553.781 329.843  c
+553.421 329.671 l
+h
+f
+Q
+Q
+Q
+q
+1.00000 w
+[ 1.00000 0 0 1.00000 5.00000 5.00000 ] concat
+q
+[ 1.00000 0 0 1.00000 0 0 ] concat
+q
+203 340 48 27 rc
+newpath
+207.140 351.718 m
+211.937 351.718 l
+211.937 352.125 l
+211.687 352.125 l
+211.354 352.125 211.104 352.197 210.937 352.343  c
+210.770 352.489 210.687 352.671 210.687 352.890  c
+210.687 353.182 210.807 353.588 211.046 354.109  c
+213.562 359.296 l
+215.859 353.609 l
+215.984 353.307 216.046 353.005 216.046 352.703  c
+216.046 352.567 216.020 352.463 215.968 352.390  c
+215.916 352.317 215.825 352.255 215.695 352.203  c
+215.565 352.151 215.338 352.125 215.015 352.125  c
+215.015 351.718 l
+218.359 351.718 l
+218.359 352.125 l
+218.088 352.156 217.877 352.216 217.726 352.304  c
+217.575 352.393 217.411 352.562 217.234 352.812  c
+217.161 352.916 217.031 353.203 216.843 353.671  c
+212.656 363.937 l
+212.250 364.937 211.721 365.692 211.070 366.203  c
+210.419 366.713 209.786 366.968 209.171 366.968  c
+208.734 366.968 208.372 366.841 208.085 366.585  c
+207.799 366.330 207.656 366.036 207.656 365.703  c
+207.656 365.390 207.760 365.138 207.968 364.945  c
+208.177 364.752 208.458 364.656 208.812 364.656  c
+209.062 364.656 209.401 364.739 209.828 364.906  c
+210.130 365.020 210.317 365.078 210.390 365.078  c
+210.619 365.078 210.867 364.960 211.132 364.726  c
+211.398 364.492 211.666 364.041 211.937 363.375  c
+212.656 361.593 l
+208.968 353.828 l
+208.854 353.599 208.671 353.312 208.421 352.968  c
+208.234 352.708 208.083 352.531 207.968 352.437  c
+207.791 352.322 207.515 352.218 207.140 352.125  c
+207.140 351.718 l
+h
+219.734 365.828 m
+219.734 365.328 l
+220.505 365.078 221.101 364.684 221.523 364.148  c
+221.945 363.612 222.156 363.046 222.156 362.453  c
+222.156 362.307 222.125 362.187 222.062 362.093  c
+222.010 362.020 221.958 361.984 221.906 361.984  c
+221.822 361.984 221.640 362.062 221.359 362.218  c
+221.224 362.281 221.083 362.312 220.937 362.312  c
+220.572 362.312 220.281 362.203 220.062 361.984  c
+219.843 361.765 219.734 361.468 219.734 361.093  c
+219.734 360.729 219.875 360.414 220.156 360.148  c
+220.437 359.882 220.781 359.750 221.187 359.750  c
+221.677 359.750 222.114 359.966 222.500 360.398  c
+222.885 360.830 223.078 361.401 223.078 362.109  c
+223.078 362.880 222.809 363.596 222.273 364.257  c
+221.737 364.919 220.890 365.442 219.734 365.828  c
+h
+233.781 353.593 m
+234.520 352.843 234.958 352.416 235.093 352.312  c
+235.437 352.020 235.802 351.796 236.187 351.640  c
+236.572 351.484 236.958 351.406 237.343 351.406  c
+237.989 351.406 238.544 351.593 239.007 351.968  c
+239.471 352.343 239.781 352.885 239.937 353.593  c
+240.708 352.697 241.359 352.109 241.890 351.828  c
+242.421 351.546 242.968 351.406 243.531 351.406  c
+244.083 351.406 244.570 351.546 244.992 351.828  c
+245.414 352.109 245.750 352.567 246.000 353.203  c
+246.156 353.640 246.234 354.322 246.234 355.250  c
+246.234 359.671 l
+246.234 360.317 246.286 360.760 246.390 361.000  c
+246.463 361.166 246.601 361.307 246.804 361.421  c
+247.007 361.536 247.338 361.593 247.796 361.593  c
+247.796 362.000 l
+242.718 362.000 l
+242.718 361.593 l
+242.921 361.593 l
+243.369 361.593 243.713 361.510 243.953 361.343  c
+244.130 361.218 244.255 361.026 244.328 360.765  c
+244.359 360.640 244.375 360.276 244.375 359.671  c
+244.375 355.250 l
+244.375 354.416 244.276 353.822 244.078 353.468  c
+243.786 352.989 243.317 352.750 242.671 352.750  c
+242.276 352.750 241.877 352.851 241.476 353.054  c
+241.075 353.257 240.588 353.625 240.015 354.156  c
+240.000 354.281 l
+240.015 354.765 l
+240.015 359.671 l
+240.015 360.380 240.054 360.820 240.132 360.992  c
+240.210 361.164 240.359 361.307 240.578 361.421  c
+240.796 361.536 241.166 361.593 241.687 361.593  c
+241.687 362.000 l
+236.484 362.000 l
+236.484 361.593 l
+237.057 361.593 237.450 361.526 237.664 361.390  c
+237.877 361.255 238.026 361.052 238.109 360.781  c
+238.151 360.656 238.171 360.286 238.171 359.671  c
+238.171 355.250 l
+238.171 354.416 238.046 353.812 237.796 353.437  c
+237.463 352.958 237.000 352.718 236.406 352.718  c
+236.010 352.718 235.614 352.828 235.218 353.046  c
+234.593 353.380 234.114 353.750 233.781 354.156  c
+233.781 359.671 l
+233.781 360.349 233.825 360.789 233.914 360.992  c
+234.002 361.195 234.140 361.346 234.328 361.445  c
+234.515 361.544 234.890 361.593 235.453 361.593  c
+235.453 362.000 l
+230.359 362.000 l
+230.359 361.593 l
+230.828 361.593 231.156 361.544 231.343 361.445  c
+231.531 361.346 231.674 361.184 231.773 360.960  c
+231.872 360.737 231.921 360.307 231.921 359.671  c
+231.921 355.750 l
+231.921 354.614 231.885 353.880 231.812 353.546  c
+231.760 353.307 231.679 353.140 231.570 353.046  c
+231.460 352.953 231.307 352.906 231.109 352.906  c
+230.901 352.906 230.651 352.963 230.359 353.078  c
+230.187 352.671 l
+233.296 351.406 l
+233.781 351.406 l
+233.781 353.593 l
+h
+f
+Q
+cliprestore
+Q
+[ 1.00000 0 0 1.00000 5.00000 5.00000 ] defaultmatrix matrix concatmatrix setmatrix
+[ 1.00000 0 0 1.00000 -5.00000 -5.00000 ] concat
+q
+q
+newpath
+341.828 377.468 m
+341.828 375.739 342.091 374.247 342.617 372.992  c
+343.143 371.737 343.838 370.802 344.703 370.187  c
+345.380 369.697 346.078 369.453 346.796 369.453  c
+347.963 369.453 349.010 370.052 349.937 371.250  c
+351.104 372.718 351.687 374.713 351.687 377.234  c
+351.687 379.005 351.432 380.507 350.921 381.742  c
+350.411 382.976 349.760 383.872 348.968 384.429  c
+348.177 384.987 347.416 385.265 346.687 385.265  c
+345.229 385.265 344.020 384.411 343.062 382.703  c
+342.239 381.255 341.828 379.510 341.828 377.468  c
+h
+344.031 377.750 m
+344.031 379.854 344.291 381.567 344.812 382.890  c
+345.239 384.005 345.875 384.562 346.718 384.562  c
+347.125 384.562 347.544 384.380 347.976 384.015  c
+348.408 383.651 348.739 383.041 348.968 382.187  c
+349.312 380.906 349.484 379.093 349.484 376.750  c
+349.484 375.010 349.302 373.562 348.937 372.406  c
+348.666 371.541 348.317 370.927 347.890 370.562  c
+347.588 370.322 347.218 370.203 346.781 370.203  c
+346.270 370.203 345.817 370.432 345.421 370.890  c
+344.880 371.505 344.513 372.479 344.320 373.812  c
+344.127 375.145 344.031 376.458 344.031 377.750  c
+h
+f
+Q
+q
+newpath
+258.828 341.468 m
+258.828 339.739 259.091 338.247 259.617 336.992  c
+260.143 335.737 260.838 334.802 261.703 334.187  c
+262.380 333.697 263.078 333.453 263.796 333.453  c
+264.963 333.453 266.010 334.052 266.937 335.250  c
+268.104 336.718 268.687 338.713 268.687 341.234  c
+268.687 343.005 268.432 344.507 267.921 345.742  c
+267.411 346.976 266.760 347.872 265.968 348.429  c
+265.177 348.987 264.416 349.265 263.687 349.265  c
+262.229 349.265 261.020 348.411 260.062 346.703  c
+259.239 345.255 258.828 343.510 258.828 341.468  c
+h
+261.031 341.750 m
+261.031 343.854 261.291 345.567 261.812 346.890  c
+262.239 348.005 262.875 348.562 263.718 348.562  c
+264.125 348.562 264.544 348.380 264.976 348.015  c
+265.408 347.651 265.739 347.041 265.968 346.187  c
+266.312 344.906 266.484 343.093 266.484 340.750  c
+266.484 339.010 266.302 337.562 265.937 336.406  c
+265.666 335.541 265.317 334.927 264.890 334.562  c
+264.588 334.322 264.218 334.203 263.781 334.203  c
+263.270 334.203 262.817 334.432 262.421 334.890  c
+261.880 335.505 261.513 336.479 261.320 337.812  c
+261.127 339.145 261.031 340.458 261.031 341.750  c
+h
+272.375 346.828 m
+272.729 346.828 273.026 346.947 273.265 347.187  c
+273.505 347.427 273.625 347.718 273.625 348.062  c
+273.625 348.406 273.502 348.700 273.257 348.945  c
+273.013 349.190 272.718 349.312 272.375 349.312  c
+272.031 349.312 271.737 349.190 271.492 348.945  c
+271.247 348.700 271.125 348.406 271.125 348.062  c
+271.125 347.718 271.247 347.427 271.492 347.187  c
+271.737 346.947 272.031 346.828 272.375 346.828  c
+h
+277.953 335.265 m
+281.656 333.453 l
+282.015 333.453 l
+282.015 346.312 l
+282.015 347.166 282.052 347.697 282.125 347.906  c
+282.197 348.114 282.346 348.276 282.570 348.390  c
+282.794 348.505 283.250 348.567 283.937 348.578  c
+283.937 349.000 l
+278.218 349.000 l
+278.218 348.578 l
+278.937 348.567 279.401 348.507 279.609 348.398  c
+279.817 348.289 279.963 348.143 280.046 347.960  c
+280.130 347.778 280.171 347.229 280.171 346.312  c
+280.171 338.093 l
+280.171 336.989 280.135 336.281 280.062 335.968  c
+280.010 335.729 279.914 335.552 279.773 335.437  c
+279.632 335.322 279.463 335.265 279.265 335.265  c
+278.994 335.265 278.609 335.380 278.109 335.609  c
+277.953 335.265 l
+h
+f
+Q
+q
+newpath
+193.828 305.468 m
+193.828 303.739 194.091 302.247 194.617 300.992  c
+195.143 299.737 195.838 298.802 196.703 298.187  c
+197.380 297.697 198.078 297.453 198.796 297.453  c
+199.963 297.453 201.010 298.052 201.937 299.250  c
+203.104 300.718 203.687 302.713 203.687 305.234  c
+203.687 307.005 203.432 308.507 202.921 309.742  c
+202.411 310.976 201.760 311.872 200.968 312.429  c
+200.177 312.987 199.416 313.265 198.687 313.265  c
+197.229 313.265 196.020 312.411 195.062 310.703  c
+194.239 309.255 193.828 307.510 193.828 305.468  c
+h
+196.031 305.750 m
+196.031 307.854 196.291 309.567 196.812 310.890  c
+197.239 312.005 197.875 312.562 198.718 312.562  c
+199.125 312.562 199.544 312.380 199.976 312.015  c
+200.408 311.651 200.739 311.041 200.968 310.187  c
+201.312 308.906 201.484 307.093 201.484 304.750  c
+201.484 303.010 201.302 301.562 200.937 300.406  c
+200.666 299.541 200.317 298.927 199.890 298.562  c
+199.588 298.322 199.218 298.203 198.781 298.203  c
+198.270 298.203 197.817 298.432 197.421 298.890  c
+196.880 299.505 196.513 300.479 196.320 301.812  c
+196.127 303.145 196.031 304.458 196.031 305.750  c
+h
+207.375 310.828 m
+207.729 310.828 208.026 310.947 208.265 311.187  c
+208.505 311.427 208.625 311.718 208.625 312.062  c
+208.625 312.406 208.502 312.700 208.257 312.945  c
+208.013 313.190 207.718 313.312 207.375 313.312  c
+207.031 313.312 206.737 313.190 206.492 312.945  c
+206.247 312.700 206.125 312.406 206.125 312.062  c
+206.125 311.718 206.247 311.427 206.492 311.187  c
+206.737 310.947 207.031 310.828 207.375 310.828  c
+h
+220.796 310.062 m
+219.734 313.000 l
+210.750 313.000 l
+210.750 312.578 l
+213.385 310.171 215.242 308.205 216.320 306.679  c
+217.398 305.153 217.937 303.755 217.937 302.484  c
+217.937 301.526 217.643 300.734 217.054 300.109  c
+216.466 299.484 215.760 299.171 214.937 299.171  c
+214.187 299.171 213.515 299.390 212.921 299.828  c
+212.328 300.265 211.885 300.911 211.593 301.765  c
+211.187 301.765 l
+211.375 300.380 211.854 299.315 212.625 298.570  c
+213.395 297.825 214.364 297.453 215.531 297.453  c
+216.760 297.453 217.789 297.851 218.617 298.648  c
+219.445 299.445 219.859 300.380 219.859 301.453  c
+219.859 302.224 219.682 302.994 219.328 303.765  c
+218.776 304.984 217.875 306.270 216.625 307.625  c
+214.760 309.656 213.599 310.880 213.140 311.296  c
+217.109 311.296 l
+217.921 311.296 218.489 311.268 218.812 311.210  c
+219.135 311.153 219.429 311.033 219.695 310.851  c
+219.960 310.669 220.187 310.406 220.375 310.062  c
+220.796 310.062 l
+h
+f
+Q
+Q
+Q
+q
+1.00000 w
+[ 1.00000 0 0 1.00000 5.00000 5.00000 ] concat
+q
+[ 1.00000 0 0 1.00000 0 0 ] concat
+q
+124 164 47 27 rc
+newpath
+137.656 182.843 m
+137.531 186.000 l
+128.453 186.000 l
+128.453 185.593 l
+135.281 176.500 l
+131.921 176.500 l
+131.192 176.500 130.716 176.546 130.492 176.640  c
+130.268 176.734 130.083 176.911 129.937 177.171  c
+129.739 177.546 129.625 178.010 129.593 178.562  c
+129.140 178.562 l
+129.218 175.718 l
+137.843 175.718 l
+137.843 176.125 l
+130.937 185.250 l
+134.687 185.250 l
+135.479 185.250 136.015 185.184 136.296 185.054  c
+136.578 184.924 136.802 184.692 136.968 184.359  c
+137.093 184.119 137.197 183.614 137.281 182.843  c
+137.656 182.843 l
+h
+139.442 189.828 m
+139.442 189.328 l
+140.213 189.078 140.810 188.684 141.231 188.148  c
+141.653 187.612 141.864 187.046 141.864 186.453  c
+141.864 186.307 141.833 186.187 141.771 186.093  c
+141.718 186.020 141.666 185.984 141.614 185.984  c
+141.531 185.984 141.349 186.062 141.067 186.218  c
+140.932 186.281 140.791 186.312 140.646 186.312  c
+140.281 186.312 139.989 186.203 139.771 185.984  c
+139.552 185.765 139.442 185.468 139.442 185.093  c
+139.442 184.729 139.583 184.414 139.864 184.148  c
+140.146 183.882 140.489 183.750 140.896 183.750  c
+141.385 183.750 141.823 183.966 142.208 184.398  c
+142.593 184.830 142.786 185.401 142.786 186.109  c
+142.786 186.880 142.518 187.596 141.981 188.257  c
+141.445 188.919 140.599 189.442 139.442 189.828  c
+h
+153.489 177.593 m
+154.229 176.843 154.666 176.416 154.802 176.312  c
+155.146 176.020 155.510 175.796 155.896 175.640  c
+156.281 175.484 156.666 175.406 157.052 175.406  c
+157.698 175.406 158.252 175.593 158.716 175.968  c
+159.179 176.343 159.489 176.885 159.646 177.593  c
+160.416 176.697 161.067 176.109 161.599 175.828  c
+162.130 175.546 162.677 175.406 163.239 175.406  c
+163.791 175.406 164.278 175.546 164.700 175.828  c
+165.122 176.109 165.458 176.567 165.708 177.203  c
+165.864 177.640 165.942 178.322 165.942 179.250  c
+165.942 183.671 l
+165.942 184.317 165.995 184.760 166.099 185.000  c
+166.172 185.166 166.310 185.307 166.513 185.421  c
+166.716 185.536 167.047 185.593 167.505 185.593  c
+167.505 186.000 l
+162.427 186.000 l
+162.427 185.593 l
+162.630 185.593 l
+163.078 185.593 163.422 185.510 163.661 185.343  c
+163.838 185.218 163.963 185.026 164.036 184.765  c
+164.067 184.640 164.083 184.276 164.083 183.671  c
+164.083 179.250 l
+164.083 178.416 163.984 177.822 163.786 177.468  c
+163.495 176.989 163.026 176.750 162.380 176.750  c
+161.984 176.750 161.586 176.851 161.185 177.054  c
+160.784 177.257 160.297 177.625 159.724 178.156  c
+159.708 178.281 l
+159.724 178.765 l
+159.724 183.671 l
+159.724 184.380 159.763 184.820 159.841 184.992  c
+159.919 185.164 160.067 185.307 160.286 185.421  c
+160.505 185.536 160.875 185.593 161.396 185.593  c
+161.396 186.000 l
+156.192 186.000 l
+156.192 185.593 l
+156.765 185.593 157.159 185.526 157.372 185.390  c
+157.586 185.255 157.734 185.052 157.817 184.781  c
+157.859 184.656 157.880 184.286 157.880 183.671  c
+157.880 179.250 l
+157.880 178.416 157.755 177.812 157.505 177.437  c
+157.172 176.958 156.708 176.718 156.114 176.718  c
+155.718 176.718 155.323 176.828 154.927 177.046  c
+154.302 177.380 153.823 177.750 153.489 178.156  c
+153.489 183.671 l
+153.489 184.349 153.534 184.789 153.622 184.992  c
+153.711 185.195 153.849 185.346 154.036 185.445  c
+154.224 185.544 154.599 185.593 155.161 185.593  c
+155.161 186.000 l
+150.067 186.000 l
+150.067 185.593 l
+150.536 185.593 150.864 185.544 151.052 185.445  c
+151.239 185.346 151.383 185.184 151.481 184.960  c
+151.580 184.737 151.630 184.307 151.630 183.671  c
+151.630 179.750 l
+151.630 178.614 151.593 177.880 151.521 177.546  c
+151.468 177.307 151.388 177.140 151.278 177.046  c
+151.169 176.953 151.015 176.906 150.817 176.906  c
+150.609 176.906 150.359 176.963 150.067 177.078  c
+149.896 176.671 l
+153.005 175.406 l
+153.489 175.406 l
+153.489 177.593 l
+h
+f
+Q
+cliprestore
+Q
+[ 1.00000 0 0 1.00000 5.00000 5.00000 ] defaultmatrix matrix concatmatrix setmatrix
+[ 1.00000 0 0 1.00000 -5.00000 -5.00000 ] concat
+q
+q
+Q
+q
+newpath
+179.828 223.468 m
+179.828 221.739 180.091 220.247 180.617 218.992  c
+181.143 217.737 181.838 216.802 182.703 216.187  c
+183.380 215.697 184.078 215.453 184.796 215.453  c
+185.963 215.453 187.010 216.052 187.937 217.250  c
+189.104 218.718 189.687 220.713 189.687 223.234  c
+189.687 225.005 189.432 226.507 188.921 227.742  c
+188.411 228.976 187.760 229.872 186.968 230.429  c
+186.177 230.987 185.416 231.265 184.687 231.265  c
+183.229 231.265 182.020 230.411 181.062 228.703  c
+180.239 227.255 179.828 225.510 179.828 223.468  c
+h
+182.031 223.750 m
+182.031 225.854 182.291 227.567 182.812 228.890  c
+183.239 230.005 183.875 230.562 184.718 230.562  c
+185.125 230.562 185.544 230.380 185.976 230.015  c
+186.408 229.651 186.739 229.041 186.968 228.187  c
+187.312 226.906 187.484 225.093 187.484 222.750  c
+187.484 221.010 187.302 219.562 186.937 218.406  c
+186.666 217.541 186.317 216.927 185.890 216.562  c
+185.588 216.322 185.218 216.203 184.781 216.203  c
+184.270 216.203 183.817 216.432 183.421 216.890  c
+182.880 217.505 182.513 218.479 182.320 219.812  c
+182.127 221.145 182.031 222.458 182.031 223.750  c
+h
+193.375 228.828 m
+193.729 228.828 194.026 228.947 194.265 229.187  c
+194.505 229.427 194.625 229.718 194.625 230.062  c
+194.625 230.406 194.502 230.700 194.257 230.945  c
+194.013 231.190 193.718 231.312 193.375 231.312  c
+193.031 231.312 192.737 231.190 192.492 230.945  c
+192.247 230.700 192.125 230.406 192.125 230.062  c
+192.125 229.718 192.247 229.427 192.492 229.187  c
+192.737 228.947 193.031 228.828 193.375 228.828  c
+h
+197.078 223.468 m
+197.078 221.739 197.341 220.247 197.867 218.992  c
+198.393 217.737 199.088 216.802 199.953 216.187  c
+200.630 215.697 201.328 215.453 202.046 215.453  c
+203.213 215.453 204.260 216.052 205.187 217.250  c
+206.354 218.718 206.937 220.713 206.937 223.234  c
+206.937 225.005 206.682 226.507 206.171 227.742  c
+205.661 228.976 205.010 229.872 204.218 230.429  c
+203.427 230.987 202.666 231.265 201.937 231.265  c
+200.479 231.265 199.270 230.411 198.312 228.703  c
+197.489 227.255 197.078 225.510 197.078 223.468  c
+h
+199.281 223.750 m
+199.281 225.854 199.541 227.567 200.062 228.890  c
+200.489 230.005 201.125 230.562 201.968 230.562  c
+202.375 230.562 202.794 230.380 203.226 230.015  c
+203.658 229.651 203.989 229.041 204.218 228.187  c
+204.562 226.906 204.734 225.093 204.734 222.750  c
+204.734 221.010 204.552 219.562 204.187 218.406  c
+203.916 217.541 203.567 216.927 203.140 216.562  c
+202.838 216.322 202.468 216.203 202.031 216.203  c
+201.520 216.203 201.067 216.432 200.671 216.890  c
+200.130 217.505 199.763 218.479 199.570 219.812  c
+199.377 221.145 199.281 222.458 199.281 223.750  c
+h
+210.453 217.265 m
+214.156 215.453 l
+214.515 215.453 l
+214.515 228.312 l
+214.515 229.166 214.552 229.697 214.625 229.906  c
+214.697 230.114 214.846 230.276 215.070 230.390  c
+215.294 230.505 215.750 230.567 216.437 230.578  c
+216.437 231.000 l
+210.718 231.000 l
+210.718 230.578 l
+211.437 230.567 211.901 230.507 212.109 230.398  c
+212.317 230.289 212.463 230.143 212.546 229.960  c
+212.630 229.778 212.671 229.229 212.671 228.312  c
+212.671 220.093 l
+212.671 218.989 212.635 218.281 212.562 217.968  c
+212.510 217.729 212.414 217.552 212.273 217.437  c
+212.132 217.322 211.963 217.265 211.765 217.265  c
+211.494 217.265 211.109 217.380 210.609 217.609  c
+210.453 217.265 l
+h
+f
+Q
+q
+newpath
+179.828 154.468 m
+179.828 152.739 180.091 151.247 180.617 149.992  c
+181.143 148.737 181.838 147.802 182.703 147.187  c
+183.380 146.697 184.078 146.453 184.796 146.453  c
+185.963 146.453 187.010 147.052 187.937 148.250  c
+189.104 149.718 189.687 151.713 189.687 154.234  c
+189.687 156.005 189.432 157.507 188.921 158.742  c
+188.411 159.976 187.760 160.872 186.968 161.429  c
+186.177 161.987 185.416 162.265 184.687 162.265  c
+183.229 162.265 182.020 161.411 181.062 159.703  c
+180.239 158.255 179.828 156.510 179.828 154.468  c
+h
+182.031 154.750 m
+182.031 156.854 182.291 158.567 182.812 159.890  c
+183.239 161.005 183.875 161.562 184.718 161.562  c
+185.125 161.562 185.544 161.380 185.976 161.015  c
+186.408 160.651 186.739 160.041 186.968 159.187  c
+187.312 157.906 187.484 156.093 187.484 153.750  c
+187.484 152.010 187.302 150.562 186.937 149.406  c
+186.666 148.541 186.317 147.927 185.890 147.562  c
+185.588 147.322 185.218 147.203 184.781 147.203  c
+184.270 147.203 183.817 147.432 183.421 147.890  c
+182.880 148.505 182.513 149.479 182.320 150.812  c
+182.127 152.145 182.031 153.458 182.031 154.750  c
+h
+193.375 159.828 m
+193.729 159.828 194.026 159.947 194.265 160.187  c
+194.505 160.427 194.625 160.718 194.625 161.062  c
+194.625 161.406 194.502 161.700 194.257 161.945  c
+194.013 162.190 193.718 162.312 193.375 162.312  c
+193.031 162.312 192.737 162.190 192.492 161.945  c
+192.247 161.700 192.125 161.406 192.125 161.062  c
+192.125 160.718 192.247 160.427 192.492 160.187  c
+192.737 159.947 193.031 159.828 193.375 159.828  c
+h
+197.078 154.468 m
+197.078 152.739 197.341 151.247 197.867 149.992  c
+198.393 148.737 199.088 147.802 199.953 147.187  c
+200.630 146.697 201.328 146.453 202.046 146.453  c
+203.213 146.453 204.260 147.052 205.187 148.250  c
+206.354 149.718 206.937 151.713 206.937 154.234  c
+206.937 156.005 206.682 157.507 206.171 158.742  c
+205.661 159.976 205.010 160.872 204.218 161.429  c
+203.427 161.987 202.666 162.265 201.937 162.265  c
+200.479 162.265 199.270 161.411 198.312 159.703  c
+197.489 158.255 197.078 156.510 197.078 154.468  c
+h
+199.281 154.750 m
+199.281 156.854 199.541 158.567 200.062 159.890  c
+200.489 161.005 201.125 161.562 201.968 161.562  c
+202.375 161.562 202.794 161.380 203.226 161.015  c
+203.658 160.651 203.989 160.041 204.218 159.187  c
+204.562 157.906 204.734 156.093 204.734 153.750  c
+204.734 152.010 204.552 150.562 204.187 149.406  c
+203.916 148.541 203.567 147.927 203.140 147.562  c
+202.838 147.322 202.468 147.203 202.031 147.203  c
+201.520 147.203 201.067 147.432 200.671 147.890  c
+200.130 148.505 199.763 149.479 199.570 150.812  c
+199.377 152.145 199.281 153.458 199.281 154.750  c
+h
+218.296 159.062 m
+217.234 162.000 l
+208.250 162.000 l
+208.250 161.578 l
+210.885 159.171 212.742 157.205 213.820 155.679  c
+214.898 154.153 215.437 152.755 215.437 151.484  c
+215.437 150.526 215.143 149.734 214.554 149.109  c
+213.966 148.484 213.260 148.171 212.437 148.171  c
+211.687 148.171 211.015 148.390 210.421 148.828  c
+209.828 149.265 209.385 149.911 209.093 150.765  c
+208.687 150.765 l
+208.875 149.380 209.354 148.315 210.125 147.570  c
+210.895 146.825 211.864 146.453 213.031 146.453  c
+214.260 146.453 215.289 146.851 216.117 147.648  c
+216.945 148.445 217.359 149.380 217.359 150.453  c
+217.359 151.224 217.182 151.994 216.828 152.765  c
+216.276 153.984 215.375 155.270 214.125 156.625  c
+212.260 158.656 211.099 159.880 210.640 160.296  c
+214.609 160.296 l
+215.421 160.296 215.989 160.268 216.312 160.210  c
+216.635 160.153 216.929 160.033 217.195 159.851  c
+217.460 159.669 217.687 159.406 217.875 159.062  c
+218.296 159.062 l
+h
+f
+Q
+q
+newpath
+179.828 85.4687 m
+179.828 83.7395 180.091 82.2474 180.617 80.9921  c
+181.143 79.7369 181.838 78.8020 182.703 78.1875  c
+183.380 77.6979 184.078 77.4531 184.796 77.4531  c
+185.963 77.4531 187.010 78.0520 187.937 79.2500  c
+189.104 80.7187 189.687 82.7135 189.687 85.2343  c
+189.687 87.0052 189.432 88.5078 188.921 89.7421  c
+188.411 90.9765 187.760 91.8724 186.968 92.4296  c
+186.177 92.9869 185.416 93.2656 184.687 93.2656  c
+183.229 93.2656 182.020 92.4114 181.062 90.7031  c
+180.239 89.2552 179.828 87.5104 179.828 85.4687  c
+h
+182.031 85.7500 m
+182.031 87.8541 182.291 89.5677 182.812 90.8906  c
+183.239 92.0052 183.875 92.5625 184.718 92.5625  c
+185.125 92.5625 185.544 92.3802 185.976 92.0156  c
+186.408 91.6510 186.739 91.0416 186.968 90.1875  c
+187.312 88.9062 187.484 87.0937 187.484 84.7500  c
+187.484 83.0104 187.302 81.5625 186.937 80.4062  c
+186.666 79.5416 186.317 78.9270 185.890 78.5625  c
+185.588 78.3229 185.218 78.2031 184.781 78.2031  c
+184.270 78.2031 183.817 78.4322 183.421 78.8906  c
+182.880 79.5052 182.513 80.4791 182.320 81.8125  c
+182.127 83.1458 182.031 84.4583 182.031 85.7500  c
+h
+193.375 90.8281 m
+193.729 90.8281 194.026 90.9479 194.265 91.1875  c
+194.505 91.4270 194.625 91.7187 194.625 92.0625  c
+194.625 92.4062 194.502 92.7005 194.257 92.9453  c
+194.013 93.1901 193.718 93.3125 193.375 93.3125  c
+193.031 93.3125 192.737 93.1901 192.492 92.9453  c
+192.247 92.7005 192.125 92.4062 192.125 92.0625  c
+192.125 91.7187 192.247 91.4270 192.492 91.1875  c
+192.737 90.9479 193.031 90.8281 193.375 90.8281  c
+h
+197.078 85.4687 m
+197.078 83.7395 197.341 82.2474 197.867 80.9921  c
+198.393 79.7369 199.088 78.8020 199.953 78.1875  c
+200.630 77.6979 201.328 77.4531 202.046 77.4531  c
+203.213 77.4531 204.260 78.0520 205.187 79.2500  c
+206.354 80.7187 206.937 82.7135 206.937 85.2343  c
+206.937 87.0052 206.682 88.5078 206.171 89.7421  c
+205.661 90.9765 205.010 91.8724 204.218 92.4296  c
+203.427 92.9869 202.666 93.2656 201.937 93.2656  c
+200.479 93.2656 199.270 92.4114 198.312 90.7031  c
+197.489 89.2552 197.078 87.5104 197.078 85.4687  c
+h
+199.281 85.7500 m
+199.281 87.8541 199.541 89.5677 200.062 90.8906  c
+200.489 92.0052 201.125 92.5625 201.968 92.5625  c
+202.375 92.5625 202.794 92.3802 203.226 92.0156  c
+203.658 91.6510 203.989 91.0416 204.218 90.1875  c
+204.562 88.9062 204.734 87.0937 204.734 84.7500  c
+204.734 83.0104 204.552 81.5625 204.187 80.4062  c
+203.916 79.5416 203.567 78.9270 203.140 78.5625  c
+202.838 78.3229 202.468 78.2031 202.031 78.2031  c
+201.520 78.2031 201.067 78.4322 200.671 78.8906  c
+200.130 79.5052 199.763 80.4791 199.570 81.8125  c
+199.377 83.1458 199.281 84.4583 199.281 85.7500  c
+h
+208.921 80.6718 m
+209.349 79.6406 209.895 78.8463 210.562 78.2890  c
+211.229 77.7317 212.057 77.4531 213.046 77.4531  c
+214.265 77.4531 215.197 77.8489 215.843 78.6406  c
+216.343 79.2343 216.593 79.8697 216.593 80.5468  c
+216.593 81.6510 215.895 82.7968 214.500 83.9843  c
+215.437 84.3489 216.145 84.8724 216.625 85.5546  c
+217.104 86.2369 217.343 87.0364 217.343 87.9531  c
+217.343 89.2760 216.921 90.4166 216.078 91.3750  c
+214.984 92.6354 213.401 93.2656 211.328 93.2656  c
+210.307 93.2656 209.612 93.1380 209.242 92.8828  c
+208.872 92.6276 208.687 92.3541 208.687 92.0625  c
+208.687 91.8437 208.773 91.6536 208.945 91.4921  c
+209.117 91.3307 209.328 91.2500 209.578 91.2500  c
+209.765 91.2500 209.958 91.2812 210.156 91.3437  c
+210.281 91.3750 210.567 91.5078 211.015 91.7421  c
+211.463 91.9765 211.776 92.1197 211.953 92.1718  c
+212.224 92.2552 212.520 92.2968 212.843 92.2968  c
+213.604 92.2968 214.265 92.0000 214.828 91.4062  c
+215.390 90.8125 215.671 90.1145 215.671 89.3125  c
+215.671 88.7187 215.541 88.1406 215.281 87.5781  c
+215.093 87.1614 214.880 86.8437 214.640 86.6250  c
+214.317 86.3229 213.877 86.0494 213.320 85.8046  c
+212.763 85.5599 212.192 85.4375 211.609 85.4375  c
+211.250 85.4375 l
+211.250 85.1093 l
+211.833 85.0364 212.424 84.8229 213.023 84.4687  c
+213.622 84.1145 214.054 83.6901 214.320 83.1953  c
+214.585 82.7005 214.718 82.1562 214.718 81.5625  c
+214.718 80.7916 214.479 80.1692 214.000 79.6953  c
+213.520 79.2213 212.921 78.9843 212.203 78.9843  c
+211.036 78.9843 210.062 79.6041 209.281 80.8437  c
+208.921 80.6718 l
+h
+f
+Q
+Q
+Q
+Q
+q
+q
+5.00000 w
+Q
+Q
+Q
+0 0 770 400 rc
+[ 1.00000 0 0 1.00000 0 0 ] concat
+[ 1.00000 0 0 1.00000 0 0 ] concat
+cliprestore
+1.00000 w
+2 J
+0 j
+gsave
+1 -1 scale
+5 -395 translate
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: Plot3D
+%%Creator: GL2PS 1.3.7, (C) 1999-2012 C. Geuzaine
+%%For: Maplesoft
+%%CreationDate: Fri May 22 16:43:45 2020
+%%LanguageLevel: 3
+%%DocumentData: Clean7Bit
+%%Pages: 1
+%%BoundingBox: 0 0 760 390
+%%EndComments
+%%BeginProlog
+/gl2psdict 64 dict def gl2psdict begin
+0 setlinecap 0 setlinejoin
+/tryPS3shading true def % set to false to force subdivision
+/rThreshold 0.064 def % red component subdivision threshold
+/gThreshold 0.034 def % green component subdivision threshold
+/bThreshold 0.1 def % blue component subdivision threshold
+/BD { bind def } bind def
+/C  { setrgbcolor } BD
+/G  { 0.082 mul exch 0.6094 mul add exch 0.3086 mul add neg 1.0 add setgray } BD
+/W  { setlinewidth } BD
+/FC { findfont exch /SH exch def SH scalefont setfont } BD
+/SW { dup stringwidth pop } BD
+/S  { FC moveto show } BD
+/SBC{ FC moveto SW -2 div 0 rmoveto show } BD
+/SBR{ FC moveto SW neg 0 rmoveto show } BD
+/SCL{ FC moveto 0 SH -2 div rmoveto show } BD
+/SCC{ FC moveto SW -2 div SH -2 div rmoveto show } BD
+/SCR{ FC moveto SW neg SH -2 div rmoveto show } BD
+/STL{ FC moveto 0 SH neg rmoveto show } BD
+/STC{ FC moveto SW -2 div SH neg rmoveto show } BD
+/STR{ FC moveto SW neg SH neg rmoveto show } BD
+/FCT { FC translate 0 0 } BD
+/SR  { gsave FCT moveto rotate show grestore } BD
+/SBCR{ gsave FCT moveto rotate SW -2 div 0 rmoveto show grestore } BD
+/SBRR{ gsave FCT moveto rotate SW neg 0 rmoveto show grestore } BD
+/SCLR{ gsave FCT moveto rotate 0 SH -2 div rmoveto show grestore} BD
+/SCCR{ gsave FCT moveto rotate SW -2 div SH -2 div rmoveto show grestore} BD
+/SCRR{ gsave FCT moveto rotate SW neg SH -2 div rmoveto show grestore} BD
+/STLR{ gsave FCT moveto rotate 0 SH neg rmoveto show grestore } BD
+/STCR{ gsave FCT moveto rotate SW -2 div SH neg rmoveto show grestore } BD
+/STRR{ gsave FCT moveto rotate SW neg SH neg rmoveto show grestore } BD
+/P  { newpath 0.0 360.0 arc closepath fill } BD
+/LS { newpath moveto } BD
+/L  { lineto } BD
+/LE { lineto stroke } BD
+/T  { newpath moveto lineto lineto closepath fill } BD
+/STshfill {
+      /b1 exch def /g1 exch def /r1 exch def /y1 exch def /x1 exch def
+      /b2 exch def /g2 exch def /r2 exch def /y2 exch def /x2 exch def
+      /b3 exch def /g3 exch def /r3 exch def /y3 exch def /x3 exch def
+      gsave << /ShadingType 4 /ColorSpace [/DeviceRGB]
+      /DataSource [ 0 x1 y1 r1 g1 b1 0 x2 y2 r2 g2 b2 0 x3 y3 r3 g3 b3 ] >>
+      shfill grestore } BD
+/Tm { 3 -1 roll 8 -1 roll 13 -1 roll add add 3 div
+      3 -1 roll 7 -1 roll 11 -1 roll add add 3 div
+      3 -1 roll 6 -1 roll 9 -1 roll add add 3 div C T } BD
+/STsplit {
+      4 index 15 index add 0.5 mul
+      4 index 15 index add 0.5 mul
+      4 index 15 index add 0.5 mul
+      4 index 15 index add 0.5 mul
+      4 index 15 index add 0.5 mul
+      5 copy 5 copy 25 15 roll
+      9 index 30 index add 0.5 mul
+      9 index 30 index add 0.5 mul
+      9 index 30 index add 0.5 mul
+      9 index 30 index add 0.5 mul
+      9 index 30 index add 0.5 mul
+      5 copy 5 copy 35 5 roll 25 5 roll 15 5 roll
+      4 index 10 index add 0.5 mul
+      4 index 10 index add 0.5 mul
+      4 index 10 index add 0.5 mul
+      4 index 10 index add 0.5 mul
+      4 index 10 index add 0.5 mul
+      5 copy 5 copy 40 5 roll 25 5 roll 15 5 roll 25 5 roll
+      STnoshfill STnoshfill STnoshfill STnoshfill } BD
+/STnoshfill {
+      2 index 8 index sub abs rThreshold gt
+      { STsplit }
+      { 1 index 7 index sub abs gThreshold gt
+        { STsplit }
+        { dup 6 index sub abs bThreshold gt
+          { STsplit }
+          { 2 index 13 index sub abs rThreshold gt
+            { STsplit }
+            { 1 index 12 index sub abs gThreshold gt
+              { STsplit }
+              { dup 11 index sub abs bThreshold gt
+                { STsplit }
+                { 7 index 13 index sub abs rThreshold gt
+                  { STsplit }
+                  { 6 index 12 index sub abs gThreshold gt
+                    { STsplit }
+                    { 5 index 11 index sub abs bThreshold gt
+                      { STsplit }
+                      { Tm }
+                      ifelse }
+                    ifelse }
+                  ifelse }
+                ifelse }
+              ifelse }
+            ifelse }
+          ifelse }
+        ifelse }
+      ifelse } BD
+tryPS3shading
+{ /shfill where
+  { /ST { STshfill } BD }
+  { /ST { STnoshfill } BD }
+  ifelse }
+{ /ST { STnoshfill } BD }
+ifelse
+end
+%%EndProlog
+%%BeginSetup
+/DeviceRGB setcolorspace
+gl2psdict begin
+%%EndSetup
+%%BeginPageSetup
+%%EndPageSetup
+mark
+gsave
+1.0 1.0 scale
+1 W
+0 0 0 C
+404.754 153.071 LS
+404.798 359.358 LE
+404.754 153.071 LS
+404.798 359.358 LE
+404.754 153.071 LS
+404.798 359.358 LE
+223.321 101.443 LS
+404.754 153.071 LE
+223.321 101.443 LS
+404.754 153.071 LE
+223.321 101.443 LS
+404.754 153.071 LE
+536.826 81.9448 LS
+404.754 153.071 LE
+536.826 81.9448 LS
+404.754 153.071 LE
+536.826 81.9448 LS
+404.754 153.071 LE
+223.321 101.443 LS
+214.462 101.995 LE
+223.321 101.443 LS
+214.462 101.995 LE
+223.321 101.443 LS
+216.045 99.373 LE
+223.321 101.443 LS
+216.045 99.373 LE
+478.801 186.713 LS
+478.833 186.424 LE
+478.801 186.713 LS
+478.833 186.424 LE
+478.77 186.99 LS
+478.801 186.713 LE
+478.77 186.99 LS
+478.801 186.713 LE
+478.74 187.254 LS
+478.77 186.99 LE
+478.74 187.254 LS
+478.77 186.99 LE
+478.71 187.505 LS
+478.74 187.254 LE
+478.71 187.505 LS
+478.74 187.254 LE
+478.681 187.744 LS
+478.71 187.505 LE
+478.681 187.744 LS
+478.71 187.505 LE
+463.282 100.831 LS
+463.468 101.075 LE
+463.282 100.831 LS
+463.468 101.075 LE
+463.095 100.601 LS
+463.282 100.831 LE
+463.095 100.601 LS
+463.282 100.831 LE
+463.468 101.075 LS
+463.654 101.333 LE
+463.468 101.075 LS
+463.654 101.333 LE
+462.908 100.384 LS
+463.095 100.601 LE
+462.908 100.384 LS
+463.095 100.601 LE
+463.654 101.333 LS
+463.839 101.604 LE
+463.654 101.333 LS
+463.839 101.604 LE
+462.721 100.181 LS
+462.908 100.384 LE
+462.721 100.181 LS
+462.908 100.384 LE
+463.839 101.604 LS
+464.024 101.888 LE
+463.839 101.604 LS
+464.024 101.888 LE
+462.533 99.9922 LS
+462.721 100.181 LE
+462.533 99.9922 LS
+462.721 100.181 LE
+464.024 101.888 LS
+464.209 102.186 LE
+464.024 101.888 LS
+464.209 102.186 LE
+462.345 99.8169 LS
+462.533 99.9922 LE
+462.345 99.8169 LS
+462.533 99.9922 LE
+464.209 102.186 LS
+464.393 102.497 LE
+464.209 102.186 LS
+464.393 102.497 LE
+462.156 99.6553 LS
+462.345 99.8169 LE
+462.156 99.6553 LS
+462.345 99.8169 LE
+478.653 187.97 LS
+478.681 187.744 LE
+478.653 187.97 LS
+478.681 187.744 LE
+464.393 102.497 LS
+464.576 102.821 LE
+464.393 102.497 LS
+464.576 102.821 LE
+461.968 99.5078 LS
+462.156 99.6553 LE
+461.968 99.5078 LS
+462.156 99.6553 LE
+464.576 102.821 LS
+464.758 103.159 LE
+464.576 102.821 LS
+464.758 103.159 LE
+461.779 99.3745 LS
+461.968 99.5078 LE
+461.779 99.3745 LS
+461.968 99.5078 LE
+464.758 103.159 LS
+464.94 103.509 LE
+464.758 103.159 LS
+464.94 103.509 LE
+461.59 99.2549 LS
+461.779 99.3745 LE
+461.59 99.2549 LS
+461.779 99.3745 LE
+464.94 103.509 LS
+465.122 103.872 LE
+464.94 103.509 LS
+465.122 103.872 LE
+461.4 99.1489 LS
+461.59 99.2549 LE
+461.4 99.1489 LS
+461.59 99.2549 LE
+465.122 103.872 LS
+465.302 104.249 LE
+465.122 103.872 LS
+465.302 104.249 LE
+461.211 99.0576 LS
+461.4 99.1489 LE
+461.211 99.0576 LS
+461.4 99.1489 LE
+465.302 104.249 LS
+465.482 104.637 LE
+465.302 104.249 LS
+465.482 104.637 L
+465.661 105.039 LE
+465.482 104.637 LS
+465.661 105.039 LE
+461.022 98.98 LS
+461.211 99.0576 LE
+461.022 98.98 LS
+461.211 99.0576 LE
+465.661 105.039 LS
+465.839 105.452 LE
+465.661 105.039 LS
+465.839 105.452 LE
+460.833 98.916 LS
+461.022 98.98 LE
+460.833 98.916 LS
+461.022 98.98 LE
+478.625 188.183 LS
+478.653 187.97 LE
+478.625 188.183 LS
+478.653 187.97 LE
+465.839 105.452 LS
+466.017 105.878 LE
+465.839 105.452 LS
+466.017 105.878 LE
+460.643 98.8662 LS
+460.833 98.916 LE
+460.643 98.8662 LS
+460.833 98.916 LE
+466.017 105.878 LS
+466.194 106.317 LE
+466.017 105.878 LS
+466.194 106.317 LE
+460.453 98.8306 LS
+460.643 98.8662 LE
+460.453 98.8306 LS
+460.643 98.8662 LE
+466.194 106.317 LS
+466.37 106.767 LE
+466.194 106.317 LS
+466.37 106.767 LE
+460.264 98.8091 LS
+460.453 98.8306 LE
+460.264 98.8091 LS
+460.453 98.8306 LE
+466.37 106.767 LS
+466.544 107.229 LE
+466.37 106.767 LS
+466.544 107.229 LE
+460.074 98.8013 LS
+460.264 98.8091 LE
+460.074 98.8013 LS
+460.264 98.8091 LE
+478.599 188.383 LS
+478.625 188.183 LE
+478.599 188.383 LS
+478.625 188.183 LE
+466.544 107.229 LS
+466.719 107.704 LE
+466.544 107.229 LS
+466.719 107.704 LE
+459.885 98.8076 LS
+460.074 98.8013 LE
+459.885 98.8076 LS
+460.074 98.8013 LE
+466.719 107.704 LS
+466.892 108.19 LE
+466.719 107.704 LS
+466.892 108.19 LE
+459.696 98.8276 LS
+459.885 98.8076 LE
+459.696 98.8276 LS
+459.885 98.8076 LE
+466.892 108.19 LS
+467.064 108.687 LE
+466.892 108.19 LS
+467.064 108.687 L
+467.235 109.196 LE
+467.064 108.687 LS
+467.235 109.196 LE
+459.507 98.8613 LS
+459.696 98.8276 LE
+459.507 98.8613 LS
+459.696 98.8276 LE
+478.572 188.57 LS
+478.599 188.383 LE
+478.572 188.57 LS
+478.599 188.383 LE
+467.235 109.196 LS
+467.405 109.716 LE
+467.235 109.196 LS
+467.405 109.716 LE
+459.318 98.9092 LS
+459.507 98.8613 LE
+459.318 98.9092 LS
+459.507 98.8613 LE
+467.405 109.716 LS
+467.574 110.247 LE
+467.405 109.716 LS
+467.574 110.247 LE
+459.129 98.9712 LS
+459.318 98.9092 LE
+459.129 98.9712 LS
+459.318 98.9092 LE
+467.574 110.247 LS
+467.743 110.789 LE
+467.574 110.247 LS
+467.743 110.789 LE
+458.94 99.0464 LS
+459.129 98.9712 LE
+458.94 99.0464 LS
+459.129 98.9712 LE
+467.743 110.789 LS
+467.91 111.341 LE
+467.743 110.789 LS
+467.91 111.341 LE
+478.547 188.743 LS
+478.572 188.57 LE
+478.547 188.743 LS
+478.572 188.57 LE
+458.752 99.1353 LS
+458.94 99.0464 LE
+458.752 99.1353 LS
+458.94 99.0464 LE
+467.91 111.341 LS
+468.076 111.905 LE
+467.91 111.341 LS
+468.076 111.905 L
+468.24 112.478 LE
+468.076 111.905 LS
+468.24 112.478 LE
+458.564 99.2383 LS
+458.752 99.1353 LE
+458.564 99.2383 LS
+458.752 99.1353 LE
+468.24 112.478 LS
+468.404 113.062 LE
+468.24 112.478 LS
+468.404 113.062 LE
+478.521 188.904 LS
+478.547 188.743 LE
+478.521 188.904 LS
+478.547 188.743 LE
+458.376 99.3545 LS
+458.564 99.2383 LE
+458.376 99.3545 LS
+458.564 99.2383 LE
+468.404 113.062 LS
+468.567 113.656 LE
+468.404 113.062 LS
+468.567 113.656 LE
+458.189 99.4844 LS
+458.376 99.3545 LE
+458.189 99.4844 LS
+458.376 99.3545 LE
+468.567 113.656 LS
+468.728 114.259 LE
+468.567 113.656 LS
+468.728 114.259 LE
+458.002 99.6279 LS
+458.189 99.4844 LE
+458.002 99.6279 LS
+458.189 99.4844 LE
+478.497 189.051 LS
+478.521 188.904 LE
+478.497 189.051 LS
+478.521 188.904 LE
+468.728 114.259 LS
+468.888 114.873 LE
+468.728 114.259 LS
+468.888 114.873 L
+469.047 115.495 LE
+468.888 114.873 LS
+469.047 115.495 LE
+457.816 99.7847 LS
+458.002 99.6279 LE
+457.816 99.7847 LS
+458.002 99.6279 LE
+469.047 115.495 LS
+469.205 116.127 LE
+469.047 115.495 LS
+469.205 116.127 LE
+478.473 189.184 LS
+478.497 189.051 LE
+478.473 189.184 LS
+478.497 189.051 LE
+457.63 99.9546 LS
+457.816 99.7847 LE
+457.63 99.9546 LS
+457.816 99.7847 LE
+469.205 116.127 LS
+469.361 116.768 LE
+469.205 116.127 LS
+469.361 116.768 LE
+457.444 100.138 LS
+457.63 99.9546 LE
+457.444 100.138 LS
+457.63 99.9546 LE
+469.361 116.768 LS
+469.517 117.418 LE
+469.361 116.768 LS
+469.517 117.418 LE
+478.449 189.304 LS
+478.473 189.184 LE
+478.449 189.304 LS
+478.473 189.184 LE
+457.259 100.334 LS
+457.444 100.138 LE
+457.259 100.334 LS
+457.444 100.138 LE
+469.517 117.418 LS
+469.671 118.077 LE
+469.517 117.418 LS
+469.671 118.077 L
+469.823 118.744 LE
+469.671 118.077 LS
+469.823 118.744 LE
+457.075 100.543 LS
+457.259 100.334 LE
+457.075 100.543 LS
+457.259 100.334 LE
+478.426 189.411 LS
+478.449 189.304 LE
+478.426 189.411 LS
+478.449 189.304 LE
+469.823 118.744 LS
+469.975 119.418 LE
+469.823 118.744 LS
+469.975 119.418 LE
+456.891 100.766 LS
+457.075 100.543 LE
+456.891 100.766 LS
+457.075 100.543 LE
+469.975 119.418 LS
+470.125 120.102 LE
+469.975 119.418 LS
+470.125 120.102 LE
+456.708 101.001 LS
+456.891 100.766 LE
+456.708 101.001 LS
+456.891 100.766 LE
+470.125 120.102 LS
+470.273 120.793 LE
+470.125 120.102 LS
+470.273 120.793 LE
+478.403 189.503 LS
+478.426 189.411 LE
+478.403 189.503 LS
+478.426 189.411 LE
+470.273 120.793 LS
+470.42 121.491 LE
+470.273 120.793 LS
+470.42 121.491 LE
+456.524 101.249 LS
+456.708 101.001 LE
+456.524 101.249 LS
+456.708 101.001 LE
+470.42 121.491 LS
+470.566 122.197 LE
+470.42 121.491 LS
+470.566 122.197 LE
+478.381 189.583 LS
+478.403 189.503 LE
+478.381 189.583 LS
+478.403 189.503 LE
+456.342 101.509 LS
+456.524 101.249 LE
+456.342 101.509 LS
+456.524 101.249 LE
+470.566 122.197 LS
+470.711 122.91 LE
+470.566 122.197 LS
+470.711 122.91 L
+470.854 123.63 LE
+470.711 122.91 LS
+470.854 123.63 LE
+456.161 101.782 LS
+456.342 101.509 LE
+456.161 101.782 LS
+456.342 101.509 LE
+478.359 189.648 LS
+478.381 189.583 LE
+478.359 189.648 LS
+478.381 189.583 LE
+470.854 123.63 LS
+470.996 124.357 LE
+470.854 123.63 LS
+470.996 124.357 LE
+455.98 102.068 LS
+456.161 101.782 LE
+455.98 102.068 LS
+456.161 101.782 LE
+470.996 124.357 LS
+471.136 125.09 LE
+470.996 124.357 LS
+471.136 125.09 LE
+478.337 189.7 LS
+478.359 189.648 LE
+478.337 189.7 LS
+478.359 189.648 LE
+471.136 125.09 LS
+471.274 125.829 LE
+471.136 125.09 LS
+471.274 125.829 LE
+455.8 102.365 LS
+455.98 102.068 LE
+455.8 102.365 LS
+455.98 102.068 LE
+478.315 189.737 LS
+478.337 189.7 LE
+478.315 189.737 LS
+478.337 189.7 LE
+471.274 125.829 LS
+471.412 126.574 LE
+471.274 125.829 LS
+471.412 126.574 LE
+455.62 102.675 LS
+455.8 102.365 LE
+455.62 102.675 LS
+455.8 102.365 LE
+471.412 126.574 LS
+471.547 127.325 LE
+471.412 126.574 LS
+471.547 127.325 LE
+478.294 189.761 LS
+478.315 189.737 LE
+478.294 189.761 LS
+478.315 189.737 LE
+471.547 127.325 LS
+471.682 128.082 LE
+471.547 127.325 LS
+471.682 128.082 LE
+455.442 102.997 LS
+455.62 102.675 LE
+455.442 102.997 LS
+455.62 102.675 LE
+471.682 128.082 LS
+471.814 128.843 LE
+471.682 128.082 LS
+471.814 128.843 LE
+478.273 189.771 LS
+478.294 189.761 LE
+478.273 189.771 LS
+478.294 189.761 LE
+455.264 103.331 LS
+455.442 102.997 LE
+455.264 103.331 LS
+455.442 102.997 LE
+471.814 128.843 LS
+471.946 129.61 LE
+471.814 128.843 LS
+471.946 129.61 L
+472.076 130.381 LE
+471.946 129.61 LS
+472.076 130.381 LE
+455.087 103.676 LS
+455.264 103.331 LE
+455.087 103.676 LS
+455.264 103.331 LE
+478.253 189.767 LS
+478.273 189.771 LE
+478.253 189.767 LS
+478.273 189.771 LE
+472.076 130.381 LS
+472.204 131.157 LE
+472.076 130.381 LS
+472.204 131.157 LE
+454.911 104.033 LS
+455.087 103.676 LE
+454.911 104.033 LS
+455.087 103.676 LE
+478.232 189.749 LS
+478.253 189.767 LE
+478.232 189.749 LS
+478.253 189.767 LE
+472.204 131.157 LS
+472.331 131.937 LE
+472.204 131.157 LS
+472.331 131.937 L
+472.456 132.721 LE
+472.331 131.937 LS
+472.456 132.721 LE
+454.735 104.401 LS
+454.911 104.033 LE
+454.735 104.401 LS
+454.911 104.033 LE
+478.212 189.717 LS
+478.232 189.749 LE
+478.212 189.717 LS
+478.232 189.749 LE
+472.456 132.721 LS
+472.58 133.509 LE
+472.456 132.721 LS
+472.58 133.509 LE
+454.561 104.781 LS
+454.735 104.401 LE
+454.561 104.781 LS
+454.735 104.401 LE
+472.58 133.509 LS
+472.702 134.3 LE
+472.58 133.509 LS
+472.702 134.3 LE
+478.192 189.671 LS
+478.212 189.717 LE
+478.192 189.671 LS
+478.212 189.717 LE
+472.702 134.3 LS
+472.822 135.095 LE
+472.702 134.3 LS
+472.822 135.095 LE
+454.388 105.171 LS
+454.561 104.781 LE
+454.388 105.171 LS
+454.561 104.781 LE
+478.171 189.611 LS
+478.192 189.671 LE
+478.171 189.611 LS
+478.192 189.671 LE
+472.822 135.095 LS
+472.941 135.893 LE
+472.822 135.095 LS
+472.941 135.893 L
+473.059 136.693 LE
+472.941 135.893 LS
+473.059 136.693 LE
+478.151 189.537 LS
+478.171 189.611 LE
+478.151 189.537 LS
+478.171 189.611 LE
+454.215 105.573 LS
+454.388 105.171 LE
+454.215 105.573 LS
+454.388 105.171 LE
+473.059 136.693 LS
+473.174 137.496 LE
+473.059 136.693 LS
+473.174 137.496 LE
+478.131 189.449 LS
+478.151 189.537 LE
+478.131 189.449 LS
+478.151 189.537 LE
+473.174 137.496 LS
+473.289 138.301 LE
+473.174 137.496 LS
+473.289 138.301 LE
+454.043 105.985 LS
+454.215 105.573 LE
+454.043 105.985 LS
+454.215 105.573 LE
+473.289 138.301 LS
+473.401 139.107 LE
+473.289 138.301 LS
+473.401 139.107 LE
+478.111 189.347 LS
+478.131 189.449 LE
+478.111 189.347 LS
+478.131 189.449 LE
+473.401 139.107 LS
+473.512 139.916 LE
+473.401 139.107 LS
+473.512 139.916 LE
+453.873 106.408 LS
+454.043 105.985 LE
+453.873 106.408 LS
+454.043 105.985 LE
+478.091 189.23 LS
+478.111 189.347 LE
+478.091 189.23 LS
+478.111 189.347 LE
+473.512 139.916 LS
+473.622 140.726 LE
+473.512 139.916 LS
+473.622 140.726 LE
+453.703 106.842 LS
+453.873 106.408 LE
+453.703 106.842 LS
+453.873 106.408 LE
+473.622 140.726 LS
+473.729 141.537 LE
+473.622 140.726 LS
+473.729 141.537 LE
+478.071 189.101 LS
+478.091 189.23 LE
+478.071 189.101 LS
+478.091 189.23 LE
+473.729 141.537 LS
+473.836 142.349 LE
+473.729 141.537 LS
+473.836 142.349 LE
+478.051 188.957 LS
+478.071 189.101 LE
+478.051 188.957 LS
+478.071 189.101 LE
+453.535 107.286 LS
+453.703 106.842 LE
+453.535 107.286 LS
+453.703 106.842 LE
+473.836 142.349 LS
+473.94 143.162 LE
+473.836 142.349 LS
+473.94 143.162 LE
+478.03 188.799 LS
+478.051 188.957 LE
+478.03 188.799 LS
+478.051 188.957 LE
+473.94 143.162 LS
+474.043 143.975 LE
+473.94 143.162 LS
+474.043 143.975 LE
+453.367 107.739 LS
+453.535 107.286 LE
+453.367 107.739 LS
+453.535 107.286 LE
+474.043 143.975 LS
+474.145 144.788 LE
+474.043 143.975 LS
+474.145 144.788 LE
+478.01 188.627 LS
+478.03 188.799 LE
+478.01 188.627 LS
+478.03 188.799 LE
+474.145 144.788 LS
+474.245 145.601 LE
+474.145 144.788 LS
+474.245 145.601 LE
+477.989 188.441 LS
+478.01 188.627 LE
+477.989 188.441 LS
+478.01 188.627 LE
+474.245 145.601 LS
+474.343 146.414 LE
+474.245 145.601 LS
+474.343 146.414 LE
+453.201 108.203 LS
+453.367 107.739 LE
+453.201 108.203 LS
+453.367 107.739 LE
+474.343 146.414 LS
+474.44 147.226 LE
+474.343 146.414 LS
+474.44 147.226 LE
+477.968 188.242 LS
+477.989 188.441 LE
+477.968 188.242 LS
+477.989 188.441 LE
+474.44 147.226 LS
+474.535 148.037 LE
+474.44 147.226 LS
+474.535 148.037 LE
+453.036 108.676 LS
+453.201 108.203 LE
+453.036 108.676 LS
+453.201 108.203 LE
+477.947 188.029 LS
+477.968 188.242 LE
+477.947 188.029 LS
+477.968 188.242 LE
+474.535 148.037 LS
+474.629 148.846 LE
+474.535 148.037 LS
+474.629 148.846 LE
+477.926 187.802 LS
+477.947 188.029 LE
+477.926 187.802 LS
+477.947 188.029 LE
+474.629 148.846 LS
+474.721 149.655 LE
+474.629 148.846 LS
+474.721 149.655 LE
+452.871 109.159 LS
+453.036 108.676 LE
+452.871 109.159 LS
+453.036 108.676 LE
+477.904 187.562 LS
+477.926 187.802 LE
+477.904 187.562 LS
+477.926 187.802 LE
+474.721 149.655 LS
+474.812 150.461 LE
+474.721 149.655 LS
+474.812 150.461 L
+474.9 151.266 LE
+474.812 150.461 LS
+474.9 151.266 LE
+477.882 187.307 LS
+477.904 187.562 LE
+477.882 187.307 LS
+477.904 187.562 LE
+474.9 151.266 LS
+474.987 152.068 LE
+474.9 151.266 LS
+474.987 152.068 LE
+452.708 109.651 LS
+452.871 109.159 LE
+452.708 109.651 LS
+452.871 109.159 LE
+477.859 187.04 LS
+477.882 187.307 LE
+477.859 187.04 LS
+477.882 187.307 LE
+474.987 152.068 LS
+475.073 152.868 LE
+474.987 152.068 LS
+475.073 152.868 LE
+477.837 186.758 LS
+477.859 187.04 LE
+477.837 186.758 LS
+477.859 187.04 LE
+475.073 152.868 LS
+475.157 153.665 LE
+475.073 152.868 LS
+475.157 153.665 LE
+452.546 110.153 LS
+452.708 109.651 LE
+452.546 110.153 LS
+452.708 109.651 LE
+475.157 153.665 LS
+475.24 154.459 LE
+475.157 153.665 LS
+475.24 154.459 LE
+477.813 186.464 LS
+477.837 186.758 LE
+477.813 186.464 LS
+477.837 186.758 LE
+475.24 154.459 LS
+475.321 155.25 LE
+475.24 154.459 LS
+475.321 155.25 LE
+477.79 186.156 LS
+477.813 186.464 LE
+477.79 186.156 LS
+477.813 186.464 LE
+475.321 155.25 LS
+475.401 156.037 LE
+475.321 155.25 LS
+475.401 156.037 LE
+477.766 185.835 LS
+477.79 186.156 LE
+477.766 185.835 LS
+477.79 186.156 LE
+452.386 110.663 LS
+452.546 110.153 LE
+452.386 110.663 LS
+452.546 110.153 LE
+475.401 156.037 LS
+475.479 156.82 LE
+475.401 156.037 LS
+475.479 156.82 LE
+477.741 185.5 LS
+477.766 185.835 LE
+477.741 185.5 LS
+477.766 185.835 LE
+475.479 156.82 LS
+475.556 157.599 LE
+475.479 156.82 LS
+475.556 157.599 LE
+477.716 185.153 LS
+477.741 185.5 LE
+477.716 185.153 LS
+477.741 185.5 LE
+475.556 157.599 LS
+475.63 158.374 LE
+475.556 157.599 LS
+475.63 158.374 LE
+452.226 111.182 LS
+452.386 110.663 LE
+452.226 111.182 LS
+452.386 110.663 LE
+475.63 158.374 LS
+475.704 159.145 LE
+475.63 158.374 LS
+475.704 159.145 LE
+477.69 184.793 LS
+477.716 185.153 LE
+477.69 184.793 LS
+477.716 185.153 LE
+475.704 159.145 LS
+475.776 159.91 LE
+475.704 159.145 LS
+475.776 159.91 LE
+477.664 184.42 LS
+477.69 184.793 LE
+477.664 184.42 LS
+477.69 184.793 LE
+475.776 159.91 LS
+475.847 160.671 LE
+475.776 159.91 LS
+475.847 160.671 LE
+477.637 184.034 LS
+477.664 184.42 LE
+477.637 184.034 LS
+477.664 184.42 LE
+475.847 160.671 LS
+475.916 161.426 LE
+475.847 160.671 LS
+475.916 161.426 LE
+452.068 111.709 LS
+452.226 111.182 LE
+452.068 111.709 LS
+452.226 111.182 LE
+477.61 183.636 LS
+477.637 184.034 LE
+477.61 183.636 LS
+477.637 184.034 LE
+475.916 161.426 LS
+475.984 162.176 LE
+475.916 161.426 LS
+475.984 162.176 LE
+477.582 183.225 LS
+477.61 183.636 LE
+477.582 183.225 LS
+477.61 183.636 LE
+475.984 162.176 LS
+476.05 162.92 LE
+475.984 162.176 LS
+476.05 162.92 LE
+477.553 182.802 LS
+477.582 183.225 LE
+477.553 182.802 LS
+477.582 183.225 LE
+476.05 162.92 LS
+476.115 163.658 LE
+476.05 162.92 LS
+476.115 163.658 LE
+477.523 182.366 LS
+477.553 182.802 LE
+477.523 182.366 LS
+477.553 182.802 LE
+476.115 163.658 LS
+476.179 164.389 LE
+476.115 163.658 LS
+476.179 164.389 LE
+451.911 112.245 LS
+452.068 111.709 LE
+451.911 112.245 LS
+452.068 111.709 LE
+476.179 164.389 LS
+476.241 165.115 LE
+476.179 164.389 LS
+476.241 165.115 LE
+477.493 181.918 LS
+477.523 182.366 LE
+477.493 181.918 LS
+477.523 182.366 LE
+476.241 165.115 LS
+476.302 165.833 LE
+476.241 165.115 LS
+476.302 165.833 LE
+477.461 181.459 LS
+477.493 181.918 LE
+477.461 181.459 LS
+477.493 181.918 LE
+476.302 165.833 LS
+476.361 166.544 LE
+476.302 165.833 LS
+476.361 166.544 LE
+477.43 180.987 LS
+477.461 181.459 LE
+477.43 180.987 LS
+477.461 181.459 LE
+476.361 166.544 LS
+476.419 167.249 LE
+476.361 166.544 LS
+476.419 167.249 LE
+477.397 180.504 LS
+477.43 180.987 LE
+477.397 180.504 LS
+477.43 180.987 LE
+476.419 167.249 LS
+476.476 167.946 LE
+476.419 167.249 LS
+476.476 167.946 LE
+477.363 180.009 LS
+477.397 180.504 LE
+477.363 180.009 LS
+477.397 180.504 LE
+476.476 167.946 LS
+476.531 168.635 LE
+476.476 167.946 LS
+476.531 168.635 LE
+477.329 179.503 LS
+477.363 180.009 LE
+477.329 179.503 LS
+477.363 180.009 LE
+476.531 168.635 LS
+476.585 169.317 LE
+476.531 168.635 LS
+476.585 169.317 LE
+451.755 112.789 LS
+451.911 112.245 LE
+451.755 112.789 LS
+451.911 112.245 LE
+477.293 178.986 LS
+477.329 179.503 LE
+477.293 178.986 LS
+477.329 179.503 LE
+476.585 169.317 LS
+476.639 169.99 LE
+476.585 169.317 LS
+476.639 169.99 LE
+477.257 178.457 LS
+477.293 178.986 LE
+477.257 178.457 LS
+477.293 178.986 LE
+476.639 169.99 LS
+476.69 170.655 LE
+476.639 169.99 LS
+476.69 170.655 LE
+477.22 177.917 LS
+477.257 178.457 LE
+477.22 177.917 LS
+477.257 178.457 LE
+476.69 170.655 LS
+476.741 171.312 LE
+476.69 170.655 LS
+476.741 171.312 LE
+477.182 177.367 LS
+477.22 177.917 LE
+477.182 177.367 LS
+477.22 177.917 LE
+476.741 171.312 LS
+476.79 171.96 LE
+476.741 171.312 LS
+476.79 171.96 LE
+477.142 176.807 LS
+477.182 177.367 LE
+477.142 176.807 LS
+477.182 177.367 LE
+476.79 171.96 LS
+476.838 172.599 LE
+476.79 171.96 LS
+476.838 172.599 LE
+477.102 176.235 LS
+477.142 176.807 LE
+477.102 176.235 LS
+477.142 176.807 LE
+476.838 172.599 LS
+476.885 173.229 LE
+476.838 172.599 LS
+476.885 173.229 LE
+477.061 175.654 LS
+477.102 176.235 LE
+477.061 175.654 LS
+477.102 176.235 LE
+476.885 173.229 LS
+476.93 173.85 LE
+476.885 173.229 LS
+476.93 173.85 LE
+477.019 175.062 LS
+477.061 175.654 LE
+477.019 175.062 LS
+477.061 175.654 LE
+476.93 173.85 LS
+476.975 174.46 LE
+476.93 173.85 LS
+476.975 174.46 L
+477.019 175.062 LE
+476.975 174.46 LS
+477.019 175.062 LE
+451.601 113.341 LS
+451.755 112.789 LE
+451.601 113.341 LS
+451.755 112.789 LE
+451.448 113.9 LS
+451.601 113.341 LE
+451.448 113.9 LS
+451.601 113.341 LE
+451.296 114.467 LS
+451.448 113.9 LE
+451.296 114.467 LS
+451.448 113.9 LE
+451.146 115.041 LS
+451.296 114.467 LE
+451.146 115.041 LS
+451.296 114.467 LE
+450.996 115.622 LS
+451.146 115.041 LE
+450.996 115.622 LS
+451.146 115.041 LE
+450.848 116.209 LS
+450.996 115.622 LE
+450.848 116.209 LS
+450.996 115.622 LE
+450.702 116.804 LS
+450.848 116.209 LE
+450.702 116.804 LS
+450.848 116.209 LE
+450.557 117.404 LS
+450.702 116.804 LE
+450.557 117.404 LS
+450.702 116.804 LE
+450.413 118.011 LS
+450.557 117.404 LE
+450.413 118.011 LS
+450.557 117.404 LE
+450.271 118.623 LS
+450.413 118.011 LE
+450.271 118.623 LS
+450.413 118.011 LE
+450.13 119.241 LS
+450.271 118.623 LE
+450.13 119.241 LS
+450.271 118.623 LE
+449.991 119.864 LS
+450.13 119.241 LE
+449.991 119.864 LS
+450.13 119.241 LE
+449.853 120.493 LS
+449.991 119.864 LE
+449.853 120.493 LS
+449.991 119.864 LE
+449.717 121.126 LS
+449.853 120.493 LE
+449.717 121.126 LS
+449.853 120.493 LE
+449.582 121.764 LS
+449.717 121.126 LE
+449.582 121.764 LS
+449.717 121.126 LE
+449.448 122.406 LS
+449.582 121.764 LE
+449.448 122.406 LS
+449.582 121.764 LE
+449.316 123.052 LS
+449.448 122.406 LE
+449.316 123.052 LS
+449.448 122.406 LE
+449.186 123.702 LS
+449.316 123.052 LE
+449.186 123.702 LS
+449.316 123.052 LE
+449.057 124.355 LS
+449.186 123.702 LE
+449.057 124.355 LS
+449.186 123.702 LE
+448.93 125.013 LS
+449.057 124.355 LE
+448.93 125.013 LS
+449.057 124.355 LE
+448.804 125.672 LS
+448.93 125.013 LE
+448.804 125.672 LS
+448.93 125.013 LE
+448.68 126.335 LS
+448.804 125.672 LE
+448.68 126.335 LS
+448.804 125.672 LE
+448.557 127.001 LS
+448.68 126.335 LE
+448.557 127.001 LS
+448.68 126.335 LE
+223.039 308.153 LS
+404.798 359.358 LE
+223.039 308.153 LS
+404.798 359.358 LE
+448.436 127.668 LS
+448.557 127.001 LE
+448.436 127.668 LS
+448.557 127.001 LE
+448.316 128.338 LS
+448.436 127.668 LE
+448.316 128.338 LS
+448.436 127.668 LE
+448.198 129.01 LS
+448.316 128.338 LE
+448.198 129.01 LS
+448.316 128.338 LE
+223.227 170.264 LS
+214.363 170.813 LE
+223.227 170.264 LS
+214.363 170.813 LE
+448.082 129.683 LS
+448.198 129.01 LE
+448.082 129.683 LS
+448.198 129.01 LE
+447.967 130.357 LS
+448.082 129.683 LE
+447.967 130.357 LS
+448.082 129.683 LE
+447.854 131.032 LS
+447.967 130.357 LE
+447.854 131.032 LS
+447.967 130.357 LE
+447.742 131.708 LS
+447.854 131.032 LE
+447.742 131.708 LS
+447.854 131.032 LE
+447.632 132.384 LS
+447.742 131.708 LE
+447.632 132.384 LS
+447.742 131.708 LE
+447.523 133.061 LS
+447.632 132.384 LE
+447.523 133.061 LS
+447.632 132.384 LE
+447.416 133.737 LS
+447.523 133.061 LE
+447.416 133.737 LS
+447.523 133.061 LE
+447.311 134.414 LS
+447.416 133.737 LE
+447.311 134.414 LS
+447.416 133.737 LE
+447.207 135.089 LS
+447.311 134.414 LE
+447.207 135.089 LS
+447.311 134.414 LE
+447.105 135.764 LS
+447.207 135.089 LE
+447.105 135.764 LS
+447.207 135.089 LE
+447.004 136.438 LS
+447.105 135.764 LE
+447.004 136.438 LS
+447.105 135.764 LE
+446.905 137.11 LS
+447.004 136.438 LE
+446.905 137.11 LS
+447.004 136.438 LE
+446.808 137.78 LS
+446.905 137.11 LE
+446.808 137.78 LS
+446.905 137.11 LE
+446.712 138.449 LS
+446.808 137.78 LE
+446.712 138.449 LS
+446.808 137.78 LE
+446.618 139.116 LS
+446.712 138.449 LE
+446.618 139.116 LS
+446.712 138.449 LE
+446.525 139.78 LS
+446.618 139.116 LE
+446.525 139.78 LS
+446.618 139.116 LE
+446.434 140.441 LS
+446.525 139.78 LE
+446.434 140.441 LS
+446.525 139.78 LE
+446.345 141.1 LS
+446.434 140.441 LE
+446.345 141.1 LS
+446.434 140.441 LE
+446.256 141.755 LS
+446.345 141.1 LE
+446.256 141.755 LS
+446.345 141.1 LE
+446.17 142.407 LS
+446.256 141.755 LE
+446.17 142.407 LS
+446.256 141.755 LE
+446.085 143.055 LS
+446.17 142.407 LE
+446.085 143.055 LS
+446.17 142.407 LE
+446.002 143.699 LS
+446.085 143.055 LE
+446.002 143.699 LS
+446.085 143.055 LE
+445.92 144.339 LS
+446.002 143.699 LE
+445.92 144.339 LS
+446.002 143.699 LE
+445.84 144.975 LS
+445.92 144.339 LE
+445.84 144.975 LS
+445.92 144.339 LE
+445.761 145.605 LS
+445.84 144.975 LE
+445.761 145.605 LS
+445.84 144.975 LE
+445.684 146.231 LS
+445.761 145.605 LE
+445.684 146.231 LS
+445.761 145.605 LE
+445.608 146.852 LS
+445.684 146.231 LE
+445.608 146.852 LS
+445.684 146.231 LE
+445.534 147.467 LS
+445.608 146.852 LE
+445.534 147.467 LS
+445.608 146.852 LE
+445.461 148.077 LS
+445.534 147.467 LE
+445.461 148.077 LS
+445.534 147.467 LE
+445.39 148.68 LS
+445.461 148.077 LE
+445.39 148.68 LS
+445.461 148.077 LE
+445.32 149.277 LS
+445.39 148.68 LE
+445.32 149.277 LS
+445.39 148.68 LE
+445.251 149.869 LS
+445.32 149.277 LE
+445.251 149.869 LS
+445.32 149.277 LE
+223.321 101.443 LS
+223.039 308.153 LE
+223.321 101.443 LS
+223.039 308.153 LE
+445.185 150.453 LS
+445.251 149.869 LE
+445.185 150.453 LS
+445.251 149.869 LE
+445.119 151.03 LS
+445.185 150.453 LE
+445.119 151.03 LS
+445.185 150.453 LE
+445.055 151.601 LS
+445.119 151.03 LE
+445.055 151.601 LS
+445.119 151.03 LE
+444.992 152.164 LS
+445.055 151.601 LE
+444.992 152.164 LS
+445.055 151.601 LE
+444.931 152.719 LS
+444.992 152.164 LE
+444.931 152.719 LS
+444.992 152.164 LE
+444.871 153.267 LS
+444.931 152.719 LE
+444.871 153.267 LS
+444.931 152.719 LE
+444.812 153.807 LS
+444.871 153.267 LE
+444.812 153.807 LS
+444.871 153.267 LE
+444.754 154.338 LS
+444.812 153.807 LE
+444.754 154.338 LS
+444.812 153.807 LE
+444.698 154.861 LS
+444.754 154.338 LE
+444.698 154.861 LS
+444.754 154.338 LE
+444.644 155.376 LS
+444.698 154.861 LE
+444.644 155.376 LS
+444.698 154.861 LE
+444.59 155.881 LS
+444.644 155.376 LE
+444.59 155.881 LS
+444.644 155.376 LE
+444.538 156.378 LS
+444.59 155.881 LE
+444.538 156.378 LS
+444.59 155.881 LE
+444.487 156.865 LS
+444.538 156.378 LE
+444.487 156.865 LS
+444.538 156.378 LE
+537.109 288.813 LS
+404.798 359.358 LE
+537.109 288.813 LS
+404.798 359.358 LE
+444.437 157.343 LS
+444.487 156.865 LE
+444.437 157.343 LS
+444.487 156.865 LE
+444.389 157.812 LS
+444.437 157.343 LE
+444.389 157.812 LS
+444.437 157.343 LE
+444.341 158.271 LS
+444.389 157.812 LE
+444.341 158.271 LS
+444.389 157.812 LE
+444.295 158.719 LS
+444.341 158.271 LE
+444.295 158.719 LS
+444.341 158.271 LE
+444.25 159.157 LS
+444.295 158.719 LE
+444.25 159.157 LS
+444.295 158.719 LE
+444.206 159.585 LS
+444.25 159.157 LE
+444.206 159.585 LS
+444.25 159.157 LE
+444.163 160.003 LS
+444.206 159.585 LE
+444.163 160.003 LS
+444.206 159.585 LE
+444.121 160.41 LS
+444.163 160.003 LE
+444.121 160.41 LS
+444.163 160.003 LE
+444.08 160.805 LS
+444.121 160.41 LE
+444.08 160.805 LS
+444.121 160.41 LE
+444.04 161.19 LS
+444.08 160.805 LE
+444.04 161.19 LS
+444.08 160.805 LE
+444.001 161.564 LS
+444.04 161.19 LE
+444.001 161.564 LS
+444.04 161.19 LE
+443.964 161.926 LS
+444.001 161.564 LE
+443.964 161.926 LS
+444.001 161.564 LE
+443.927 162.277 LS
+443.964 161.926 LE
+443.927 162.277 LS
+443.964 161.926 LE
+443.891 162.616 LS
+443.927 162.277 LE
+443.891 162.616 LS
+443.927 162.277 LE
+443.856 162.943 LS
+443.891 162.616 LE
+443.856 162.943 LS
+443.891 162.616 LE
+443.822 163.258 LS
+443.856 162.943 LE
+443.822 163.258 LS
+443.856 162.943 LE
+525.207 78.6216 LS
+530.508 75.7651 LE
+525.207 78.6216 LS
+530.508 75.7651 LE
+443.789 163.562 LS
+443.822 163.258 LE
+443.789 163.562 LS
+443.822 163.258 LE
+443.756 163.853 LS
+443.789 163.562 LE
+443.756 163.853 LS
+443.789 163.562 LE
+443.725 164.131 LS
+443.756 163.853 LE
+443.725 164.131 LS
+443.756 163.853 LE
+223.133 239.167 LS
+214.264 239.715 LE
+223.133 239.167 LS
+214.264 239.715 LE
+443.694 164.397 LS
+443.725 164.131 LE
+443.694 164.397 LS
+443.725 164.131 LE
+443.664 164.651 LS
+443.694 164.397 LE
+443.664 164.651 LS
+443.694 164.397 LE
+443.635 164.892 LS
+443.664 164.651 LE
+443.635 164.892 LS
+443.664 164.651 LE
+428.245 77.9624 LS
+428.431 78.2085 LE
+428.245 77.9624 LS
+428.431 78.2085 LE
+428.058 77.7295 LS
+428.245 77.9624 LE
+428.058 77.7295 LS
+428.245 77.9624 LE
+428.431 78.2085 LS
+428.617 78.4688 LE
+428.431 78.2085 LS
+428.617 78.4688 LE
+427.87 77.5103 LS
+428.058 77.7295 LE
+427.87 77.5103 LS
+428.058 77.7295 LE
+428.617 78.4688 LS
+428.802 78.7422 LE
+428.617 78.4688 LS
+428.802 78.7422 LE
+427.683 77.3047 LS
+427.87 77.5103 LE
+427.683 77.3047 LS
+427.87 77.5103 LE
+443.606 165.121 LS
+443.635 164.892 LE
+443.606 165.121 LS
+443.635 164.892 LE
+428.802 78.7422 LS
+428.987 79.0293 LE
+428.802 78.7422 LS
+428.987 79.0293 LE
+427.495 77.1133 LS
+427.683 77.3047 LE
+427.495 77.1133 LS
+427.683 77.3047 LE
+428.987 79.0293 LS
+429.172 79.3296 LE
+428.987 79.0293 LS
+429.172 79.3296 LE
+427.306 76.9355 LS
+427.495 77.1133 LE
+427.306 76.9355 LS
+427.495 77.1133 LE
+429.172 79.3296 LS
+429.356 79.6436 LE
+429.172 79.3296 LS
+429.356 79.6436 LE
+427.118 76.7715 LS
+427.306 76.9355 LE
+427.118 76.7715 LS
+427.306 76.9355 LE
+429.356 79.6436 LS
+429.539 79.9702 LE
+429.356 79.6436 LS
+429.539 79.9702 LE
+426.929 76.6216 LS
+427.118 76.7715 LE
+426.929 76.6216 LS
+427.118 76.7715 LE
+429.539 79.9702 LS
+429.722 80.3101 LE
+429.539 79.9702 LS
+429.722 80.3101 LE
+426.74 76.4854 LS
+426.929 76.6216 LE
+426.74 76.4854 LS
+426.929 76.6216 LE
+429.722 80.3101 LS
+429.904 80.6631 LE
+429.722 80.3101 LS
+429.904 80.6631 LE
+426.551 76.3633 LS
+426.74 76.4854 LE
+426.551 76.3633 LS
+426.74 76.4854 LE
+429.904 80.6631 LS
+430.085 81.0288 LE
+429.904 80.6631 LS
+430.085 81.0288 LE
+426.361 76.2554 LS
+426.551 76.3633 LE
+426.361 76.2554 LS
+426.551 76.3633 LE
+430.085 81.0288 LS
+430.266 81.4077 LE
+430.085 81.0288 LS
+430.266 81.4077 LE
+426.172 76.1611 LS
+426.361 76.2554 LE
+426.172 76.1611 LS
+426.361 76.2554 LE
+430.266 81.4077 LS
+430.446 81.7988 LE
+430.266 81.4077 LS
+430.446 81.7988 LE
+425.982 76.0811 LS
+426.172 76.1611 LE
+425.982 76.0811 LS
+426.172 76.1611 LE
+430.446 81.7988 LS
+430.625 82.2026 LE
+430.446 81.7988 LS
+430.625 82.2026 LE
+443.578 165.335 LS
+443.606 165.121 LE
+443.578 165.335 LS
+443.606 165.121 LE
+425.792 76.0146 LS
+425.982 76.0811 LE
+425.792 76.0146 LS
+425.982 76.0811 LE
+430.625 82.2026 LS
+430.803 82.6191 LE
+430.625 82.2026 LS
+430.803 82.6191 LE
+425.603 75.9629 LS
+425.792 76.0146 LE
+425.603 75.9629 LS
+425.792 76.0146 LE
+430.803 82.6191 LS
+430.98 83.0474 LE
+430.803 82.6191 LS
+430.98 83.0474 L
+431.157 83.4883 LE
+430.98 83.0474 LS
+431.157 83.4883 LE
+425.413 75.9248 LS
+425.603 75.9629 LE
+425.413 75.9248 LS
+425.603 75.9629 LE
+431.157 83.4883 LS
+431.333 83.9414 LE
+431.157 83.4883 LS
+431.333 83.9414 LE
+425.223 75.9004 LS
+425.413 75.9248 LE
+425.223 75.9004 LS
+425.413 75.9248 LE
+431.333 83.9414 LS
+431.508 84.4063 LE
+431.333 83.9414 LS
+431.508 84.4063 LE
+443.551 165.538 LS
+443.578 165.335 LE
+443.551 165.538 LS
+443.578 165.335 LE
+425.033 75.8901 LS
+425.223 75.9004 LE
+425.033 75.8901 LS
+425.223 75.9004 LE
+431.508 84.4063 LS
+431.682 84.8828 LE
+431.508 84.4063 LS
+431.682 84.8828 LE
+424.844 75.894 LS
+425.033 75.8901 LE
+424.844 75.894 LS
+425.033 75.8901 LE
+431.682 84.8828 LS
+431.855 85.3711 LE
+431.682 84.8828 LS
+431.855 85.3711 LE
+424.654 75.9121 LS
+424.844 75.894 LE
+424.654 75.9121 LS
+424.844 75.894 LE
+431.855 85.3711 LS
+432.027 85.8711 LE
+431.855 85.3711 LS
+432.027 85.8711 LE
+424.464 75.9434 LS
+424.654 75.9121 LE
+424.464 75.9434 LS
+424.654 75.9121 LE
+432.027 85.8711 LS
+432.198 86.3823 LE
+432.027 85.8711 LS
+432.198 86.3823 LE
+443.524 165.727 LS
+443.551 165.538 LE
+443.524 165.727 LS
+443.551 165.538 LE
+424.275 75.9893 LS
+424.464 75.9434 LE
+424.275 75.9893 LS
+424.464 75.9434 LE
+432.198 86.3823 LS
+432.369 86.9048 LE
+432.198 86.3823 LS
+432.369 86.9048 L
+432.538 87.438 LE
+432.369 86.9048 LS
+432.538 87.438 LE
+424.086 76.0483 LS
+424.275 75.9893 LE
+424.086 76.0483 LS
+424.275 75.9893 LE
+432.538 87.438 LS
+432.706 87.9824 LE
+432.538 87.438 LS
+432.706 87.9824 LE
+423.897 76.1216 LS
+424.086 76.0483 LE
+423.897 76.1216 LS
+424.086 76.0483 LE
+443.498 165.903 LS
+443.524 165.727 LE
+443.498 165.903 LS
+443.524 165.727 LE
+432.706 87.9824 LS
+432.873 88.5371 LE
+432.706 87.9824 LS
+432.873 88.5371 LE
+423.709 76.2085 LS
+423.897 76.1216 LE
+423.709 76.2085 LS
+423.897 76.1216 LE
+432.873 88.5371 LS
+433.039 89.1025 LE
+432.873 88.5371 LS
+433.039 89.1025 LE
+423.521 76.3091 LS
+423.709 76.2085 LE
+423.521 76.3091 LS
+423.709 76.2085 LE
+433.039 89.1025 LS
+433.204 89.6787 LE
+433.039 89.1025 LS
+433.204 89.6787 LE
+443.473 166.065 LS
+443.498 165.903 LE
+443.473 166.065 LS
+443.498 165.903 LE
+423.333 76.4229 LS
+423.521 76.3091 LE
+423.333 76.4229 LS
+423.521 76.3091 LE
+433.204 89.6787 LS
+433.367 90.2646 LE
+433.204 89.6787 LS
+433.367 90.2646 L
+433.529 90.8608 LE
+433.367 90.2646 LS
+433.529 90.8608 LE
+423.145 76.5508 LS
+423.333 76.4229 LE
+423.145 76.5508 LS
+423.333 76.4229 LE
+433.529 90.8608 LS
+433.691 91.4663 LE
+433.529 90.8608 LS
+433.691 91.4663 LE
+443.447 166.215 LS
+443.473 166.065 LE
+443.447 166.215 LS
+443.473 166.065 LE
+422.958 76.6919 LS
+423.145 76.5508 LE
+422.958 76.6919 LS
+423.145 76.5508 LE
+433.691 91.4663 LS
+433.851 92.082 LE
+433.691 91.4663 LS
+433.851 92.082 LE
+422.771 76.8462 LS
+422.958 76.6919 LE
+422.771 76.8462 LS
+422.958 76.6919 LE
+433.851 92.082 LS
+434.01 92.7065 LE
+433.851 92.082 LS
+434.01 92.7065 LE
+443.423 166.351 LS
+443.447 166.215 LE
+443.423 166.351 LS
+443.447 166.215 LE
+422.584 77.0142 LS
+422.771 76.8462 LE
+422.584 77.0142 LS
+422.771 76.8462 LE
+434.01 92.7065 LS
+434.167 93.3408 LE
+434.01 92.7065 LS
+434.167 93.3408 L
+434.324 93.9839 LE
+434.167 93.3408 LS
+434.324 93.9839 LE
+422.398 77.1953 LS
+422.584 77.0142 LE
+422.398 77.1953 LS
+422.584 77.0142 LE
+434.324 93.9839 LS
+434.479 94.6357 LE
+434.324 93.9839 LS
+434.479 94.6357 LE
+443.399 166.473 LS
+443.423 166.351 LE
+443.399 166.473 LS
+443.423 166.351 LE
+422.213 77.3896 LS
+422.398 77.1953 LE
+422.213 77.3896 LS
+422.398 77.1953 LE
+434.479 94.6357 LS
+434.632 95.2964 LE
+434.479 94.6357 LS
+434.632 95.2964 LE
+422.028 77.5972 LS
+422.213 77.3896 LE
+422.028 77.5972 LS
+422.213 77.3896 LE
+434.632 95.2964 LS
+434.785 95.9653 LE
+434.632 95.2964 LS
+434.785 95.9653 LE
+443.375 166.582 LS
+443.399 166.473 LE
+443.375 166.582 LS
+443.399 166.473 LE
+434.785 95.9653 LS
+434.936 96.6426 LE
+434.785 95.9653 LS
+434.936 96.6426 LE
+421.843 77.8174 LS
+422.028 77.5972 LE
+421.843 77.8174 LS
+422.028 77.5972 LE
+434.936 96.6426 LS
+435.086 97.3276 LE
+434.936 96.6426 LS
+435.086 97.3276 LE
+421.659 78.0508 LS
+421.843 77.8174 LE
+421.659 78.0508 LS
+421.843 77.8174 LE
+443.353 166.676 LS
+443.375 166.582 LE
+443.353 166.676 LS
+443.375 166.582 LE
+435.086 97.3276 LS
+435.234 98.021 LE
+435.086 97.3276 LS
+435.234 98.021 LE
+421.476 78.2964 LS
+421.659 78.0508 LE
+421.476 78.2964 LS
+421.659 78.0508 LE
+435.234 98.021 LS
+435.381 98.7212 LE
+435.234 98.021 LS
+435.381 98.7212 LE
+443.33 166.758 LS
+443.353 166.676 LE
+443.33 166.758 LS
+443.353 166.676 LE
+435.381 98.7212 LS
+435.527 99.4292 LE
+435.381 98.7212 LS
+435.527 99.4292 LE
+421.293 78.5552 LS
+421.476 78.2964 LE
+421.293 78.5552 LS
+421.476 78.2964 LE
+435.527 99.4292 LS
+435.671 100.144 LE
+435.527 99.4292 LS
+435.671 100.144 LE
+443.307 166.825 LS
+443.33 166.758 LE
+443.307 166.825 LS
+443.33 166.758 LE
+421.111 78.8262 LS
+421.293 78.5552 LE
+421.111 78.8262 LS
+421.293 78.5552 LE
+435.671 100.144 LS
+435.814 100.866 LE
+435.671 100.144 LS
+435.814 100.866 L
+435.956 101.594 LE
+435.814 100.866 LS
+435.956 101.594 LE
+420.93 79.1099 LS
+421.111 78.8262 LE
+420.93 79.1099 LS
+421.111 78.8262 LE
+443.285 166.879 LS
+443.307 166.825 LE
+443.285 166.879 LS
+443.307 166.825 LE
+435.956 101.594 LS
+436.096 102.329 LE
+435.956 101.594 LS
+436.096 102.329 LE
+420.75 79.4058 LS
+420.93 79.1099 LE
+420.75 79.4058 LS
+420.93 79.1099 LE
+436.096 102.329 LS
+436.234 103.07 LE
+436.096 102.329 LS
+436.234 103.07 LE
+443.264 166.919 LS
+443.285 166.879 LE
+443.264 166.919 LS
+443.285 166.879 LE
+436.234 103.07 LS
+436.372 103.817 LE
+436.234 103.07 LS
+436.372 103.817 LE
+420.57 79.7134 LS
+420.75 79.4058 LE
+420.57 79.7134 LS
+420.75 79.4058 LE
+436.372 103.817 LS
+436.507 104.569 LE
+436.372 103.817 LS
+436.507 104.569 LE
+443.242 166.945 LS
+443.264 166.919 LE
+443.242 166.945 LS
+443.264 166.919 LE
+420.391 80.0337 LS
+420.57 79.7134 LE
+420.391 80.0337 LS
+420.57 79.7134 LE
+436.507 104.569 LS
+436.641 105.328 LE
+436.507 104.569 LS
+436.641 105.328 L
+436.773 106.091 LE
+436.641 105.328 LS
+436.773 106.091 LE
+443.221 166.957 LS
+443.242 166.945 LE
+443.221 166.957 LS
+443.242 166.945 LE
+420.212 80.3657 LS
+420.391 80.0337 LE
+420.212 80.3657 LS
+420.391 80.0337 LE
+436.773 106.091 LS
+436.905 106.859 LE
+436.773 106.091 LS
+436.905 106.859 LE
+420.035 80.709 LS
+420.212 80.3657 LE
+420.035 80.709 LS
+420.212 80.3657 LE
+443.2 166.956 LS
+443.221 166.957 LE
+443.2 166.956 LS
+443.221 166.957 LE
+436.905 106.859 LS
+437.034 107.632 LE
+436.905 106.859 LS
+437.034 107.632 L
+437.162 108.409 LE
+437.034 107.632 LS
+437.162 108.409 LE
+419.858 81.0645 LS
+420.035 80.709 LE
+419.858 81.0645 LS
+420.035 80.709 LE
+443.179 166.939 LS
+443.2 166.956 LE
+443.179 166.939 LS
+443.2 166.956 LE
+437.162 108.409 LS
+437.289 109.191 LE
+437.162 108.409 LS
+437.289 109.191 LE
+419.682 81.4312 LS
+419.858 81.0645 LE
+419.682 81.4312 LS
+419.858 81.0645 LE
+437.289 109.191 LS
+437.414 109.977 LE
+437.289 109.191 LS
+437.414 109.977 LE
+443.159 166.91 LS
+443.179 166.939 LE
+443.159 166.91 LS
+443.179 166.939 LE
+437.414 109.977 LS
+437.537 110.766 LE
+437.414 109.977 LS
+437.537 110.766 LE
+419.507 81.8091 LS
+419.682 81.4312 LE
+419.507 81.8091 LS
+419.682 81.4312 LE
+443.138 166.866 LS
+443.159 166.91 LE
+443.138 166.866 LS
+443.159 166.91 LE
+437.537 110.766 LS
+437.659 111.559 LE
+437.537 110.766 LS
+437.659 111.559 L
+437.779 112.354 LE
+437.659 111.559 LS
+437.779 112.354 LE
+419.333 82.1982 LS
+419.507 81.8091 LE
+419.333 82.1982 LS
+419.507 81.8091 LE
+443.118 166.808 LS
+443.138 166.866 LE
+443.118 166.808 LS
+443.138 166.866 LE
+437.779 112.354 LS
+437.898 113.153 LE
+437.779 112.354 LS
+437.898 113.153 LE
+443.098 166.736 LS
+443.118 166.808 LE
+443.098 166.736 LS
+443.118 166.808 LE
+419.16 82.5981 LS
+419.333 82.1982 LE
+419.16 82.5981 LS
+419.333 82.1982 LE
+437.898 113.153 LS
+438.015 113.955 LE
+437.898 113.153 LS
+438.015 113.955 L
+438.131 114.759 LE
+438.015 113.955 LS
+438.131 114.759 LE
+443.077 166.65 LS
+443.098 166.736 LE
+443.077 166.65 LS
+443.098 166.736 LE
+418.988 83.0093 LS
+419.16 82.5981 LE
+418.988 83.0093 LS
+419.16 82.5981 LE
+438.131 114.759 LS
+438.245 115.565 LE
+438.131 114.759 LS
+438.245 115.565 LE
+443.057 166.55 LS
+443.077 166.65 LE
+443.057 166.55 LS
+443.077 166.65 LE
+438.245 115.565 LS
+438.357 116.373 LE
+438.245 115.565 LS
+438.357 116.373 LE
+418.816 83.4307 LS
+418.988 83.0093 LE
+418.816 83.4307 LS
+418.988 83.0093 LE
+438.357 116.373 LS
+438.468 117.183 LE
+438.357 116.373 LS
+438.468 117.183 LE
+443.037 166.437 LS
+443.057 166.55 LE
+443.037 166.437 LS
+443.057 166.55 LE
+438.468 117.183 LS
+438.577 117.994 LE
+438.468 117.183 LS
+438.577 117.994 LE
+418.646 83.8628 LS
+418.816 83.4307 LE
+418.646 83.8628 LS
+418.816 83.4307 LE
+443.016 166.309 LS
+443.037 166.437 LE
+443.016 166.309 LS
+443.037 166.437 LE
+438.577 117.994 LS
+438.685 118.806 LE
+438.577 117.994 LS
+438.685 118.806 L
+438.791 119.619 LE
+438.685 118.806 LS
+438.791 119.619 LE
+442.996 166.167 LS
+443.016 166.309 LE
+442.996 166.167 LS
+443.016 166.309 LE
+418.478 84.3052 LS
+418.646 83.8628 LE
+418.478 84.3052 LS
+418.646 83.8628 LE
+438.791 119.619 LS
+438.895 120.432 LE
+438.791 119.619 LS
+438.895 120.432 LE
+442.976 166.011 LS
+442.996 166.167 LE
+442.976 166.011 LS
+442.996 166.167 LE
+438.895 120.432 LS
+438.998 121.246 LE
+438.895 120.432 LS
+438.998 121.246 LE
+418.309 84.7578 LS
+418.478 84.3052 LE
+418.309 84.7578 LS
+418.478 84.3052 LE
+442.955 165.841 LS
+442.976 166.011 LE
+442.955 165.841 LS
+442.976 166.011 LE
+438.998 121.246 LS
+439.099 122.06 LE
+438.998 121.246 LS
+439.099 122.06 L
+439.199 122.874 LE
+439.099 122.06 LS
+439.199 122.874 LE
+442.934 165.658 LS
+442.955 165.841 LE
+442.934 165.658 LS
+442.955 165.841 LE
+418.142 85.2202 LS
+418.309 84.7578 LE
+418.142 85.2202 LS
+418.309 84.7578 LE
+439.199 122.874 LS
+439.297 123.687 LE
+439.199 122.874 LS
+439.297 123.687 LE
+442.913 165.46 LS
+442.934 165.658 LE
+442.913 165.46 LS
+442.934 165.658 LE
+439.297 123.687 LS
+439.394 124.5 LE
+439.297 123.687 LS
+439.394 124.5 LE
+417.977 85.6924 LS
+418.142 85.2202 LE
+417.977 85.6924 LS
+418.142 85.2202 LE
+442.892 165.249 LS
+442.913 165.46 LE
+442.892 165.249 LS
+442.913 165.46 LE
+439.394 124.5 LS
+439.488 125.312 LE
+439.394 124.5 LS
+439.488 125.312 L
+439.582 126.122 LE
+439.488 125.312 LS
+439.582 126.122 LE
+442.87 165.024 LS
+442.892 165.249 LE
+442.87 165.024 LS
+442.892 165.249 LE
+439.582 126.122 LS
+439.673 126.931 LE
+439.582 126.122 LS
+439.673 126.931 LE
+417.812 86.1738 LS
+417.977 85.6924 LE
+417.812 86.1738 LS
+417.977 85.6924 LE
+442.848 164.785 LS
+442.87 165.024 LE
+442.848 164.785 LS
+442.87 165.024 LE
+439.673 126.931 LS
+439.764 127.738 LE
+439.673 126.931 LS
+439.764 127.738 LE
+442.826 164.533 LS
+442.848 164.785 LE
+442.826 164.533 LS
+442.848 164.785 LE
+439.764 127.738 LS
+439.852 128.542 LE
+439.764 127.738 LS
+439.852 128.542 LE
+417.648 86.665 LS
+417.812 86.1738 LE
+417.648 86.665 LS
+417.812 86.1738 LE
+439.852 128.542 LS
+439.939 129.345 LE
+439.852 128.542 LS
+439.939 129.345 LE
+442.804 164.267 LS
+442.826 164.533 LE
+442.804 164.267 LS
+442.826 164.533 LE
+439.939 129.345 LS
+440.024 130.146 LE
+439.939 129.345 LS
+440.024 130.146 LE
+442.781 163.988 LS
+442.804 164.267 LE
+442.781 163.988 LS
+442.804 164.267 LE
+440.024 130.146 LS
+440.108 130.943 LE
+440.024 130.146 LS
+440.108 130.943 LE
+417.485 87.165 LS
+417.648 86.665 LE
+417.485 87.165 LS
+417.648 86.665 LE
+442.757 163.695 LS
+442.781 163.988 LE
+442.757 163.695 LS
+442.781 163.988 LE
+440.108 130.943 LS
+440.191 131.737 LE
+440.108 130.943 LS
+440.191 131.737 LE
+442.734 163.389 LS
+442.757 163.695 LE
+442.734 163.389 LS
+442.757 163.695 LE
+440.191 131.737 LS
+440.272 132.528 LE
+440.191 131.737 LS
+440.272 132.528 LE
+417.324 87.6743 LS
+417.485 87.165 LE
+417.324 87.6743 LS
+417.485 87.165 LE
+440.272 132.528 LS
+440.351 133.315 LE
+440.272 132.528 LS
+440.351 133.315 LE
+442.709 163.07 LS
+442.734 163.389 LE
+442.709 163.07 LS
+442.734 163.389 LE
+440.351 133.315 LS
+440.429 134.099 LE
+440.351 133.315 LS
+440.429 134.099 LE
+442.685 162.737 LS
+442.709 163.07 LE
+442.685 162.737 LS
+442.709 163.07 LE
+440.429 134.099 LS
+440.505 134.878 LE
+440.429 134.099 LS
+440.505 134.878 LE
+442.66 162.392 LS
+442.685 162.737 LE
+442.66 162.392 LS
+442.685 162.737 LE
+440.505 134.878 LS
+440.58 135.653 LE
+440.505 134.878 LS
+440.58 135.653 LE
+417.164 88.1924 LS
+417.324 87.6743 LE
+417.164 88.1924 LS
+417.324 87.6743 LE
+442.634 162.033 LS
+442.66 162.392 LE
+442.634 162.033 LS
+442.66 162.392 LE
+440.58 135.653 LS
+440.653 136.423 LE
+440.58 135.653 LS
+440.653 136.423 LE
+442.608 161.662 LS
+442.634 162.033 LE
+442.608 161.662 LS
+442.634 162.033 LE
+440.653 136.423 LS
+440.726 137.189 LE
+440.653 136.423 LS
+440.726 137.189 L
+440.796 137.95 LE
+440.726 137.189 LS
+440.796 137.95 LE
+442.581 161.278 LS
+442.608 161.662 LE
+442.581 161.278 LS
+442.608 161.662 LE
+417.005 88.7188 LS
+417.164 88.1924 LE
+417.005 88.7188 LS
+417.164 88.1924 LE
+440.796 137.95 LS
+440.865 138.705 LE
+440.796 137.95 LS
+440.865 138.705 LE
+442.553 160.881 LS
+442.581 161.278 LE
+442.553 160.881 LS
+442.581 161.278 LE
+440.865 138.705 LS
+440.932 139.455 LE
+440.865 138.705 LS
+440.932 139.455 LE
+442.525 160.472 LS
+442.553 160.881 LE
+442.525 160.472 LS
+442.553 160.881 LE
+440.932 139.455 LS
+440.999 140.198 LE
+440.932 139.455 LS
+440.999 140.198 LE
+442.497 160.05 LS
+442.525 160.472 LE
+442.497 160.05 LS
+442.525 160.472 LE
+440.999 140.198 LS
+441.063 140.936 LE
+440.999 140.198 LS
+441.063 140.936 LE
+442.467 159.616 LS
+442.497 160.05 LE
+442.467 159.616 LS
+442.497 160.05 LE
+416.848 89.2534 LS
+417.005 88.7188 LE
+416.848 89.2534 LS
+417.005 88.7188 LE
+441.063 140.936 LS
+441.126 141.667 LE
+441.063 140.936 LS
+441.126 141.667 LE
+442.437 159.169 LS
+442.467 159.616 LE
+442.437 159.169 LS
+442.467 159.616 LE
+441.126 141.667 LS
+441.188 142.392 LE
+441.126 141.667 LS
+441.188 142.392 LE
+442.405 158.711 LS
+442.437 159.169 LE
+442.405 158.711 LS
+442.437 159.169 LE
+441.188 142.392 LS
+441.249 143.11 LE
+441.188 142.392 LS
+441.249 143.11 LE
+442.374 158.241 LS
+442.405 158.711 LE
+442.374 158.241 LS
+442.405 158.711 LE
+441.249 143.11 LS
+441.308 143.821 LE
+441.249 143.11 LS
+441.308 143.821 L
+441.366 144.525 LE
+441.308 143.821 LS
+441.366 144.525 LE
+442.341 157.759 LS
+442.374 158.241 LE
+442.341 157.759 LS
+442.374 158.241 LE
+441.366 144.525 LS
+441.423 145.222 LE
+441.366 144.525 LS
+441.423 145.222 LE
+442.307 157.266 LS
+442.341 157.759 LE
+442.307 157.266 LS
+442.341 157.759 LE
+416.691 89.7964 LS
+416.848 89.2534 LE
+416.691 89.7964 LS
+416.848 89.2534 LE
+441.423 145.222 LS
+441.478 145.911 LE
+441.423 145.222 LS
+441.478 145.911 LE
+442.273 156.761 LS
+442.307 157.266 LE
+442.273 156.761 LS
+442.307 157.266 LE
+441.478 145.911 LS
+441.532 146.591 LE
+441.478 145.911 LS
+441.532 146.591 LE
+442.237 156.245 LS
+442.273 156.761 LE
+442.237 156.245 LS
+442.273 156.761 LE
+441.532 146.591 LS
+441.584 147.264 LE
+441.532 146.591 LS
+441.584 147.264 LE
+442.201 155.718 LS
+442.237 156.245 LE
+442.201 155.718 LS
+442.237 156.245 LE
+441.584 147.264 LS
+441.636 147.929 LE
+441.584 147.264 LS
+441.636 147.929 LE
+442.164 155.179 LS
+442.201 155.718 LE
+442.164 155.179 LS
+442.201 155.718 LE
+441.636 147.929 LS
+441.687 148.584 LE
+441.636 147.929 LS
+441.687 148.584 LE
+442.126 154.63 LS
+442.164 155.179 LE
+442.126 154.63 LS
+442.164 155.179 LE
+441.687 148.584 LS
+441.735 149.231 LE
+441.687 148.584 LS
+441.735 149.231 LE
+442.087 154.071 LS
+442.126 154.63 LE
+442.087 154.071 LS
+442.126 154.63 LE
+441.735 149.231 LS
+441.783 149.87 LE
+441.735 149.231 LS
+441.783 149.87 LE
+442.047 153.5 LS
+442.087 154.071 LE
+442.047 153.5 LS
+442.087 154.071 LE
+441.783 149.87 LS
+441.83 150.499 LE
+441.783 149.87 LS
+441.83 150.499 LE
+442.005 152.92 LS
+442.047 153.5 LE
+442.005 152.92 LS
+442.047 153.5 LE
+441.83 150.499 LS
+441.875 151.119 LE
+441.83 150.499 LS
+441.875 151.119 LE
+441.963 152.33 LS
+442.005 152.92 LE
+441.963 152.33 LS
+442.005 152.92 LE
+441.875 151.119 LS
+441.92 151.729 LE
+441.875 151.119 LS
+441.92 151.729 L
+441.963 152.33 LE
+441.92 151.729 LS
+441.963 152.33 LE
+416.536 90.3472 LS
+416.691 89.7964 LE
+416.536 90.3472 LS
+416.691 89.7964 LE
+416.382 90.9058 LS
+416.536 90.3472 LE
+416.382 90.9058 LS
+416.536 90.3472 LE
+416.23 91.4717 LS
+416.382 90.9058 LE
+416.23 91.4717 LS
+416.382 90.9058 LE
+416.079 92.0449 LS
+416.23 91.4717 LE
+416.079 92.0449 LS
+416.23 91.4717 LE
+415.929 92.6255 LS
+416.079 92.0449 LE
+415.929 92.6255 LS
+416.079 92.0449 LE
+415.78 93.2124 LS
+415.929 92.6255 LE
+415.78 93.2124 LS
+415.929 92.6255 LE
+415.633 93.8062 LS
+415.78 93.2124 LE
+415.633 93.8062 LS
+415.78 93.2124 LE
+415.487 94.4063 LS
+415.633 93.8062 LE
+415.487 94.4063 LS
+415.633 93.8062 LE
+496.911 70.5273 LS
+499.561 69.0981 LE
+496.911 70.5273 LS
+499.561 69.0981 LE
+415.343 95.0122 LS
+415.487 94.4063 LE
+415.343 95.0122 LS
+415.487 94.4063 LE
+415.2 95.624 LS
+415.343 95.0122 LE
+415.2 95.624 LS
+415.343 95.0122 LE
+415.059 96.2417 LS
+415.2 95.624 LE
+415.059 96.2417 LS
+415.2 95.624 LE
+414.919 96.8643 LS
+415.059 96.2417 LE
+414.919 96.8643 LS
+415.059 96.2417 LE
+414.78 97.4927 LS
+414.919 96.8643 LE
+414.78 97.4927 LS
+414.919 96.8643 LE
+414.643 98.1255 LS
+414.78 97.4927 LE
+414.643 98.1255 LS
+414.78 97.4927 LE
+414.507 98.7627 LS
+414.643 98.1255 LE
+414.507 98.7627 LS
+414.643 98.1255 LE
+414.374 99.4048 LS
+414.507 98.7627 LE
+414.374 99.4048 LS
+414.507 98.7627 LE
+414.241 100.051 LS
+414.374 99.4048 LE
+414.241 100.051 LS
+414.374 99.4048 LE
+414.11 100.701 LS
+414.241 100.051 LE
+414.11 100.701 LS
+414.241 100.051 LE
+413.98 101.354 LS
+414.11 100.701 LE
+413.98 101.354 LS
+414.11 100.701 LE
+413.852 102.011 LS
+413.98 101.354 LE
+413.852 102.011 LS
+413.98 101.354 LE
+413.726 102.671 LS
+413.852 102.011 LE
+413.726 102.671 LS
+413.852 102.011 LE
+413.601 103.334 LS
+413.726 102.671 LE
+413.601 103.334 LS
+413.726 102.671 LE
+413.477 104 LS
+413.601 103.334 LE
+413.477 104 LS
+413.601 103.334 LE
+413.355 104.667 LS
+413.477 104 LE
+413.355 104.667 LS
+413.477 104 LE
+413.235 105.337 LS
+413.355 104.667 LE
+413.235 105.337 LS
+413.355 104.667 LE
+413.116 106.009 LS
+413.235 105.337 LE
+413.116 106.009 LS
+413.235 105.337 LE
+412.999 106.682 LS
+413.116 106.009 LE
+412.999 106.682 LS
+413.116 106.009 LE
+412.883 107.357 LS
+412.999 106.682 LE
+412.883 107.357 LS
+412.999 106.682 LE
+412.769 108.032 LS
+412.883 107.357 LE
+412.769 108.032 LS
+412.883 107.357 LE
+412.657 108.708 LS
+412.769 108.032 LE
+412.657 108.708 LS
+412.769 108.032 LE
+355.099 29.9614 LS
+223.321 101.443 LE
+355.099 29.9614 LS
+223.321 101.443 LE
+412.546 109.386 LS
+412.657 108.708 LE
+412.546 109.386 LS
+412.657 108.708 LE
+412.437 110.063 LS
+412.546 109.386 LE
+412.437 110.063 LS
+412.546 109.386 LE
+412.329 110.74 LS
+412.437 110.063 LE
+412.329 110.74 LS
+412.437 110.063 LE
+412.223 111.417 LS
+412.329 110.74 LE
+412.223 111.417 LS
+412.329 110.74 LE
+289.097 65.7642 LS
+281.815 63.6865 LE
+289.097 65.7642 LS
+281.815 63.6865 LE
+412.118 112.093 LS
+412.223 111.417 LE
+412.118 112.093 LS
+412.223 111.417 LE
+412.016 112.768 LS
+412.118 112.093 LE
+412.016 112.768 LS
+412.118 112.093 LE
+411.914 113.442 LS
+412.016 112.768 LE
+411.914 113.442 LS
+412.016 112.768 LE
+223.039 308.153 LS
+214.164 308.699 LE
+223.039 308.153 LS
+214.164 308.699 LE
+411.814 114.116 LS
+411.914 113.442 LE
+411.814 114.116 LS
+411.914 113.442 LE
+411.716 114.787 LS
+411.814 114.116 LE
+411.716 114.787 LS
+411.814 114.116 LE
+411.62 115.457 LS
+411.716 114.787 LE
+411.62 115.457 LS
+411.716 114.787 LE
+411.525 116.124 LS
+411.62 115.457 LE
+411.525 116.124 LS
+411.62 115.457 LE
+411.431 116.789 LS
+411.525 116.124 LE
+411.431 116.789 LS
+411.525 116.124 LE
+536.826 81.9448 LS
+537.109 288.813 LE
+536.826 81.9448 LS
+537.109 288.813 LE
+411.339 117.451 LS
+411.431 116.789 LE
+411.339 117.451 LS
+411.431 116.789 LE
+411.25 118.111 LS
+411.339 117.451 LE
+411.25 118.111 LS
+411.339 117.451 LE
+411.161 118.767 LS
+411.25 118.111 LE
+411.161 118.767 LS
+411.25 118.111 LE
+411.073 119.42 LS
+411.161 118.767 LE
+411.073 119.42 LS
+411.161 118.767 LE
+410.988 120.069 LS
+411.073 119.42 LE
+410.988 120.069 LS
+411.073 119.42 LE
+410.904 120.715 LS
+410.988 120.069 LE
+410.904 120.715 LS
+410.988 120.069 LE
+410.821 121.356 LS
+410.904 120.715 LE
+410.821 121.356 LS
+410.904 120.715 LE
+410.74 121.993 LS
+410.821 121.356 LE
+410.74 121.993 LS
+410.821 121.356 LE
+410.661 122.625 LS
+410.74 121.993 LE
+410.661 122.625 LS
+410.74 121.993 LE
+410.583 123.252 LS
+410.661 122.625 LE
+410.583 123.252 LS
+410.661 122.625 LE
+468.593 62.4268 LS
+473.89 59.5659 LE
+468.593 62.4268 LS
+473.89 59.5659 LE
+410.507 123.874 LS
+410.583 123.252 LE
+410.507 123.874 LS
+410.583 123.252 LE
+410.432 124.49 LS
+410.507 123.874 LE
+410.432 124.49 LS
+410.507 123.874 LE
+410.358 125.101 LS
+410.432 124.49 LE
+410.358 125.101 LS
+410.432 124.49 LE
+410.286 125.706 LS
+410.358 125.101 LE
+410.286 125.706 LS
+410.358 125.101 LE
+410.216 126.305 LS
+410.286 125.706 LE
+410.216 126.305 LS
+410.286 125.706 LE
+410.146 126.897 LS
+410.216 126.305 LE
+410.146 126.897 LS
+410.216 126.305 LE
+410.079 127.483 LS
+410.146 126.897 LE
+410.079 127.483 LS
+410.146 126.897 LE
+410.013 128.063 LS
+410.079 127.483 LE
+410.013 128.063 LS
+410.079 127.483 LE
+409.948 128.634 LS
+410.013 128.063 LE
+409.948 128.634 LS
+410.013 128.063 LE
+409.885 129.199 LS
+409.948 128.634 LE
+409.885 129.199 LS
+409.948 128.634 LE
+409.822 129.756 LS
+409.885 129.199 LE
+409.822 129.756 LS
+409.885 129.199 LE
+409.762 130.306 LS
+409.822 129.756 LE
+409.762 130.306 LS
+409.822 129.756 LE
+409.703 130.847 LS
+409.762 130.306 LE
+409.703 130.847 LS
+409.762 130.306 LE
+409.645 131.38 LS
+409.703 130.847 LE
+409.645 131.38 LS
+409.703 130.847 LE
+409.588 131.905 LS
+409.645 131.38 LE
+409.588 131.905 LS
+409.645 131.38 LE
+409.532 132.422 LS
+409.588 131.905 LE
+409.532 132.422 LS
+409.588 131.905 LE
+409.479 132.929 LS
+409.532 132.422 LE
+409.479 132.929 LS
+409.532 132.422 LE
+409.425 133.428 LS
+409.479 132.929 LE
+409.425 133.428 LS
+409.479 132.929 LE
+409.374 133.917 LS
+409.425 133.428 LE
+409.374 133.917 LS
+409.425 133.428 LE
+409.323 134.397 LS
+409.374 133.917 LE
+409.323 134.397 LS
+409.374 133.917 LE
+409.274 134.867 LS
+409.323 134.397 LE
+409.274 134.867 LS
+409.323 134.397 LE
+409.226 135.328 LS
+409.274 134.867 LE
+409.226 135.328 LS
+409.274 134.867 LE
+409.18 135.778 LS
+409.226 135.328 LE
+409.18 135.778 LS
+409.226 135.328 LE
+409.134 136.219 LS
+409.18 135.778 LE
+409.134 136.219 LS
+409.18 135.778 LE
+409.089 136.648 LS
+409.134 136.219 LE
+409.089 136.648 LS
+409.134 136.219 LE
+409.046 137.068 LS
+409.089 136.648 LE
+409.046 137.068 LS
+409.089 136.648 LE
+355.099 29.9614 LS
+536.826 81.9448 LE
+355.099 29.9614 LS
+536.826 81.9448 LE
+409.003 137.477 LS
+409.046 137.068 LE
+409.003 137.477 LS
+409.046 137.068 LE
+408.962 137.875 LS
+409.003 137.477 LE
+408.962 137.875 LS
+409.003 137.477 LE
+408.922 138.262 LS
+408.962 137.875 LE
+408.922 138.262 LS
+408.962 137.875 LE
+408.882 138.637 LS
+408.922 138.262 LE
+408.882 138.637 LS
+408.922 138.262 LE
+408.844 139.002 LS
+408.882 138.637 LE
+408.844 139.002 LS
+408.882 138.637 LE
+408.807 139.354 LS
+408.844 139.002 LE
+408.807 139.354 LS
+408.844 139.002 LE
+408.771 139.696 LS
+408.807 139.354 LE
+408.771 139.696 LS
+408.807 139.354 LE
+408.735 140.025 LS
+408.771 139.696 LE
+408.735 140.025 LS
+408.771 139.696 LE
+408.701 140.343 LS
+408.735 140.025 LE
+408.701 140.343 LS
+408.735 140.025 LE
+408.667 140.648 LS
+408.701 140.343 LE
+408.667 140.648 LS
+408.701 140.343 LE
+408.634 140.941 LS
+408.667 140.648 LE
+408.634 140.941 LS
+408.667 140.648 LE
+408.602 141.222 LS
+408.634 140.941 LE
+408.602 141.222 LS
+408.634 140.941 LE
+408.571 141.491 LS
+408.602 141.222 LE
+408.571 141.491 LS
+408.602 141.222 LE
+440.252 54.3198 LS
+442.9 52.8887 LE
+440.252 54.3198 LS
+442.9 52.8887 LE
+408.54 141.747 LS
+408.571 141.491 LE
+408.54 141.747 LS
+408.571 141.491 LE
+408.51 141.99 LS
+408.54 141.747 LE
+408.51 141.99 LS
+408.54 141.747 LE
+408.481 142.22 LS
+408.51 141.99 LE
+408.481 142.22 LS
+408.51 141.99 LE
+392.942 54.8081 LS
+393.129 55.0435 LE
+392.942 54.8081 LS
+393.129 55.0435 L
+393.316 55.2925 LE
+393.129 55.0435 LS
+393.316 55.2925 LE
+392.755 54.5864 LS
+392.942 54.8081 LE
+392.755 54.5864 LS
+392.942 54.8081 LE
+393.316 55.2925 LS
+393.502 55.5552 LE
+393.316 55.2925 LS
+393.502 55.5552 LE
+392.567 54.3784 LS
+392.755 54.5864 LE
+392.567 54.3784 LS
+392.755 54.5864 LE
+393.502 55.5552 LS
+393.688 55.8311 LE
+393.502 55.5552 LS
+393.688 55.8311 LE
+392.379 54.1841 LS
+392.567 54.3784 LE
+392.379 54.1841 LS
+392.567 54.3784 LE
+393.688 55.8311 LS
+393.873 56.1206 LE
+393.688 55.8311 LS
+393.873 56.1206 LE
+392.19 54.0039 LS
+392.379 54.1841 LE
+392.19 54.0039 LS
+392.379 54.1841 LE
+393.873 56.1206 LS
+394.058 56.4233 LE
+393.873 56.1206 LS
+394.058 56.4233 LE
+392.002 53.8374 LS
+392.19 54.0039 LE
+392.002 53.8374 LS
+392.19 54.0039 LE
+394.058 56.4233 LS
+394.242 56.7397 LE
+394.058 56.4233 LS
+394.242 56.7397 L
+394.425 57.0693 LE
+394.242 56.7397 LS
+394.425 57.0693 LE
+391.813 53.6851 LS
+392.002 53.8374 LE
+391.813 53.6851 LS
+392.002 53.8374 LE
+394.425 57.0693 LS
+394.607 57.4116 LE
+394.425 57.0693 LS
+394.607 57.4116 LE
+391.624 53.5464 LS
+391.813 53.6851 LE
+391.624 53.5464 LS
+391.813 53.6851 LE
+394.607 57.4116 LS
+394.79 57.7671 LE
+394.607 57.4116 LS
+394.79 57.7671 LE
+391.434 53.4219 LS
+391.624 53.5464 LE
+391.434 53.4219 LS
+391.624 53.5464 LE
+394.79 57.7671 LS
+394.971 58.1353 LE
+394.79 57.7671 LS
+394.971 58.1353 LE
+391.245 53.311 LS
+391.434 53.4219 LE
+391.245 53.311 LS
+391.434 53.4219 LE
+394.971 58.1353 LS
+395.152 58.5166 LE
+394.971 58.1353 LS
+395.152 58.5166 LE
+391.055 53.2144 LS
+391.245 53.311 LE
+391.055 53.2144 LS
+391.245 53.311 LE
+408.453 142.438 LS
+408.481 142.22 LE
+408.453 142.438 LS
+408.481 142.22 LE
+395.152 58.5166 LS
+395.332 58.9102 LE
+395.152 58.5166 LS
+395.332 58.9102 LE
+390.865 53.1318 LS
+391.055 53.2144 LE
+390.865 53.1318 LS
+391.055 53.2144 LE
+395.332 58.9102 LS
+395.511 59.3169 LE
+395.332 58.9102 LS
+395.511 59.3169 LE
+390.675 53.0635 LS
+390.865 53.1318 LE
+390.675 53.0635 LS
+390.865 53.1318 LE
+395.511 59.3169 LS
+395.689 59.7354 LE
+395.511 59.3169 LS
+395.689 59.7354 LE
+390.485 53.0088 LS
+390.675 53.0635 LE
+390.485 53.0088 LS
+390.675 53.0635 LE
+395.689 59.7354 LS
+395.867 60.1665 LE
+395.689 59.7354 LS
+395.867 60.1665 LE
+390.295 52.9683 LS
+390.485 53.0088 LE
+390.295 52.9683 LS
+390.485 53.0088 LE
+395.867 60.1665 LS
+396.043 60.6099 LE
+395.867 60.1665 LS
+396.043 60.6099 LE
+390.104 52.9419 LS
+390.295 52.9683 LE
+390.104 52.9419 LS
+390.295 52.9683 LE
+396.043 60.6099 LS
+396.219 61.0654 LE
+396.043 60.6099 LS
+396.219 61.0654 LE
+408.425 142.642 LS
+408.453 142.438 LE
+408.425 142.642 LS
+408.453 142.438 LE
+389.915 52.9292 LS
+390.104 52.9419 LE
+389.915 52.9292 LS
+390.104 52.9419 LE
+396.219 61.0654 LS
+396.394 61.5327 LE
+396.219 61.0654 LS
+396.394 61.5327 L
+396.568 62.0117 LE
+396.394 61.5327 LS
+396.568 62.0117 LE
+389.725 52.9307 LS
+389.915 52.9292 LE
+389.725 52.9307 LS
+389.915 52.9292 LE
+396.568 62.0117 LS
+396.741 62.5024 LE
+396.568 62.0117 LS
+396.741 62.5024 LE
+389.535 52.9463 LS
+389.725 52.9307 LE
+389.535 52.9463 LS
+389.725 52.9307 LE
+396.741 62.5024 LS
+396.913 63.0049 LE
+396.741 62.5024 LS
+396.913 63.0049 LE
+408.398 142.833 LS
+408.425 142.642 LE
+408.398 142.833 LS
+408.425 142.642 LE
+389.345 52.9756 LS
+389.535 52.9463 LE
+389.345 52.9756 LS
+389.535 52.9463 LE
+396.913 63.0049 LS
+397.084 63.5186 LE
+396.913 63.0049 LS
+397.084 63.5186 LE
+389.155 53.0186 LS
+389.345 52.9756 LE
+389.155 53.0186 LS
+389.345 52.9756 LE
+397.084 63.5186 LS
+397.254 64.043 LE
+397.084 63.5186 LS
+397.254 64.043 LE
+388.966 53.0757 LS
+389.155 53.0186 LE
+388.966 53.0757 LS
+389.155 53.0186 LE
+397.254 64.043 LS
+397.423 64.5786 LE
+397.254 64.043 LS
+397.423 64.5786 LE
+408.372 143.012 LS
+408.398 142.833 LE
+408.372 143.012 LS
+408.398 142.833 LE
+388.777 53.1465 LS
+388.966 53.0757 LE
+388.777 53.1465 LS
+388.966 53.0757 LE
+397.423 64.5786 LS
+397.591 65.1255 LE
+397.423 64.5786 LS
+397.591 65.1255 L
+397.758 65.6826 LE
+397.591 65.1255 LS
+397.758 65.6826 LE
+388.588 53.231 LS
+388.777 53.1465 LE
+388.588 53.231 LS
+388.777 53.1465 LE
+397.758 65.6826 LS
+397.924 66.2505 LE
+397.758 65.6826 LS
+397.924 66.2505 LE
+388.399 53.3291 LS
+388.588 53.231 LE
+388.399 53.3291 LS
+388.588 53.231 LE
+408.346 143.176 LS
+408.372 143.012 LE
+408.346 143.176 LS
+408.372 143.012 LE
+397.924 66.2505 LS
+398.089 66.8286 LE
+397.924 66.2505 LS
+398.089 66.8286 LE
+388.211 53.4414 LS
+388.399 53.3291 LE
+388.211 53.4414 LS
+388.399 53.3291 LE
+398.089 66.8286 LS
+398.252 67.417 LE
+398.089 66.8286 LS
+398.252 67.417 LE
+388.023 53.5669 LS
+388.211 53.4414 LE
+388.023 53.5669 LS
+388.211 53.4414 LE
+398.252 67.417 LS
+398.415 68.0151 LE
+398.252 67.417 LS
+398.415 68.0151 LE
+408.321 143.328 LS
+408.346 143.176 LE
+408.321 143.328 LS
+408.346 143.176 LE
+398.415 68.0151 LS
+398.576 68.6235 LE
+398.415 68.0151 LS
+398.576 68.6235 LE
+387.835 53.7056 LS
+388.023 53.5669 LE
+387.835 53.7056 LS
+388.023 53.5669 LE
+398.576 68.6235 LS
+398.736 69.2412 LE
+398.576 68.6235 LS
+398.736 69.2412 LE
+387.648 53.8579 LS
+387.835 53.7056 LE
+387.648 53.8579 LS
+387.835 53.7056 LE
+398.736 69.2412 LS
+398.895 69.8682 LE
+398.736 69.2412 LS
+398.895 69.8682 LE
+408.296 143.466 LS
+408.321 143.328 LE
+408.296 143.466 LS
+408.321 143.328 LE
+387.461 54.0239 LS
+387.648 53.8579 LE
+387.461 54.0239 LS
+387.648 53.8579 LE
+398.895 69.8682 LS
+399.052 70.5044 LE
+398.895 69.8682 LS
+399.052 70.5044 LE
+387.275 54.2031 LS
+387.461 54.0239 LE
+387.275 54.2031 LS
+387.461 54.0239 LE
+399.052 70.5044 LS
+399.208 71.1494 LE
+399.052 70.5044 LS
+399.208 71.1494 LE
+408.271 143.59 LS
+408.296 143.466 LE
+408.271 143.59 LS
+408.296 143.466 LE
+399.208 71.1494 LS
+399.363 71.8037 LE
+399.208 71.1494 LS
+399.363 71.8037 LE
+387.089 54.395 LS
+387.275 54.2031 LE
+387.089 54.395 LS
+387.275 54.2031 LE
+399.363 71.8037 LS
+399.517 72.4663 LE
+399.363 71.8037 LS
+399.517 72.4663 LE
+386.903 54.6006 LS
+387.089 54.395 LE
+386.903 54.6006 LS
+387.089 54.395 LE
+408.248 143.702 LS
+408.271 143.59 LE
+408.248 143.702 LS
+408.271 143.59 LE
+399.517 72.4663 LS
+399.669 73.1372 LE
+399.517 72.4663 LS
+399.669 73.1372 LE
+386.718 54.8188 LS
+386.903 54.6006 LE
+386.718 54.8188 LS
+386.903 54.6006 LE
+399.669 73.1372 LS
+399.82 73.8164 LE
+399.669 73.1372 LS
+399.82 73.8164 L
+399.97 74.5039 LE
+399.82 73.8164 LS
+399.97 74.5039 LE
+408.224 143.799 LS
+408.248 143.702 LE
+408.224 143.799 LS
+408.248 143.702 LE
+386.534 55.0498 LS
+386.718 54.8188 LE
+386.534 55.0498 LS
+386.718 54.8188 LE
+399.97 74.5039 LS
+400.118 75.1987 LE
+399.97 74.5039 LS
+400.118 75.1987 LE
+386.351 55.2939 LS
+386.534 55.0498 LE
+386.351 55.2939 LS
+386.534 55.0498 LE
+400.118 75.1987 LS
+400.265 75.9014 LE
+400.118 75.1987 LS
+400.265 75.9014 LE
+408.201 143.882 LS
+408.224 143.799 LE
+408.201 143.882 LS
+408.224 143.799 LE
+386.167 55.5508 LS
+386.351 55.2939 LE
+386.167 55.5508 LS
+386.351 55.2939 LE
+400.265 75.9014 LS
+400.411 76.6108 LE
+400.265 75.9014 LS
+400.411 76.6108 L
+400.555 77.3276 LE
+400.411 76.6108 LS
+400.555 77.3276 LE
+408.179 143.952 LS
+408.201 143.882 LE
+408.179 143.952 LS
+408.201 143.882 LE
+385.985 55.8198 LS
+386.167 55.5508 LE
+385.985 55.8198 LS
+386.167 55.5508 LE
+400.555 77.3276 LS
+400.697 78.0513 LE
+400.555 77.3276 LS
+400.697 78.0513 LE
+385.803 56.1016 LS
+385.985 55.8198 LE
+385.803 56.1016 LS
+385.985 55.8198 LE
+400.697 78.0513 LS
+400.838 78.7813 LE
+400.697 78.0513 LS
+400.838 78.7813 LE
+408.156 144.008 LS
+408.179 143.952 LE
+408.156 144.008 LS
+408.179 143.952 LE
+400.838 78.7813 LS
+400.978 79.5181 LE
+400.838 78.7813 LS
+400.978 79.5181 LE
+385.622 56.3955 LS
+385.803 56.1016 LE
+385.622 56.3955 LS
+385.803 56.1016 LE
+408.134 144.05 LS
+408.156 144.008 LE
+408.134 144.05 LS
+408.156 144.008 LE
+400.978 79.5181 LS
+401.117 80.2607 LE
+400.978 79.5181 LS
+401.117 80.2607 LE
+385.441 56.7017 LS
+385.622 56.3955 LE
+385.441 56.7017 LS
+385.622 56.3955 LE
+401.117 80.2607 LS
+401.253 81.0093 LE
+401.117 80.2607 LS
+401.253 81.0093 LE
+408.112 144.079 LS
+408.134 144.05 LE
+408.112 144.079 LS
+408.134 144.05 LE
+401.253 81.0093 LS
+401.389 81.7637 LE
+401.253 81.0093 LS
+401.389 81.7637 LE
+385.262 57.02 LS
+385.441 56.7017 LE
+385.262 57.02 LS
+385.441 56.7017 LE
+401.389 81.7637 LS
+401.522 82.5234 LE
+401.389 81.7637 LS
+401.522 82.5234 LE
+408.091 144.093 LS
+408.112 144.079 LE
+408.091 144.093 LS
+408.112 144.079 LE
+385.083 57.3501 LS
+385.262 57.02 LE
+385.083 57.3501 LS
+385.262 57.02 LE
+401.522 82.5234 LS
+401.655 83.2881 LE
+401.522 82.5234 LS
+401.655 83.2881 L
+401.786 84.0581 LE
+401.655 83.2881 LS
+401.786 84.0581 LE
+384.905 57.6919 LS
+385.083 57.3501 LE
+384.905 57.6919 LS
+385.083 57.3501 LE
+408.07 144.093 LS
+408.091 144.093 LE
+408.07 144.093 LS
+408.091 144.093 LE
+401.786 84.0581 LS
+401.915 84.8325 LE
+401.786 84.0581 LS
+401.915 84.8325 LE
+384.728 58.0454 LS
+384.905 57.6919 LE
+384.728 58.0454 LS
+384.905 57.6919 LE
+408.049 144.08 LS
+408.07 144.093 LE
+408.049 144.08 LS
+408.07 144.093 LE
+401.915 84.8325 LS
+402.043 85.6113 LE
+401.915 84.8325 LS
+402.043 85.6113 L
+402.169 86.3945 LE
+402.043 85.6113 LS
+402.169 86.3945 LE
+384.551 58.4106 LS
+384.728 58.0454 LE
+384.551 58.4106 LS
+384.728 58.0454 LE
+408.028 144.052 LS
+408.049 144.08 LE
+408.028 144.052 LS
+408.049 144.08 LE
+402.169 86.3945 LS
+402.294 87.1812 LE
+402.169 86.3945 LS
+402.294 87.1812 L
+402.417 87.9722 LE
+402.294 87.1812 LS
+402.417 87.9722 LE
+384.376 58.7871 LS
+384.551 58.4106 LE
+384.376 58.7871 LS
+384.551 58.4106 LE
+408.007 144.01 LS
+408.028 144.052 LE
+408.007 144.01 LS
+408.028 144.052 LE
+402.417 87.9722 LS
+402.539 88.7661 LE
+402.417 87.9722 LS
+402.539 88.7661 LE
+384.201 59.1748 LS
+384.376 58.7871 LE
+384.201 59.1748 LS
+384.376 58.7871 LE
+407.987 143.955 LS
+408.007 144.01 LE
+407.987 143.955 LS
+408.007 144.01 LE
+402.539 88.7661 LS
+402.659 89.5635 LE
+402.539 88.7661 LS
+402.659 89.5635 L
+402.777 90.3633 LE
+402.659 89.5635 LS
+402.777 90.3633 LE
+407.966 143.885 LS
+407.987 143.955 LE
+407.966 143.885 LS
+407.987 143.955 LE
+384.027 59.5732 LS
+384.201 59.1748 LE
+384.027 59.5732 LS
+384.201 59.1748 LE
+402.777 90.3633 LS
+402.894 91.166 LE
+402.777 90.3633 LS
+402.894 91.166 LE
+407.946 143.801 LS
+407.966 143.885 LE
+407.946 143.801 LS
+407.966 143.885 LE
+402.894 91.166 LS
+403.009 91.9712 LE
+402.894 91.166 LS
+403.009 91.9712 LE
+383.855 59.9829 LS
+384.027 59.5732 LE
+383.855 59.9829 LS
+384.027 59.5732 LE
+403.009 91.9712 LS
+403.123 92.7788 LE
+403.009 91.9712 LS
+403.123 92.7788 LE
+407.925 143.703 LS
+407.946 143.801 LE
+407.925 143.703 LS
+407.946 143.801 LE
+403.123 92.7788 LS
+403.235 93.5879 LE
+403.123 92.7788 LS
+403.235 93.5879 LE
+383.683 60.4028 LS
+383.855 59.9829 LE
+383.683 60.4028 LS
+383.855 59.9829 LE
+407.905 143.591 LS
+407.925 143.703 LE
+407.905 143.591 LS
+407.925 143.703 LE
+403.235 93.5879 LS
+403.346 94.3984 LE
+403.235 93.5879 LS
+403.346 94.3984 LE
+383.512 60.8335 LS
+383.683 60.4028 LE
+383.512 60.8335 LS
+383.683 60.4028 LE
+403.346 94.3984 LS
+403.455 95.2104 LE
+403.346 94.3984 LS
+403.455 95.2104 LE
+407.884 143.466 LS
+407.905 143.591 LE
+407.884 143.466 LS
+407.905 143.591 LE
+403.455 95.2104 LS
+403.562 96.0239 LE
+403.455 95.2104 LS
+403.562 96.0239 LE
+407.864 143.326 LS
+407.884 143.466 LE
+407.864 143.326 LS
+407.884 143.466 LE
+383.343 61.2744 LS
+383.512 60.8335 LE
+383.343 61.2744 LS
+383.512 60.8335 LE
+403.562 96.0239 LS
+403.668 96.8374 LE
+403.562 96.0239 LS
+403.668 96.8374 L
+403.772 97.6523 LE
+403.668 96.8374 LS
+403.772 97.6523 LE
+407.843 143.172 LS
+407.864 143.326 LE
+407.843 143.172 LS
+407.864 143.326 LE
+383.174 61.7256 LS
+383.343 61.2744 LE
+383.174 61.7256 LS
+383.343 61.2744 LE
+403.772 97.6523 LS
+403.875 98.4668 LE
+403.772 97.6523 LS
+403.875 98.4668 LE
+407.822 143.004 LS
+407.843 143.172 LE
+407.822 143.004 LS
+407.843 143.172 LE
+403.875 98.4668 LS
+403.976 99.2817 LE
+403.875 98.4668 LS
+403.976 99.2817 LE
+407.801 142.823 LS
+407.822 143.004 LE
+407.801 142.823 LS
+407.822 143.004 LE
+403.976 99.2817 LS
+404.075 100.096 LE
+403.976 99.2817 LS
+404.075 100.096 LE
+383.006 62.1865 LS
+383.174 61.7256 LE
+383.006 62.1865 LS
+383.174 61.7256 LE
+404.075 100.096 LS
+404.173 100.91 LE
+404.075 100.096 LS
+404.173 100.91 LE
+407.78 142.627 LS
+407.801 142.823 LE
+407.78 142.627 LS
+407.801 142.823 LE
+404.173 100.91 LS
+404.269 101.724 LE
+404.173 100.91 LS
+404.269 101.724 LE
+382.84 62.6577 LS
+383.006 62.1865 LE
+382.84 62.6577 LS
+383.006 62.1865 LE
+407.759 142.418 LS
+407.78 142.627 LE
+407.759 142.418 LS
+407.78 142.627 LE
+404.269 101.724 LS
+404.364 102.536 LE
+404.269 101.724 LS
+404.364 102.536 LE
+407.737 142.195 LS
+407.759 142.418 LE
+407.737 142.195 LS
+407.759 142.418 LE
+404.364 102.536 LS
+404.457 103.347 LE
+404.364 102.536 LS
+404.457 103.347 LE
+382.675 63.1382 LS
+382.84 62.6577 LE
+382.675 63.1382 LS
+382.84 62.6577 LE
+404.457 103.347 LS
+404.548 104.156 LE
+404.457 103.347 LS
+404.548 104.156 LE
+407.715 141.958 LS
+407.737 142.195 LE
+407.715 141.958 LS
+407.737 142.195 LE
+404.548 104.156 LS
+404.638 104.964 LE
+404.548 104.156 LS
+404.638 104.964 LE
+407.693 141.708 LS
+407.715 141.958 LE
+407.693 141.708 LS
+407.715 141.958 LE
+382.51 63.6279 LS
+382.675 63.1382 LE
+382.51 63.6279 LS
+382.675 63.1382 LE
+404.638 104.964 LS
+404.727 105.769 LE
+404.638 104.964 LS
+404.727 105.769 LE
+407.67 141.444 LS
+407.693 141.708 LE
+407.67 141.444 LS
+407.693 141.708 LE
+404.727 105.769 LS
+404.813 106.572 LE
+404.727 105.769 LS
+404.813 106.572 L
+404.898 107.373 LE
+404.813 106.572 LS
+404.898 107.373 LE
+407.647 141.167 LS
+407.67 141.444 LE
+407.647 141.167 LS
+407.67 141.444 LE
+382.347 64.127 LS
+382.51 63.6279 LE
+382.347 64.127 LS
+382.51 63.6279 LE
+404.898 107.373 LS
+404.982 108.17 LE
+404.898 107.373 LS
+404.982 108.17 LE
+407.624 140.876 LS
+407.647 141.167 LE
+407.624 140.876 LS
+407.647 141.167 LE
+404.982 108.17 LS
+405.064 108.965 LE
+404.982 108.17 LS
+405.064 108.965 LE
+407.6 140.571 LS
+407.624 140.876 LE
+407.6 140.571 LS
+407.624 140.876 LE
+405.064 108.965 LS
+405.145 109.756 LE
+405.064 108.965 LS
+405.145 109.756 LE
+382.185 64.6353 LS
+382.347 64.127 LE
+382.185 64.6353 LS
+382.347 64.127 LE
+407.576 140.254 LS
+407.6 140.571 LE
+407.576 140.254 LS
+407.6 140.571 LE
+405.145 109.756 LS
+405.224 110.543 LE
+405.145 109.756 LS
+405.224 110.543 LE
+407.551 139.923 LS
+407.576 140.254 LE
+407.551 139.923 LS
+407.576 140.254 LE
+405.224 110.543 LS
+405.302 111.327 LE
+405.224 110.543 LS
+405.302 111.327 L
+405.377 112.106 LE
+405.302 111.327 LS
+405.377 112.106 LE
+407.526 139.58 LS
+407.551 139.923 LE
+407.526 139.58 LS
+407.551 139.923 LE
+382.024 65.1519 LS
+382.185 64.6353 LE
+382.024 65.1519 LS
+382.185 64.6353 LE
+405.377 112.106 LS
+405.452 112.882 LE
+405.377 112.106 LS
+405.452 112.882 LE
+407.5 139.223 LS
+407.526 139.58 LE
+407.5 139.223 LS
+407.526 139.58 LE
+405.452 112.882 LS
+405.525 113.652 LE
+405.452 112.882 LS
+405.525 113.652 LE
+407.474 138.853 LS
+407.5 139.223 LE
+407.474 138.853 LS
+407.5 139.223 LE
+405.525 113.652 LS
+405.597 114.418 LE
+405.525 113.652 LS
+405.597 114.418 LE
+407.447 138.471 LS
+407.474 138.853 LE
+407.447 138.471 LS
+407.474 138.853 LE
+381.865 65.6772 LS
+382.024 65.1519 LE
+381.865 65.6772 LS
+382.024 65.1519 LE
+405.597 114.418 LS
+405.667 115.178 LE
+405.597 114.418 LS
+405.667 115.178 LE
+407.42 138.075 LS
+407.447 138.471 LE
+407.42 138.075 LS
+407.447 138.471 LE
+405.667 115.178 LS
+405.736 115.933 LE
+405.667 115.178 LS
+405.736 115.933 LE
+407.392 137.667 LS
+407.42 138.075 LE
+407.392 137.667 LS
+407.42 138.075 LE
+405.736 115.933 LS
+405.803 116.683 LE
+405.736 115.933 LS
+405.803 116.683 L
+405.869 117.426 LE
+405.803 116.683 LS
+405.869 117.426 LE
+407.363 137.248 LS
+407.392 137.667 LE
+407.363 137.248 LS
+407.392 137.667 LE
+381.707 66.2114 LS
+381.865 65.6772 LE
+381.707 66.2114 LS
+381.865 65.6772 LE
+405.869 117.426 LS
+405.934 118.164 LE
+405.869 117.426 LS
+405.934 118.164 LE
+407.333 136.815 LS
+407.363 137.248 LE
+407.333 136.815 LS
+407.363 137.248 LE
+405.934 118.164 LS
+405.997 118.895 LE
+405.934 118.164 LS
+405.997 118.895 LE
+407.303 136.37 LS
+407.333 136.815 LE
+407.303 136.37 LS
+407.333 136.815 LE
+405.997 118.895 LS
+406.059 119.619 LE
+405.997 118.895 LS
+406.059 119.619 LE
+407.272 135.914 LS
+407.303 136.37 LE
+407.272 135.914 LS
+407.303 136.37 LE
+406.059 119.619 LS
+406.119 120.337 LE
+406.059 119.619 LS
+406.119 120.337 LE
+407.24 135.445 LS
+407.272 135.914 LE
+407.24 135.445 LS
+407.272 135.914 LE
+406.119 120.337 LS
+406.178 121.047 LE
+406.119 120.337 LS
+406.178 121.047 LE
+407.207 134.964 LS
+407.24 135.445 LE
+407.207 134.964 LS
+407.24 135.445 LE
+406.178 121.047 LS
+406.235 121.751 LE
+406.178 121.047 LS
+406.235 121.751 LE
+381.55 66.7534 LS
+381.707 66.2114 LE
+381.55 66.7534 LS
+381.707 66.2114 LE
+407.174 134.472 LS
+407.207 134.964 LE
+407.174 134.472 LS
+407.207 134.964 LE
+406.235 121.751 LS
+406.292 122.447 LE
+406.235 121.751 LS
+406.292 122.447 LE
+407.14 133.969 LS
+407.174 134.472 LE
+407.14 133.969 LS
+407.174 134.472 LE
+406.292 122.447 LS
+406.347 123.135 LE
+406.292 122.447 LS
+406.347 123.135 LE
+407.104 133.454 LS
+407.14 133.969 LE
+407.104 133.454 LS
+407.14 133.969 LE
+406.347 123.135 LS
+406.401 123.815 LE
+406.347 123.135 LS
+406.401 123.815 LE
+407.068 132.928 LS
+407.104 133.454 LE
+407.068 132.928 LS
+407.104 133.454 LE
+406.401 123.815 LS
+406.453 124.487 LE
+406.401 123.815 LS
+406.453 124.487 L
+406.504 125.151 LE
+406.453 124.487 LS
+406.504 125.151 LE
+407.031 132.391 LS
+407.068 132.928 LE
+407.031 132.391 LS
+407.068 132.928 LE
+406.504 125.151 LS
+406.555 125.807 LE
+406.504 125.151 LS
+406.555 125.807 LE
+406.993 131.843 LS
+407.031 132.391 LE
+406.993 131.843 LS
+407.031 132.391 LE
+406.555 125.807 LS
+406.604 126.453 LE
+406.555 125.807 LS
+406.604 126.453 LE
+406.954 131.284 LS
+406.993 131.843 LE
+406.954 131.284 LS
+406.993 131.843 LE
+406.604 126.453 LS
+406.651 127.09 LE
+406.604 126.453 LS
+406.651 127.09 LE
+406.914 130.715 LS
+406.954 131.284 LE
+406.914 130.715 LS
+406.954 131.284 LE
+406.651 127.09 LS
+406.698 127.719 LE
+406.651 127.09 LS
+406.698 127.719 LE
+406.873 130.136 LS
+406.914 130.715 LE
+406.873 130.136 LS
+406.914 130.715 LE
+406.698 127.719 LS
+406.743 128.337 LE
+406.698 127.719 LS
+406.743 128.337 LE
+406.831 129.546 LS
+406.873 130.136 LE
+406.831 129.546 LS
+406.873 130.136 LE
+406.743 128.337 LS
+406.788 128.947 LE
+406.743 128.337 LS
+406.788 128.947 L
+406.831 129.546 LE
+406.788 128.947 LS
+406.831 129.546 LE
+381.394 67.3032 LS
+381.55 66.7534 LE
+381.394 67.3032 LS
+381.55 66.7534 LE
+381.239 67.8613 LS
+381.394 67.3032 LE
+381.239 67.8613 LS
+381.394 67.3032 LE
+381.086 68.4263 LS
+381.239 67.8613 LE
+381.086 68.4263 LS
+381.239 67.8613 LE
+380.935 68.999 LS
+381.086 68.4263 LE
+380.935 68.999 LS
+381.086 68.4263 LE
+380.784 69.5786 LS
+380.935 68.999 LE
+380.784 69.5786 LS
+380.935 68.999 LE
+380.635 70.165 LS
+380.784 69.5786 LE
+380.635 70.165 LS
+380.784 69.5786 LE
+380.487 70.7578 LS
+380.635 70.165 LE
+380.487 70.7578 LS
+380.635 70.165 LE
+380.341 71.3574 LS
+380.487 70.7578 LE
+380.341 71.3574 LS
+380.487 70.7578 LE
+380.196 71.9629 LS
+380.341 71.3574 LE
+380.196 71.9629 LS
+380.341 71.3574 LE
+380.052 72.5742 LS
+380.196 71.9629 LE
+380.052 72.5742 LS
+380.196 71.9629 LE
+379.91 73.1914 LS
+380.052 72.5742 LE
+379.91 73.1914 LS
+380.052 72.5742 LE
+379.769 73.814 LS
+379.91 73.1914 LE
+379.769 73.814 LS
+379.91 73.1914 LE
+379.63 74.4414 LS
+379.769 73.814 LE
+379.63 74.4414 LS
+379.769 73.814 LE
+379.492 75.0742 LS
+379.63 74.4414 LE
+379.492 75.0742 LS
+379.63 74.4414 LE
+379.356 75.7114 LS
+379.492 75.0742 LE
+379.356 75.7114 LS
+379.492 75.0742 LE
+379.221 76.353 LS
+379.356 75.7114 LE
+379.221 76.353 LS
+379.356 75.7114 LE
+379.087 76.999 LS
+379.221 76.353 LE
+379.087 76.999 LS
+379.221 76.353 LE
+378.956 77.6484 LS
+379.087 76.999 LE
+378.956 77.6484 LS
+379.087 76.999 LE
+378.826 78.3022 LS
+378.956 77.6484 LE
+378.826 78.3022 LS
+378.956 77.6484 LE
+411.89 46.2065 LS
+417.184 43.3418 LE
+411.89 46.2065 LS
+417.184 43.3418 LE
+378.697 78.959 LS
+378.826 78.3022 LE
+378.697 78.959 LS
+378.826 78.3022 LE
+378.569 79.6191 LS
+378.697 78.959 LE
+378.569 79.6191 LS
+378.697 78.959 LE
+378.444 80.2817 LS
+378.569 79.6191 LE
+378.444 80.2817 LS
+378.569 79.6191 LE
+378.319 80.9473 LS
+378.444 80.2817 LE
+378.319 80.9473 LS
+378.444 80.2817 LE
+378.197 81.6152 LS
+378.319 80.9473 LE
+378.197 81.6152 LS
+378.319 80.9473 LE
+378.076 82.2856 LS
+378.197 81.6152 LE
+378.076 82.2856 LS
+378.197 81.6152 LE
+377.957 82.9575 LS
+378.076 82.2856 LE
+377.957 82.9575 LS
+378.076 82.2856 LE
+377.838 83.6309 LS
+377.957 82.9575 LE
+377.838 83.6309 LS
+377.957 82.9575 LE
+377.722 84.3062 LS
+377.838 83.6309 LE
+377.722 84.3062 LS
+377.838 83.6309 LE
+377.607 84.9819 LS
+377.722 84.3062 LE
+377.607 84.9819 LS
+377.722 84.3062 LE
+377.494 85.6587 LS
+377.607 84.9819 LE
+377.494 85.6587 LS
+377.607 84.9819 LE
+377.383 86.3359 LS
+377.494 85.6587 LE
+377.383 86.3359 LS
+377.494 85.6587 LE
+377.272 87.0137 LS
+377.383 86.3359 LE
+377.272 87.0137 LS
+377.383 86.3359 LE
+377.164 87.6914 LS
+377.272 87.0137 LE
+377.164 87.6914 LS
+377.272 87.0137 LE
+377.058 88.3687 LS
+377.164 87.6914 LE
+377.058 88.3687 LS
+377.164 87.6914 LE
+376.952 89.0454 LS
+377.058 88.3687 LE
+376.952 89.0454 LS
+377.058 88.3687 LE
+376.849 89.7217 LS
+376.952 89.0454 LE
+376.849 89.7217 LS
+376.952 89.0454 LE
+376.747 90.3965 LS
+376.849 89.7217 LE
+376.747 90.3965 LS
+376.849 89.7217 LE
+376.646 91.0703 LS
+376.747 90.3965 LE
+376.646 91.0703 LS
+376.747 90.3965 LE
+376.547 91.7427 LS
+376.646 91.0703 LE
+376.547 91.7427 LS
+376.646 91.0703 LE
+376.45 92.4131 LS
+376.547 91.7427 LE
+376.45 92.4131 LS
+376.547 91.7427 LE
+376.354 93.0815 LS
+376.45 92.4131 LE
+376.354 93.0815 LS
+376.45 92.4131 LE
+376.26 93.7471 LS
+376.354 93.0815 LE
+376.26 93.7471 LS
+376.354 93.0815 LE
+376.167 94.4106 LS
+376.26 93.7471 LE
+376.167 94.4106 LS
+376.26 93.7471 LE
+376.077 95.0713 LS
+376.167 94.4106 LE
+376.077 95.0713 LS
+376.167 94.4106 LE
+375.987 95.7285 LS
+376.077 95.0713 LE
+375.987 95.7285 LS
+376.077 95.0713 LE
+375.899 96.3828 LS
+375.987 95.7285 LE
+375.899 96.3828 LS
+375.987 95.7285 LE
+375.813 97.0332 LS
+375.899 96.3828 LE
+375.813 97.0332 LS
+375.899 96.3828 LE
+375.729 97.6797 LS
+375.813 97.0332 LE
+375.729 97.6797 LS
+375.813 97.0332 LE
+375.645 98.3218 LS
+375.729 97.6797 LE
+375.645 98.3218 LS
+375.729 97.6797 LE
+375.563 98.96 LS
+375.645 98.3218 LE
+375.563 98.96 LS
+375.645 98.3218 LE
+375.483 99.5933 LS
+375.563 98.96 LE
+375.483 99.5933 LS
+375.563 98.96 LE
+375.405 100.222 LS
+375.483 99.5933 LE
+375.405 100.222 LS
+375.483 99.5933 LE
+375.328 100.845 LS
+375.405 100.222 LE
+375.328 100.845 LS
+375.405 100.222 LE
+375.252 101.463 LS
+375.328 100.845 LE
+375.252 101.463 LS
+375.328 100.845 LE
+375.178 102.075 LS
+375.252 101.463 LE
+375.178 102.075 LS
+375.252 101.463 LE
+375.105 102.682 LS
+375.178 102.075 LE
+375.105 102.682 LS
+375.178 102.075 LE
+383.506 38.0874 LS
+386.151 36.6538 LE
+383.506 38.0874 LS
+386.151 36.6538 LE
+375.034 103.282 LS
+375.105 102.682 LE
+375.034 103.282 LS
+375.105 102.682 LE
+374.964 103.876 LS
+375.034 103.282 LE
+374.964 103.876 LS
+375.034 103.282 LE
+374.896 104.463 LS
+374.964 103.876 LE
+374.896 104.463 LS
+374.964 103.876 LE
+374.829 105.044 LS
+374.896 104.463 LE
+374.829 105.044 LS
+374.896 104.463 LE
+374.764 105.618 LS
+374.829 105.044 LE
+374.764 105.618 LS
+374.829 105.044 LE
+374.7 106.184 LS
+374.764 105.618 LE
+374.7 106.184 LS
+374.764 105.618 LE
+374.637 106.743 LS
+374.7 106.184 LE
+374.637 106.743 LS
+374.7 106.184 LE
+374.576 107.294 LS
+374.637 106.743 LE
+374.576 107.294 LS
+374.637 106.743 LE
+374.516 107.837 LS
+374.576 107.294 LE
+374.516 107.837 LS
+374.576 107.294 LE
+374.457 108.372 LS
+374.516 107.837 LE
+374.457 108.372 LS
+374.516 107.837 LE
+374.4 108.899 LS
+374.457 108.372 LE
+374.4 108.899 LS
+374.457 108.372 LE
+374.344 109.417 LS
+374.4 108.899 LE
+374.344 109.417 LS
+374.4 108.899 LE
+374.289 109.926 LS
+374.344 109.417 LE
+374.289 109.926 LS
+374.344 109.417 LE
+374.235 110.426 LS
+374.289 109.926 LE
+374.235 110.426 LS
+374.289 109.926 LE
+374.183 110.917 LS
+374.235 110.426 LE
+374.183 110.917 LS
+374.235 110.426 LE
+374.132 111.399 LS
+374.183 110.917 LE
+374.132 111.399 LS
+374.183 110.917 LE
+374.083 111.872 LS
+374.132 111.399 LE
+374.083 111.872 LS
+374.132 111.399 LE
+374.034 112.334 LS
+374.083 111.872 LE
+374.034 112.334 LS
+374.083 111.872 LE
+373.987 112.787 LS
+374.034 112.334 LE
+373.987 112.787 LS
+374.034 112.334 LE
+373.94 113.229 LS
+373.987 112.787 LE
+373.94 113.229 LS
+373.987 112.787 LE
+373.896 113.661 LS
+373.94 113.229 LE
+373.896 113.661 LS
+373.94 113.229 LE
+373.851 114.083 LS
+373.896 113.661 LE
+373.851 114.083 LS
+373.896 113.661 LE
+373.809 114.493 LS
+373.851 114.083 LE
+373.809 114.493 LS
+373.851 114.083 LE
+373.767 114.893 LS
+373.809 114.493 LE
+373.767 114.893 LS
+373.809 114.493 LE
+373.726 115.282 LS
+373.767 114.893 LE
+373.726 115.282 LS
+373.767 114.893 LE
+373.686 115.66 LS
+373.726 115.282 LE
+373.686 115.66 LS
+373.726 115.282 LE
+373.647 116.026 LS
+373.686 115.66 LE
+373.647 116.026 LS
+373.686 115.66 LE
+373.609 116.381 LS
+373.647 116.026 LE
+373.609 116.381 LS
+373.647 116.026 LE
+373.572 116.725 LS
+373.609 116.381 LE
+373.572 116.725 LS
+373.609 116.381 LE
+373.537 117.057 LS
+373.572 116.725 LE
+373.537 117.057 LS
+373.572 116.725 LE
+373.501 117.376 LS
+373.537 117.057 LE
+373.501 117.376 LS
+373.537 117.057 LE
+373.467 117.684 LS
+373.501 117.376 LE
+373.467 117.684 LS
+373.501 117.376 LE
+373.434 117.979 LS
+373.467 117.684 LE
+373.434 117.979 LS
+373.467 117.684 LE
+373.401 118.262 LS
+373.434 117.979 LE
+373.401 118.262 LS
+373.434 117.979 LE
+373.37 118.533 LS
+373.401 118.262 LE
+373.37 118.533 LS
+373.401 118.262 LE
+373.339 118.791 LS
+373.37 118.533 LE
+373.339 118.791 LS
+373.37 118.533 LE
+373.309 119.037 LS
+373.339 118.791 LE
+373.309 119.037 LS
+373.339 118.791 LE
+373.279 119.269 LS
+373.309 119.037 LE
+373.279 119.269 LS
+373.309 119.037 LE
+373.25 119.489 LS
+373.279 119.269 LE
+373.25 119.489 LS
+373.279 119.269 LE
+355.479 30.0615 LS
+355.656 30.1274 LE
+355.479 30.0615 LS
+355.656 30.1274 LE
+355.29 30.0044 LS
+355.479 30.0615 LE
+355.29 30.0044 LS
+355.479 30.0615 LE
+355.099 29.9614 LS
+355.29 30.0044 LE
+355.099 29.9614 LS
+355.29 30.0044 LE
+373.222 119.695 LS
+373.25 119.489 LE
+373.222 119.695 LS
+373.25 119.489 LE
+373.195 119.889 LS
+373.222 119.695 LE
+373.195 119.889 LS
+373.222 119.695 LE
+373.168 120.069 LS
+373.195 119.889 LE
+373.168 120.069 LS
+373.195 119.889 LE
+373.142 120.236 LS
+373.168 120.069 LE
+373.142 120.236 LS
+373.168 120.069 LE
+373.116 120.39 LS
+373.142 120.236 LE
+373.116 120.39 LS
+373.142 120.236 LE
+373.091 120.531 LS
+373.116 120.39 LE
+373.091 120.531 LS
+373.116 120.39 LE
+373.066 120.657 LS
+373.091 120.531 LE
+373.066 120.657 LS
+373.091 120.531 LE
+373.042 120.771 LS
+373.066 120.657 LE
+373.042 120.771 LS
+373.066 120.657 LE
+355.099 29.9614 LS
+347.811 27.877 LE
+355.099 29.9614 LS
+347.811 27.877 LE
+373.019 120.87 LS
+373.042 120.771 LE
+373.019 120.87 LS
+373.042 120.771 LE
+372.995 120.956 LS
+373.019 120.87 LE
+372.995 120.956 LS
+373.019 120.87 LE
+355.099 29.9614 LS
+360.389 27.0918 LE
+355.099 29.9614 LS
+360.389 27.0918 LE
+372.972 121.028 LS
+372.995 120.956 LE
+372.972 121.028 LS
+372.995 120.956 LE
+372.949 121.086 LS
+372.972 121.028 LE
+372.949 121.086 LS
+372.972 121.028 LE
+372.927 121.13 LS
+372.949 121.086 LE
+372.927 121.13 LS
+372.949 121.086 LE
+355.054 237.254 LS
+223.039 308.153 LE
+355.054 237.254 LS
+223.039 308.153 LE
+372.905 121.161 LS
+372.927 121.13 LE
+372.905 121.161 LS
+372.927 121.13 LE
+372.883 121.177 LS
+372.905 121.161 LE
+372.883 121.177 LS
+372.905 121.161 LE
+372.862 121.18 LS
+372.883 121.177 LE
+372.862 121.18 LS
+372.883 121.177 LE
+372.841 121.168 LS
+372.862 121.18 LE
+372.841 121.168 LS
+372.862 121.18 LE
+372.82 121.143 LS
+372.841 121.168 LE
+372.82 121.143 LS
+372.841 121.168 LE
+372.799 121.104 LS
+372.82 121.143 LE
+372.799 121.104 LS
+372.82 121.143 LE
+372.778 121.05 LS
+372.799 121.104 LE
+372.778 121.05 LS
+372.799 121.104 LE
+372.757 120.982 LS
+372.778 121.05 LE
+372.757 120.982 LS
+372.778 121.05 LE
+367.634 67.9077 LS
+367.695 68.3271 LE
+367.634 67.9077 LS
+367.695 68.3271 LE
+372.736 120.901 LS
+372.757 120.982 LE
+372.736 120.901 LS
+372.757 120.982 LE
+367.695 68.3271 LS
+367.811 69.1338 LE
+367.695 68.3271 LS
+367.811 69.1338 LE
+372.716 120.805 LS
+372.736 120.901 LE
+372.716 120.805 LS
+372.736 120.901 LE
+367.811 69.1338 LS
+367.924 69.9419 LE
+367.811 69.1338 LS
+367.924 69.9419 L
+368.036 70.7524 LE
+367.924 69.9419 LS
+368.036 70.7524 LE
+372.695 120.695 LS
+372.716 120.805 LE
+372.695 120.695 LS
+372.716 120.805 LE
+368.036 70.7524 LS
+368.146 71.564 LE
+368.036 70.7524 LS
+368.146 71.564 LE
+372.674 120.572 LS
+372.695 120.695 LE
+372.674 120.572 LS
+372.695 120.695 LE
+368.146 71.564 LS
+368.254 72.3774 LE
+368.146 71.564 LS
+368.254 72.3774 L
+368.362 73.1914 LE
+368.254 72.3774 LS
+368.362 73.1914 LE
+372.654 120.434 LS
+372.674 120.572 LE
+372.654 120.434 LS
+372.674 120.572 LE
+368.362 73.1914 LS
+368.467 74.0063 LE
+368.362 73.1914 LS
+368.467 74.0063 LE
+372.633 120.282 LS
+372.654 120.434 LE
+372.633 120.282 LS
+372.654 120.434 LE
+368.467 74.0063 LS
+368.571 74.8218 LE
+368.467 74.0063 LS
+368.571 74.8218 L
+368.673 75.6372 LE
+368.571 74.8218 LS
+368.673 75.6372 LE
+372.612 120.117 LS
+372.633 120.282 LE
+372.612 120.117 LS
+372.633 120.282 LE
+368.673 75.6372 LS
+368.774 76.4526 LE
+368.673 75.6372 LS
+368.774 76.4526 LE
+372.591 119.937 LS
+372.612 120.117 LE
+372.591 119.937 LS
+372.612 120.117 LE
+368.774 76.4526 LS
+368.873 77.2681 LE
+368.774 76.4526 LS
+368.873 77.2681 LE
+372.569 119.744 LS
+372.591 119.937 LE
+372.569 119.744 LS
+372.591 119.937 LE
+368.873 77.2681 LS
+368.971 78.083 LE
+368.873 77.2681 LS
+368.971 78.083 L
+369.067 78.897 LE
+368.971 78.083 LS
+369.067 78.897 LE
+372.548 119.537 LS
+372.569 119.744 LE
+372.548 119.537 LS
+372.569 119.744 LE
+369.067 78.897 LS
+369.161 79.71 LE
+369.067 78.897 LS
+369.161 79.71 LE
+372.526 119.315 LS
+372.548 119.537 LE
+372.526 119.315 LS
+372.548 119.537 LE
+369.161 79.71 LS
+369.254 80.5215 LE
+369.161 79.71 LS
+369.254 80.5215 LE
+372.504 119.081 LS
+372.526 119.315 LE
+372.504 119.081 LS
+372.526 119.315 LE
+369.254 80.5215 LS
+369.345 81.3311 LE
+369.254 80.5215 LS
+369.345 81.3311 L
+369.435 82.1392 LE
+369.345 81.3311 LS
+369.435 82.1392 LE
+372.482 118.832 LS
+372.504 119.081 LE
+372.482 118.832 LS
+372.504 119.081 LE
+369.435 82.1392 LS
+369.523 82.9453 LE
+369.435 82.1392 LS
+369.523 82.9453 LE
+372.459 118.57 LS
+372.482 118.832 LE
+372.459 118.57 LS
+372.482 118.832 LE
+369.523 82.9453 LS
+369.609 83.7485 LE
+369.523 82.9453 LS
+369.609 83.7485 LE
+372.436 118.294 LS
+372.459 118.57 LE
+372.436 118.294 LS
+372.459 118.57 LE
+369.609 83.7485 LS
+369.694 84.5493 LE
+369.609 83.7485 LS
+369.694 84.5493 LE
+372.413 118.005 LS
+372.436 118.294 LE
+372.413 118.005 LS
+372.436 118.294 LE
+369.694 84.5493 LS
+369.778 85.3477 LE
+369.694 84.5493 LS
+369.778 85.3477 L
+369.86 86.1421 LE
+369.778 85.3477 LS
+369.86 86.1421 LE
+372.389 117.703 LS
+372.413 118.005 LE
+372.389 117.703 LS
+372.413 118.005 LE
+369.86 86.1421 LS
+369.94 86.9336 LE
+369.86 86.1421 LS
+369.94 86.9336 LE
+372.365 117.387 LS
+372.389 117.703 LE
+372.365 117.387 LS
+372.389 117.703 LE
+369.94 86.9336 LS
+370.019 87.7212 LE
+369.94 86.9336 LS
+370.019 87.7212 LE
+372.34 117.059 LS
+372.365 117.387 LE
+372.34 117.059 LS
+372.365 117.387 LE
+370.019 87.7212 LS
+370.096 88.5054 LE
+370.019 87.7212 LS
+370.096 88.5054 LE
+372.315 116.716 LS
+372.34 117.059 LE
+372.315 116.716 LS
+372.34 117.059 LE
+370.096 88.5054 LS
+370.172 89.2847 LE
+370.096 88.5054 LS
+370.172 89.2847 LE
+372.289 116.361 LS
+372.315 116.716 LE
+372.289 116.361 LS
+372.315 116.716 LE
+370.172 89.2847 LS
+370.247 90.0601 LE
+370.172 89.2847 LS
+370.247 90.0601 L
+370.319 90.8301 LE
+370.247 90.0601 LS
+370.319 90.8301 LE
+372.263 115.993 LS
+372.289 116.361 LE
+372.263 115.993 LS
+372.289 116.361 LE
+370.319 90.8301 LS
+370.391 91.5957 LE
+370.319 90.8301 LS
+370.391 91.5957 LE
+372.236 115.612 LS
+372.263 115.993 LE
+372.236 115.612 LS
+372.263 115.993 LE
+370.391 91.5957 LS
+370.461 92.356 LE
+370.391 91.5957 LS
+370.461 92.356 LE
+372.208 115.219 LS
+372.236 115.612 LE
+372.208 115.219 LS
+372.236 115.612 LE
+370.461 92.356 LS
+370.529 93.1108 LE
+370.461 92.356 LS
+370.529 93.1108 LE
+372.18 114.813 LS
+372.208 115.219 LE
+372.18 114.813 LS
+372.208 115.219 LE
+370.529 93.1108 LS
+370.596 93.8604 LE
+370.529 93.1108 LS
+370.596 93.8604 LE
+372.151 114.394 LS
+372.18 114.813 LE
+372.151 114.394 LS
+372.18 114.813 LE
+370.596 93.8604 LS
+370.662 94.6035 LE
+370.596 93.8604 LS
+370.662 94.6035 LE
+372.122 113.963 LS
+372.151 114.394 LE
+372.122 113.963 LS
+372.151 114.394 LE
+370.662 94.6035 LS
+370.726 95.3408 LE
+370.662 94.6035 LS
+370.726 95.3408 L
+370.789 96.0718 LE
+370.726 95.3408 LS
+370.789 96.0718 LE
+372.091 113.52 LS
+372.122 113.963 LE
+372.091 113.52 LS
+372.122 113.963 LE
+370.789 96.0718 LS
+370.851 96.7959 LE
+370.789 96.0718 LS
+370.851 96.7959 LE
+372.061 113.065 LS
+372.091 113.52 LE
+372.061 113.065 LS
+372.091 113.52 LE
+370.851 96.7959 LS
+370.911 97.5132 LE
+370.851 96.7959 LS
+370.911 97.5132 LE
+372.028 112.598 LS
+372.061 113.065 LE
+372.028 112.598 LS
+372.061 113.065 LE
+370.911 97.5132 LS
+370.97 98.2231 LE
+370.911 97.5132 LS
+370.97 98.2231 LE
+371.996 112.119 LS
+372.028 112.598 LE
+371.996 112.119 LS
+372.028 112.598 LE
+370.97 98.2231 LS
+371.027 98.9263 LE
+370.97 98.2231 LS
+371.027 98.9263 LE
+371.962 111.628 LS
+371.996 112.119 LE
+371.962 111.628 LS
+371.996 112.119 LE
+371.027 98.9263 LS
+371.083 99.6216 LE
+371.027 98.9263 LS
+371.083 99.6216 LE
+371.928 111.125 LS
+371.962 111.628 LE
+371.928 111.125 LS
+371.962 111.628 LE
+371.083 99.6216 LS
+371.138 100.309 LE
+371.083 99.6216 LS
+371.138 100.309 LE
+371.893 110.612 LS
+371.928 111.125 LE
+371.893 110.612 LS
+371.928 111.125 LE
+371.138 100.309 LS
+371.192 100.989 LE
+371.138 100.309 LS
+371.192 100.989 LE
+371.857 110.087 LS
+371.893 110.612 LE
+371.857 110.087 LS
+371.893 110.612 LE
+371.192 100.989 LS
+371.244 101.66 LE
+371.192 100.989 LS
+371.244 101.66 LE
+371.82 109.551 LS
+371.857 110.087 LE
+371.82 109.551 LS
+371.857 110.087 LE
+371.244 101.66 LS
+371.295 102.323 LE
+371.244 101.66 LS
+371.295 102.323 LE
+371.782 109.004 LS
+371.82 109.551 LE
+371.782 109.004 LS
+371.82 109.551 LE
+371.295 102.323 LS
+371.345 102.978 LE
+371.295 102.323 LS
+371.345 102.978 LE
+371.743 108.447 LS
+371.782 109.004 LE
+371.743 108.447 LS
+371.782 109.004 LE
+371.345 102.978 LS
+371.394 103.624 LE
+371.345 102.978 LS
+371.394 103.624 LE
+371.703 107.879 LS
+371.743 108.447 LE
+371.703 107.879 LS
+371.743 108.447 LE
+371.394 103.624 LS
+371.441 104.26 LE
+371.394 103.624 LS
+371.441 104.26 LE
+371.662 107.301 LS
+371.703 107.879 LE
+371.662 107.301 LS
+371.703 107.879 LE
+371.441 104.26 LS
+371.488 104.887 LE
+371.441 104.26 LS
+371.488 104.887 LE
+371.62 106.712 LS
+371.662 107.301 LE
+371.62 106.712 LS
+371.662 107.301 LE
+371.488 104.887 LS
+371.533 105.505 LE
+371.488 104.887 LS
+371.533 105.505 LE
+371.577 106.114 LS
+371.62 106.712 LE
+371.577 106.114 LS
+371.62 106.712 LE
+371.533 105.505 LS
+371.577 106.114 LE
+371.533 105.505 LS
+371.577 106.114 LE
+355.054 237.254 LS
+537.109 288.813 LE
+355.054 237.254 LS
+537.109 288.813 LE
+355.099 29.9614 LS
+355.054 237.254 LE
+355.099 29.9614 LS
+355.054 237.254 LE
+grestore
+showpage
+cleartomark
+%%PageTrailer
+%%Trailer
+end
+%%EOF
+grestore
