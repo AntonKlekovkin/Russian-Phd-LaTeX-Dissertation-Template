@@ -58,7 +58,7 @@
 		\begin{itemize}
 			\item Наличие гидродинамических шумов.
 			%\item Низкая маневренность.
-			\item Поврежедение окружающей микрофлоры.
+			\item Повреждение окружающей микрофлоры.
 			\item Выход вала с гребным винтом требует герметизации.
 		\end{itemize}
 	\end{minipage}
@@ -71,7 +71,7 @@
 			\item отсутствие приводных элементов, взаимодействующих со средой;
 			\item возможность полной гидроизоляции;
 			%\item низкий уровень гидродинамического шума при передвижении;
-			\item повышенная маневренность.
+			%\item повышенная маневренность.
 		\end{itemize}
 		
 
@@ -103,9 +103,11 @@
 		
 		\item Влияние вязкости на самопродвижение твердого тела с движущейся внутри него массой. S. Childress
 		
-		\item Подробный обзор работ, посвященных движению твердого тела в жидкости, используя внутренние механизмы:
+		\item Исследование движения роботов различной формы и конструкции, приводимые в движение внутренними механизмами. Е.В. Ветчанин, И.С. Мамаев, А.А. Килин.
 		
-		Ветчанин Е. В., Килин А. А., Управляемое движение твердого тела с внутренними механизмами в идеальной несжимаемой жидкости, Труды Математического института имени В. А. Стеклова, 2016, т. 295, с. 321-351
+		%\item Подробный обзор работ, посвященных движению твердого тела в жидкости, используя внутренние механизмы:
+		
+		%Ветчанин Е. В., Килин А. А., Управляемое движение твердого тела с внутренними механизмами в идеальной несжимаемой жидкости, Труды Математического института имени В. А. Стеклова, 2016, т. 295, с. 321-351
 		%\item Экспериментальные работы: А.А. Килин, А.И. Кленов, В.А. Тененев. Управление движением тела с помощью внутренних масс в вязкой жидкости.		
 	\end{itemize}
 
@@ -154,7 +156,7 @@
 		\begin{minipage}[t]{0.4\linewidth}
 			\begin{figure}[h]
 				\begin{center}
-					\includegraphics[height=0.8\linewidth]{Shell.eps}%BPR_Scheme.png}				
+					\includegraphics[height=0.8\linewidth]{BPR_Scheme.png} %Shell.eps %BPR_Scheme.png				
 				\end{center}
 			\end{figure}	
 		\end{minipage}
@@ -244,92 +246,70 @@
 \end{frame}
 
 
-\begin{frame}
-	\frametitle{Кинетическая энергия}
-
-	\begin{minipage}{0.47\linewidth}
-		Кинетическая энергия оболочки:
-		\begin{gather}
-		T_s = \frac{1}{2} m_s  \bigl( \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bm I}_s {\bOm},\, {\bOm} \bigr),\nonumber
-		\end{gather}
-	\end{minipage}
-	\hfill
-	\begin{minipage}{0.47\linewidth}
-		Кинетическая энергия жидкости:
-		\begin{gather}
-		T_f = \frac{1}{2} \bigl( \bLam_1 \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bLam} _2 {\bOm},\, {\bOm} \bigr).\nonumber
-		\end{gather}
-	\end{minipage}
-	
-	\vspace{2mm}
-
-	Кинетическая энергия $k$-го ротора:
-	\begin{gather}
-	T_k = \frac{1}{2} m_R \bigl( \bV + {\bOm} \times \br_k, \bV + {\bOm} \times \br_k \bigr) + \frac{1}{2}\Bigl({\bm I}_k \bigl( {\bOm} + \omega_k \bn_k \bigr), {\bOm} + \omega_k \bn_k \Bigr),\nonumber
-	\end{gather}
-	
-	Суммарная кинетическая энергия всей системы: 		
-	\footnotesize
-	\begin{gather*}
-	\begin{split}
-	T = T_f + T_s + \sum _{k=1}^3 T_k = \frac{1}{2} \bigl( {\bbI} {\bOm},\, {\bOm} \bigr) + \bigl( {\bbB} {\bOm},\, \bV \bigr) + \frac{1}{2} \bigl( {\bbC} \bV,\, \bV \bigr) + \bigl( {\bOm},\, \bK(t) \bigr) + \frac{1}{2} \sum_{k=1}^3 i \omega_k^2 (t),
-	\end{split}
-	\end{gather*}
-	
-	\small
-	Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид:	
-	
-	\begin{minipage}{0.57\linewidth}
-		\vspace{-3mm}
-		\begin{gather}
-		{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
-		{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \quad	 m = m_s + 3 m_R		\nonumber
-		\end{gather}
-	\end{minipage}
-	\hfill
-	\begin{minipage}{0.4\linewidth}
-		\vspace{-3mm}
-		\begin{gather}
-		{\bbB} = m \begin{pmatrix}\nonumber
-		0 & z_c & -y_c\\
-		-z_c & 0 & x_c\\
-		y_c & -x_c & 0
-		\end{pmatrix}\nonumber	,	
-		\end{gather}
-	\end{minipage}	
-	
-	\vspace{2mm}
-	
-	где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы. 
-	
-	$\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
-	
-	
-\end{frame}
-
-
 %\begin{frame}
-%\frametitle{Математическая модель}
-%\begin{itemize}
-%	
-%	
-%	\item $\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
-%	
-%	\item Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид		
-%	\begin{gather}
-%	{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
-%	{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \\
-%	{\bbB} = m \begin{pmatrix}\nonumber
-%	0 & z_c & -y_c\\
-%	-z_c & 0 & x_c\\
-%	y_c & -x_c & 0
-%	\end{pmatrix}\nonumber \\
-%	m = m_s + 3 m_R,\nonumber
-%	\end{gather}
-%	%где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы.
+%	\frametitle{Кинетическая энергия}
 %
-%\end{itemize}
+%	\begin{minipage}{0.47\linewidth}
+%		Кинетическая энергия оболочки:
+%		\begin{gather}
+%		T_s = \frac{1}{2} m_s  \bigl( \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bm I}_s {\bOm},\, {\bOm} \bigr),\nonumber
+%		\end{gather}
+%	\end{minipage}
+%	\hfill
+%	\begin{minipage}{0.47\linewidth}
+%		Кинетическая энергия жидкости:
+%		\begin{gather}
+%		T_f = \frac{1}{2} \bigl( \bLam_1 \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bLam} _2 {\bOm},\, {\bOm} \bigr).\nonumber
+%		\end{gather}
+%	\end{minipage}
+%	
+%	\vspace{2mm}
+%
+%	Кинетическая энергия $k$-го ротора:
+%	\begin{gather}
+%	T_k = \frac{1}{2} m_R \bigl( \bV + {\bOm} \times \br_k, \bV + {\bOm} \times \br_k \bigr) + \frac{1}{2}\Bigl({\bm I}_k \bigl( {\bOm} + \omega_k \bn_k \bigr), {\bOm} + \omega_k \bn_k \Bigr),\nonumber
+%	\end{gather}
+%	
+%	Суммарная кинетическая энергия всей системы: 		
+%	\footnotesize
+%	\begin{gather*}
+%	\begin{split}
+%	T = T_f + T_s + \sum _{k=1}^3 T_k = \frac{1}{2} \bigl( {\bbI} {\bOm},\, {\bOm} \bigr) + \bigl( {\bbB} {\bOm},\, \bV \bigr) + \frac{1}{2} \bigl( {\bbC} \bV,\, \bV \bigr) + \bigl( {\bOm},\, \bK(t) \bigr) + \frac{1}{2} \sum_{k=1}^3 i \omega_k^2 (t),
+%	\end{split}
+%	\end{gather*}
+%	
+%	\small
+%	Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид:	
+%	
+%	\begin{minipage}{0.57\linewidth}
+%		\vspace{-3mm}
+%		\begin{gather}
+%		{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
+%		{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \quad	 m = m_s + 3 m_R		\nonumber
+%		\end{gather}
+%	\end{minipage}
+%	\hfill
+%	\begin{minipage}{0.4\linewidth}
+%		\vspace{-3mm}
+%		\begin{gather}
+%		{\bbB} = m \begin{pmatrix}\nonumber
+%		0 & z_c & -y_c\\
+%		-z_c & 0 & x_c\\
+%		y_c & -x_c & 0
+%		\end{pmatrix}\nonumber	,	
+%		\end{gather}
+%	\end{minipage}	
+%	
+%	\vspace{2mm}
+%	
+%	где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы. 
+%	
+%	$\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
+%	
+%	
 %\end{frame}
+
+
 
 \begin{frame}
 \frametitle{Уравнения движения}
@@ -350,16 +330,15 @@
 	\item Для полного описания движения системы данные уравнения необходимо дополнить уравнениями эволюции переменных $\bigl( \br,\, {\bbQ} \bigr)$%, которые описываются уравнениями Пуассона 
 	и кинематическими соотношениями 
 	\begin{gather*}
-	\dot{{\bal}} = {\bal} \times {\bOm},\, \dot{{\bbe}} = {\bbe} \times {\bOm},\, \dot{{\bga}} = {\bga} \times {\bOm},\\
+	\dot{{\bal}} = {\bal} \times {\bOm},\quad \dot{{\bbe}} = {\bbe} \times {\bOm},\quad \dot{{\bga}} = {\bga} \times {\bOm},\quad
 	\dot{\br} = {\bbQ}^T \bV.
 	\end{gather*}
 	
 	\item Уравнения в форме импульса и момента импульса:
 	\begin{gather*}
 	\label{motion_ham}
-	\dot{\bP}= \bP \times {\bOm},\,\dot{\bM} = \bM \times {\bOm} + \bP \times \bV,
-	\end{gather*}
-	
+	\dot{\bP}= \bP \times {\bOm}, \quad \dot{\bM} = \bM \times {\bOm} + \bP \times \bV,
+	\end{gather*}	
 	где $\bP = \dfrac{\partial T}{\partial \bV}$ и $\bM = \dfrac{\partial T}{\partial {\bOm}}$ 
 	
 	\item Связь $\bV$ и ${\bOm}$ с $ \bP $ и $\bM  $:
@@ -383,7 +362,7 @@
 	
 	\item Уравнения допускают шесть геометрических интегралов движения:
 	\begin{gather}
-	{\bal}^2={\bbe}^2={\bga}^2=1,\, \bigl({\bal},\, {\bbe} \bigr) = \bigl({\bal},\, {\bga} \bigr) = \bigl({\bbe},\, {\bga} \bigr) = 0\nonumber
+	{\bal}^2={\bbe}^2={\bga}^2=1, \quad \bigl({\bal},\, {\bbe} \bigr) = \bigl({\bal},\, {\bga} \bigr) = \bigl({\bbe},\, {\bga} \bigr) = 0\nonumber
 	\end{gather}
 	
 	\item Уравнения в гамильтоновой форме допускают еще шесть интегралов
@@ -398,16 +377,27 @@
 	а выражения для скоростей:
 	\begin{gather}
 	\bV = - \bbC^{-1} \bbB \bOm,  \nonumber \quad
-	\bOm = - \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t) \nonumber
+	\bOm = \widetilde{\bbI} \bK(t), \nonumber \quad
+	\widetilde{\bbI} = \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1}.
 	\end{gather}
 	
 	\item Уравнения движения на нулевом уровне
 	\begin{gather*}
-	\dot{{\bal}} = {\bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t)}  \times {\bal},\\
-	\dot{{\bbe}} = {\bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t)}  \times {\bbe},\\
-	\dot{{\bga}} = {\bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t)}  \times {\bga},\\
-	\dot{\br} =  {\bbQ}^T \bbC^{-1} \bbB \bigl(\bbI - \bbB^T \bbC^{-1} \bbB \bigr)^{-1} \bK(t).
+	\dot{{\bal}} = {\widetilde{\bbI} \bK(t)}  \times {\bal},\quad
+	\dot{{\bbe}} = {\widetilde{\bbI} \bK(t)}  \times {\bbe},\quad
+	\dot{{\bga}} = {\widetilde{\bbI} \bK(t)}  \times {\bga},\\
+	\dot{\br} =  {\bbQ}^T \bbC^{-1} \bbB \widetilde{\bbI} \bK(t),
 	\end{gather*}
+	где $ \bK(t)=\sum \limits_{k=0}^3 i_k \omega_k (t)\bn_k $.
+%	\begin{gather}
+%	\begin{gathered}
+%	\dot{{\bal}} = {\widetilde{\bbI} \bK(t)}  \times {\bal},\\
+%	\dot{{\bbe}} = {\widetilde{\bbI} \bK(t)}  \times {\bbe},\\
+%	\dot{{\bga}} = {\widetilde{\bbI} \bK(t)}  \times {\bga},\\
+%	\dot{\br} =  {\bbQ}^T \bbC^{-1} \bbB \widetilde{\bbI} \bK(t),
+%	\end{gathered}
+%	\label{motion_eq_simple}
+%	\end{gather}
 	
 %	\item Уравнения \eqref{motion_ham} являются гамильтоновыми на алгебре $e(3)$ с гамильтонианом
 %	\begin{gather}
@@ -447,20 +437,98 @@
 %\end{frame}
 
 \begin{frame}
+\frametitle{Исследование управляемости системы}
+
+Для исследования управляемости представим систему уравнений движения в виде
+\begin{gather*}
+\dot{\bq} = \bX_1 (\psi,\, \theta,\, \varphi) \Omega_1 + \bX_2 (\psi,\, \theta,\, \varphi) \Omega_2 + \bX_3 (\psi,\, \theta,\, \varphi) \Omega_3,
+\end{gather*}
+где $\bq = (x,\, y,\, z \, \psi,\, \theta,\, \varphi)$ -- вектор обобщенных координат. \\
+
+\textbf{Теорема.} Система вида $\dot{\bq} = \sum_{i=1}^{M}\bX_i(\bq) u_i$, управляема в некоторой области $N$-мерного пространства, если среди векторных полей $\bX_i$ и всевозможных их коммутаторов $\bX_{i,j} = [\bX_i,\, \bX_j]$, $\bX_{k,(i,j)} = [\bX_k,\, \bX_{i,j}]$, \ldots, составленных последовательными применениями скобки Ли $[\cdot,\, \cdot]$, найдется $N$ линейно независимых в каждой точке области.\\
+
+Построим следующие векторные поля:
+\begin{gather*}
+\begin{gathered}
+\bX_{1,2} = \left[ \bX_1,\, \bX_2\right],\quad \bX_{3,1} = \left[ \bX_3,\, \bX_1\right],\quad \bX_{2,3} = \left[ \bX_2,\, \bX_3\right], \\  
+\bX_{1,(2,3)} = \left[ \bX_1,\, \bX_{2,3}\right],\quad \bX_{2,(3,1)} = \left[ \bX_2,\, \bX_{3,1}\right], \quad \bX_{3,(1,2)} = \left[ \bX_3,\, \bX_{1,2}\right],\\
+\end{gathered}
+\end{gather*}
+Выберем три набора векторных полей
+\begin{gather*}
+\begin{gathered}
+\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{1,2},\,\bX_{2,3},\,\bX_{2,(3,1)},\, \Bigr),\quad
+\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{2,3},\,\bX_{3,1},\,\bX_{3,(1,2)},\, \Bigr), \\
+\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{3,1},\,\bX_{1,2},\,\bX_{1,(2,3)},\, \Bigr),
+\end{gathered}
+\end{gather*}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Исследование управляемости системы}
+
+Условия линейной независимости векторных полей в указанных наборах имеют вид
+\begin{gather*}
+\begin{gathered}
+x_c(c_2 - c_3) = 0,\quad
+y_c(c_3-c_1) = 0, \quad
+z_c(c_1-c_2) = 0.
+\end{gathered}
+\end{gather*}
+
+Движение в идеальной жидкости однородной оболочки, имеющей форму эллипсоида, вполне управляемо с помощью вращения трех роторов, за исключением трех частных случаев:
+\begin{enumerate}
+	\item система “ оболочка + роторы” уравновешена;
+	\item оболочка имеет сферическую форму;
+	\item оболочка имеет форму эллипсоида вращения, а центра масс всей системы	расположен на оси вращения.
+\end{enumerate}
+
+Добавим к оболочке в виде эллипсоида винтовые лопасти. Так, объект будет представлять из себя трехлопастной винт.
+
+\end{frame}
+
+
+
+\begin{frame}
 \frametitle{Результаты моделирования}
+%\begin{itemize}
+%	\item Борисов А. В., Ветчанин Е. В., Килин А. А., Управление движением трехосного эллипсоида в жидкости с помощью роторов, Математические заметки, 2017, т. 102, № 4, с. 503-513
+%	\item В работе описаны комбинации управляющих воздействий, которые позволяют реализовать неограниченное движение в произвольном направлении.
+%	
+%	Движение тела представляет собой стационарное винтовое движение с постоянной угловой и линейной скоростями. 
+%\end{itemize}
+%
+%
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.65\linewidth]{ModellingTrBPR.png}%		
+%\end{figure}
+
+Для решения уравнений движения необходимо:
 \begin{itemize}
-	\item Борисов А. В., Ветчанин Е. В., Килин А. А., Управление движением трехосного эллипсоида в жидкости с помощью роторов, Математические заметки, 2017, т. 102, № 4, с. 503-513
-	\item В работе описаны комбинации управляющих воздействий, которые позволяют реализовать неограниченное движение в произвольном направлении.
-	
-	Движение тела представляет собой стационарное винтовое движение с постоянной угловой и линейной скоростями. 
+	\item Определить значения тензоров присоединенных масс и присоединенных моментов инерции. Для робота в форме эллипсоида вращения данные коэффициенты можно расчитать используя справочные материалы.
+	\item Определить оптимальные значения масс и моментов инерции роторов, учитывая существующие ограничения.	
 \end{itemize}
 
+Рассмотрим движение тела при постоянных скоростях вращения роторов $\bbs\omega = (\omega_1, \omega_2, \omega_3)^T$.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.65\linewidth]{ModellingTrBPR.png}%		
-\end{figure}
+а) $\omega_1=10$ рад/с, $\omega_2=0$, $\omega_3=0$. б) $\omega_1=0$, $\omega_2=10$ рад/с, $\omega_3=0$. 
 
+в) $\omega_1=10$ рад/с, $\omega_2=10$ рад/с, $\omega_3=0$.
+
+\begin{minipage}[t]{0.3\linewidth}
+	\center{\includegraphics[width=0.95\linewidth]{ModelTrBPR1_.png} \\ а)}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\linewidth}
+	\center{\includegraphics[width=0.95\linewidth]{ModelTrBPR2_.png} \\ б)}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\linewidth}
+	\center{\includegraphics[width=1\linewidth]{ModelTrBPR12_.png} \\ в)}
+\end{minipage}
 
 
 \end{frame}
@@ -470,18 +538,17 @@
 \begin{frame}
 \frametitle{Создание прототипа робота}
 
-При создании робота имеются следующие технические ограничения:
+При создании робота имеются следующие технические требования и ограничения:
 \begin{itemize}
-	\item Размер робота не может превышать 200х300 мм -- ограничение литьевой машины, на которой изготовлена оболочка робота. 
-	\item Диаметр роторов -- ограничивается размерами оболочки.
-	\item Масса и момент инерции роторов -- ограничивается двигателем -- ограничивается размерами оболочки.
+	\item Перпендикулярность роторов.
+	\item Для создания максимального эффекта момент инерции роторов должен быть максимальным --- ограничивается выбранными двигателями.
+	\item Центр масс всей системы должен быть расположен максимально близко к геометрическому центру эллипсоида.
+	\item Форма робота в виде винтового тела --- эллипсоид вращения + лопасти.
+	\item Размер оболочки робота не должен превышать 200х300 мм --- ограничение литьевой машины. 
+	\item Диаметр роторов --- ограничивается размерами оболочки.	
 \end{itemize}
 
-Для решения уравнений движения необходимо:
-\begin{itemize}
-	\item Определить значения тензоров присоединенных масс и присоединенных моментов инерции. Для робота в форме эллипсоида вращения данные коэффициенты можно расчитать используя справочные материалы.
-	\item Определить оптимальные значения масс и моментов инерции роторов, учитывая существующие ограничения.	
-\end{itemize}
+
 
 \end{frame}
 
@@ -1258,306 +1325,101 @@ D = \sqrt{\left( \pder{x_1}{\xi}\right)^2 + \left( \pder{x_2}{\xi}\right)^2  } =
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Списки}
-%\begin{frame}[plain, noframenumbering]
-%    \begin{center}
-%        \Huge
-%        Списки
-%    \end{center}
-%\end{frame}
-%
-%\subsection{Нумерованные}
-%
-%\begin{frame}
-%    \frametitle{Нумерованные списки}
-%    \begin{enumerate}
-%        \item один
-%        \item два
-%        \item три
-%    \end{enumerate}
-%\end{frame}
-%\note{
-%    Этот текст будет виден только если его отображение включено в файле \textbf{Presentation/setup}.
-%    Для раздельного вывода презентации и заметок на разные экраны (как в impress или powerpoint) можно использовать программу \textit{pdf-presenter-console}.
-%}
-%
-%\subsection{Не нумерованные}
-%
-%
-%\begin{frame}
-%    \frametitle{Перечисления}
-%    \begin{itemize}
-%        \item Проблема 1
-%        \item Проблема 2
-%        \item Проблема 3
-%    \end{itemize}
-%\end{frame}
-%\note[itemize]{
-%    \item Тезис 1
-%    \item Тезис 2
-%    \item Тезис 3
-%}
-%
-%\subsection{Комбинированные}
-%
-%\begin{frame}
-%    \frametitle{Комбинация списков}
-%    \begin{enumerate}
-%        \item \textbf{Задача 1}
-%              \begin{itemize}
-%                  \item Подзадача 1-1
-%                  \item Подзадача 1-2
-%              \end{itemize}
-%        \item \textbf{Задача 2}
-%              \begin{itemize}
-%                  \item Подзадача 2-1
-%                  \item Подзадача 2-2
-%                  \item Подзадача 2-3
-%              \end{itemize}
-%        \item \textbf{Задача 3}
-%              \begin{itemize}
-%                  \item Подзадача 3-1
-%                  \item Подзадача 3-2
-%                  \item Подзадача 3-3
-%              \end{itemize}
-%    \end{enumerate}
-%\end{frame}
-%\note[itemize]{
-%    \item Задача 1
-%    \item Задача 2
-%    \item Задача 3
-%}
-%
-%\begin{frame}[allowframebreaks]
-%    \frametitle{Разделение слайда}
-%    Поясняющий текст
-%    \begin{itemize}
-%        \item Один
-%        \item Два
-%        \item Три
-%    \end{itemize}
-%    \framebreak
-%    Продолжение предыдущего слайда
-%\end{frame}
-%
-%\section{Графика}
-%\begin{frame}[plain, noframenumbering]
-%    \begin{center}
-%        \Huge
-%        Графика
-%    \end{center}
-%\end{frame}
-%
-%
-%\begin{frame}
-%    \frametitle{Одиночное изображение}
-%    \centering
-%    \includegraphics[width=0.8\linewidth]{latex} % окружение figure не требуется
-%\end{frame}
-%
-%\begin{frame}
-%    \frametitle{Векторная графика}
-%    \begin{figure}
-%	    \centering
-%	    \ifdefmacro{\tikzsetnextfilename}{\tikzsetnextfilename{tikz_presentation}}{}% присваиваемое предкомпилированному pdf имя файла (не обязательно)
-%	    \input{Presentation/images/tikz_plot.tikz}
-%    \end{figure}
-%\end{frame}
-%
-%\subsection{Расположение}
-%
-%\begin{frame}
-%    \frametitle{Изображения по-вертикали}
-%    \centering
-%    \vfill
-%    \includegraphics[width=0.8\linewidth,height=0.1\textheight]{latex} \\
-%    \TeX
-%    \vfill
-%    \includegraphics[width=0.8\linewidth,height=0.2\textheight]{latex} \\
-%    \LaTeX
-%    \vfill
-%    \includegraphics[scale=0.2]{latex} \\
-%    \vfill
-%\end{frame}
-%
-%
-%\begin{frame}
-%    \frametitle{Изображения по-горизонтали}
-%    \begin{minipage}[t]{0.47\linewidth}
-%        \textbf{Составная \\ подпись 1}
-%        \center{\includegraphics[width=1\linewidth]{knuth1}}
-%    \end{minipage}
-%    \hfill
-%    \begin{minipage}[t]{0.47\linewidth}
-%        \textbf{Составная \\ подпись 2}
-%        \center{\includegraphics[width=1\linewidth]{knuth2}}
-%    \end{minipage}
-%\end{frame}
-%
-%\subsection{Линии}
-%
-%\begin{frame}
-%    \frametitle{Разделяющие линии}
-%    \begin{minipage}[c]{0.47\linewidth}
-%        \center{\includegraphics[width=1\linewidth]{latex}}
-%        \bigskip
-%        \hrule{}
-%        \bigskip
-%        \textbf{Составная \\ подпись 1}
-%    \end{minipage}
-%    \hfill
-%    \vrule{}
-%    \hfill
-%    \begin{minipage}[c]{0.47\linewidth}
-%        \flushright
-%        \textbf{Составная \\ подпись 2}
-%        \center{\includegraphics[width=1\linewidth]{knuth2}}
-%    \end{minipage}
-%\end{frame}
-%
-%\section{Остальное}
-%\begin{frame}[plain, noframenumbering]
-%    \begin{center}
-%        \Huge
-%        Остальное
-%    \end{center}
-%\end{frame}
-%
-%\subsection{Формулы}
-%
-%\begin{frame}
-%    \frametitle{Формулы}
-%    \[
-%    \left\{
-%    \begin{array}{rl}
-%        \dot x = & \sigma (y-x)  \\
-%        \dot y = & x (r - z) - y \\
-%        \dot z = & xy - bz
-%    \end{array}
-%    \right.
-%    \]
-%\end{frame}
-%
-%\begin{frame}
-%    \frametitle{amsmath}
-%    \centering
-%    \begin{minipage}[t]{0.5\linewidth}
-%        \begin{multline*}
-%            y = 1 x^1 + 2 x^2 + 3 x^3 + \\ + 4 x^4 + 5 x^5 + \dots
-%        \end{multline*}
-%    \end{minipage}
-%\end{frame}
-%
-%\begin{frame}[allowframebreaks]
-%    \frametitle{Уравнения Максвелла}
-%    \centering{
-%        \small
-%        \def\arraystretch{1.8}%
-%        \begin{tabular}{ll}
-%            \toprule
-%            Интегральная форма                                                                                                                                          & Дифференциальная форма                                                        \\ \midrule
-%            \(Q_e(t) = \displaystyle\oiint_S \vec D(t) \cdot d\vec{s} = \displaystyle\iiint_V \rho_v(t) dv\)                                                              & \(\nabla \cdot \vec D(t) = \rho_v(t)\)                                          \\
-%            \(\displaystyle\oiint_S \vec B(t) \cdot d\vec{s} = 0\)                                                                                                        & \(\nabla \cdot \vec B(t) = 0\)                                                  \\
-%            \(V_{emf}(t) = \displaystyle\oint_L \vec E(t) \cdot d\vec{l}\) = \(- \displaystyle\iint_S \left[\frac{\partial\vec{B}(t)}{\partial t}\right] \cdot d\vec{s}\)   & \(\nabla \times \vec E(t) = - \frac{\partial\vec{B}(t)}{\partial t}\)           \\
-%            \(I(t) = \displaystyle\oint_L \vec H(t) \cdot d\vec{l} = \displaystyle\iint_S \left[\vec J(t) + \frac{\partial\vec{D}(t)}{\partial t}\right] \cdot d\vec{s}\) & \(\nabla \times \vec H(t) = \vec J(t) + \frac{\partial\vec{D}(t)}{\partial t}\) \\ \midrule
-%            \(\displaystyle\oiint_S \vec J \cdot d\vec{s} = -\frac{\partial Q_e}{\partial t}\)                                                                            & \(\nabla \cdot \vec J = - \frac{\partial \rho_v}{\partial t}\)                  \\
-%            \bottomrule
-%            \multicolumn{2}{c}{\(\vec D(t) = \left[\varepsilon(t)\right] * \vec E(t)\)}                                                                                                                                                                   \\
-%            \multicolumn{2}{c}{\(\vec B(t) = \left[\mu(t)\right] * \vec H(t)\)}                                                                                                                                                                           \\
-%        \end{tabular}
-%    }
-%    \framebreak
-%
-%    \hspace{0.05\linewidth}
-%    \centering{
-%        \small
-%        \def\arraystretch{1.8}%
-%        \begin{tabular}{ll}
-%            \toprule
-%            Интегральная форма                                                                                                            & Дифференциальная форма                             \\ \midrule
-%            \(Q_e = \displaystyle\oiint_S \vec D \cdot d\vec{s} = \displaystyle\iiint_V \rho_v dv\)                                         & \(\nabla \cdot \vec D = \rho_v\)                     \\
-%            \(\displaystyle\oiint_S \vec B \cdot d\vec{s} = 0\)                                                                             & \(\nabla \cdot \vec B = 0\)                          \\
-%            \(V_{emf} = \displaystyle\oint_L \vec E \cdot d\vec{l}\) = \(- \displaystyle\iint_S \left[j \omega \vec B\right] \cdot d\vec{s}\) & \(\nabla \times \vec E = - j \omega \vec B\)         \\
-%            \(I = \displaystyle\oint_L \vec H \cdot d\vec{l} = \displaystyle\iint_S \left[\vec J + j \omega \vec D\right] \cdot d\vec{s}\)  & \(\nabla \times \vec H = \vec J + j \omega \vec{D}\) \\ \midrule
-%            \(\displaystyle\oiint_S \vec J \cdot d\vec{s} = - j \omega Q_e\)                                                                & \(\nabla \cdot \vec J = - j \omega \rho_v\)          \\
-%            \bottomrule
-%            \multicolumn{2}{c}{\(\vec D(t) = \left[\varepsilon\right] \vec E(t)\)}                                                                                                               \\
-%            \multicolumn{2}{c}{\(\vec B(t) = \left[\mu\right] \vec H(t)\)}                                                                                                                       \\
-%        \end{tabular}
-%    }
-%\end{frame}
-%
-%\subsection{Таблицы}
-%
-%\begin{frame}
-%    \frametitle{Таблица}
-%    \centering
-%    \begin{tabular}{|l|l|}
-%        \hline
-%        \textbf{Заголовок 1} & \textbf{Заголовок 2} \\
-%        \hline
-%        Сумма                & \(b+a\)                \\
-%        \hline
-%        Разность             & \(a-b\)                \\
-%        \hline
-%        Произведение         & \(a*b\)                \\
-%        \hline
-%    \end{tabular}
-%\end{frame}
-%
-%\begin{frame}
-%    \frametitle{Другая таблица}
-%    \centering
-%    \begin{tabular}{lc}
-%        \toprule
-%        \multicolumn{1}{c}{\textbf{Заголовок 1}} & \textbf{Заголовок 2} \\ \midrule
-%        Сумма                                    & \(b+a\)                \\
-%        Разность                                 & \(a-b\)                \\
-%        Произведение                             & \(a*b\)                \\
-%        \bottomrule
-%    \end{tabular}
-%\end{frame}
-%
-%
-%\subsection{Разное}
-%
-%\begin{frame}
-%    \frametitle{Большой многоуровневый список}
-%    \begin{itemize}
-%        \item \textbf{Пункт 1}
-%              \begin{itemize}
-%                  \itemi Подпункт 1-1
-%                  \itemi Подпункт 1-2
-%              \end{itemize}
-%        \item \textbf{Пункт 2}
-%              \begin{itemize}
-%                  \itemi Подпункт 2-1
-%              \end{itemize}
-%        \item \textbf{Пункт 3}
-%              \begin{itemize}
-%                  \itemi Подпункт 3-1
-%                  \itemi Подпункт 3-2
-%              \end{itemize}
-%        \item \textbf{Пункт 4}
-%              \begin{itemize}
-%                  \itemi Подпункт 4-1
-%              \end{itemize}
-%        \item \textbf{Пункт 5}
-%              \begin{itemize}
-%                  \itemi Подпункт 5-1
-%                  \itemi Подпункт 5-2
-%                  \itemi Подпункт 5-3
-%              \end{itemize}
-%    \end{itemize}
-%\end{frame}
-%
-%\begin{frame}
-%    \frametitle{Четыре изображения}
-%    \centering
-%    \includegraphics[width=0.35\linewidth,angle=35]{latex}
-%    \includegraphics[width=0.35\linewidth,angle=135]{latex}\\
-%    \includegraphics[width=0.35\linewidth,angle=15]{latex}
-%    \includegraphics[width=0.35\linewidth,angle=-15]{latex}
-%\end{frame}
+\begin{frame}
+\frametitle{Кинетическая энергия}
 
+\begin{minipage}{0.47\linewidth}
+	Кинетическая энергия оболочки:
+	\begin{gather}
+	T_s = \frac{1}{2} m_s  \bigl( \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bm I}_s {\bOm},\, {\bOm} \bigr),\nonumber
+	\end{gather}
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\linewidth}
+	Кинетическая энергия жидкости:
+	\begin{gather}
+	T_f = \frac{1}{2} \bigl( \bLam_1 \bV,\, \bV \bigr) + \frac{1}{2} \bigl( {\bLam} _2 {\bOm},\, {\bOm} \bigr).\nonumber
+	\end{gather}
+\end{minipage}
+
+\vspace{2mm}
+
+Кинетическая энергия $k$-го ротора:
+\begin{gather}
+T_k = \frac{1}{2} m_R \bigl( \bV + {\bOm} \times \br_k, \bV + {\bOm} \times \br_k \bigr) + \frac{1}{2}\Bigl({\bm I}_k \bigl( {\bOm} + \omega_k \bn_k \bigr), {\bOm} + \omega_k \bn_k \Bigr),\nonumber
+\end{gather}
+
+Суммарная кинетическая энергия всей системы: 		
+\footnotesize
+\begin{gather*}
+\begin{split}
+T = T_f + T_s + \sum _{k=1}^3 T_k = \frac{1}{2} \bigl( {\bbI} {\bOm},\, {\bOm} \bigr) + \bigl( {\bbB} {\bOm},\, \bV \bigr) + \frac{1}{2} \bigl( {\bbC} \bV,\, \bV \bigr) + \bigl( {\bOm},\, \bK(t) \bigr) + \frac{1}{2} \sum_{k=1}^3 i \omega_k^2 (t),
+\end{split}
+\end{gather*}
+
+\small
+Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид:	
+
+\begin{minipage}{0.57\linewidth}
+	\vspace{-3mm}
+	\begin{gather}
+	{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
+	{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \quad	 m = m_s + 3 m_R		\nonumber
+	\end{gather}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\linewidth}
+	\vspace{-3mm}
+	\begin{gather}
+	{\bbB} = m \begin{pmatrix}\nonumber
+	0 & z_c & -y_c\\
+	-z_c & 0 & x_c\\
+	y_c & -x_c & 0
+	\end{pmatrix}\nonumber	,	
+	\end{gather}
+\end{minipage}	
+
+\vspace{2mm}
+
+где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы. 
+
+$\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Исследование управляемости системы}
+
+Для исследования управляемости представим систему уравнений движения в виде
+
+{\small \begin{gather*}
+	\dot{\bq} = \bX_1 (\psi,\, \theta,\, \varphi) \Omega_1 + \bX_2 (\psi,\, \theta,\, \varphi) \Omega_2 + \bX_3 (\psi,\, \theta,\, \varphi) \Omega_3,\\
+	\begin{gathered}
+	\bX_1 = \left( \dfrac{\sin \varphi}{\sin \theta} ,\, \cos \varphi ,\, -\cot\theta \sin\varphi ,\, 
+	\dfrac{ m y_c\alpha_3 }{c_3} - \dfrac{m z_c \alpha_2}{c_2}, \, 
+	\dfrac{m y_c \beta_3 }{c_3} - \dfrac{m z_c \beta_2}{c_2} ,\, 
+	\dfrac{m y_c \gamma_3 }{c_3} - \dfrac{m z_c \gamma_2}{c_2} \right)^T,\\
+	\bX_2 = \left( \dfrac{\cos \varphi}{\sin \theta} ,\, -\sin \varphi ,\, -\cot\theta \cos\varphi ,\, 
+	\dfrac{m z_c\alpha_1 }{c_1} - \dfrac{m x_c \alpha_3}{c_3}, \, 
+	\dfrac{m z_c \beta_1 }{c_1} - \dfrac{m x_c \beta_3}{c_3} ,\, 
+	\dfrac{m z_c \gamma_1 }{c_1} - \dfrac{m x_c \gamma_3}{c_3} \right)^T,\\
+	\bX_3 = \left( 0 ,\, 0 ,\, 1 ,\, 
+	\dfrac{m x_c \alpha_2 }{c_2} - \dfrac{m y_c \alpha_1}{c_1}, \, 
+	\dfrac{m x_c \beta_2 }{c_2} - \dfrac{m y_c \beta_1}{c_1} ,\, 
+	\dfrac{m x_c \gamma_2 }{c_2} - \dfrac{m y_c \gamma_1}{c_1} \right)^T,
+	\end{gathered}
+	\end{gather*}}
+где $\bq = (x,\, y,\, z \, \psi,\, \theta,\, \varphi)$ -- вектор обобщенных координат.
+
+
+
+Скобка Ли для векторных полей $ \bbs v $ и $ \bbs u $ имеет выражение
+\begin{gather*}
+[\bbs v, \bbs u]_{i}=\sum_{j}v_{j}\frac{\partial u_{i}}{\partial q_{j}}-u_{j}\frac{\partial v_{i}}{\partial q_{j}}
+\end{gather*}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
