@@ -61,12 +61,13 @@
                               \fi
                               \vspace{0.013\paperheight}\\
     \else
-    Научный руководитель:   & \supervisorRegalia\par
-                              \ifdefined\supervisorDead
-                              \framebox{\textbf{\supervisorFio}}
-                              \else
-                              \textbf{\supervisorFio}
-                              \fi
+    Научный руководитель:   & \textbf{\supervisorFio}\par
+    							\supervisorRegalia
+%                              \ifdefined\supervisorDead
+%                              \framebox{\textbf{\supervisorFio}}
+%                              \else
+%                              \textbf{\supervisorFio}
+%                              \fi
                               \vspace{0.013\paperheight}\\
     \fi
     Официальные оппоненты:  &
@@ -99,7 +100,7 @@
 \end{tabularx}
 \vspace{0.008\paperheight plus1fill}
 
-\noindent Защита состоится \defenseDate~на~заседании диссертационного совета \defenseCouncilNumber~при \defenseCouncilTitle~по адресу: \defenseCouncilAddress.
+\noindent Защита состоится \defenseDate~на~заседании диссертационного совета \defenseCouncilNumber~на базе \defenseCouncilTitle~по адресу: \defenseCouncilAddress.
 
 \vspace{0.008\paperheight plus1fill}
 \noindent С диссертацией можно ознакомиться в библиотеке \synopsisLibrary.
