@@ -22,11 +22,13 @@
     }
     \centering
     \vfill
-    \usebeamerfont{subtitle}\insertsubtitle\par
+    %\usebeamerfont{subtitle}\insertsubtitle\par
     \bigskip
     \usebeamerfont{title}\inserttitle\par
     \vfill
     \usebeamerfont{author}\insertauthor\par
+    \vfill
+    \usebeamerfont{subtitle}\insertsubtitle\par
     \vfill
     \usebeamerfont{date}\insertdate\par
 }
@@ -41,6 +43,9 @@
         %
     }{\thesisAuthor}%
 }
+
+
+
 \date{\texorpdfstring{Ижевск, \thesisYear}{}}
 \institute{\texorpdfstring{\thesisOrganization}{}}
 \IfFileExists{images/logo.pdf}{
@@ -50,3 +55,5 @@
     }{}
 }{}
 %\subtitle{Представление на соискание учёной степени \thesisDegree\ по специальности \thesisSpecialtyNumber\ \thesisSpecialtyTitle}
+
+\subtitle{Cпециальность \thesisSpecialtyNumber --- \thesisSpecialtyTitle}
