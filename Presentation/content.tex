@@ -79,41 +79,56 @@
 T_k = \frac{1}{2} m_R \bigl( \bV + {\bOm} \times \br_k, \bV + {\bOm} \times \br_k \bigr) + \frac{1}{2}\Bigl({\bm I}_k \bigl( {\bOm} + \omega_k \bn_k \bigr), {\bOm} + \omega_k \bn_k \Bigr),\nonumber
 \end{gather}
 
-Суммарная кинетическая энергия всей системы: 		
-\footnotesize
-\begin{gather*}
-\begin{split}
-T = T_f + T_s + \sum _{k=1}^3 T_k = \frac{1}{2} \bigl( {\bbI} {\bOm},\, {\bOm} \bigr) + \bigl( {\bbB} {\bOm},\, \bV \bigr) + \frac{1}{2} \bigl( {\bbC} \bV,\, \bV \bigr) + \bigl( {\bOm},\, \bK(t) \bigr) + \frac{1}{2} \sum_{k=1}^3 i \omega_k^2 (t),
-\end{split}
-\end{gather*}
+$ m_s $, $ m_R $ --- масса оболочки и ротора, соответственно;
 
-\small
-Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид:	
+$\bm I_s$, ${\bm I}_k$ --- центральные тензоры инерции оболочки и $k$-го ротора;
 
-\begin{minipage}{0.57\linewidth}
-	\vspace{-3mm}
-	\begin{gather}
-	{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
-	{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \quad	 m = m_s + 3 m_R		\nonumber
-	\end{gather}
-\end{minipage}
-\hfill
-\begin{minipage}{0.4\linewidth}
-	\vspace{-3mm}
-	\begin{gather}
-	{\bbB} = m \begin{pmatrix}\nonumber
-	0 & z_c & -y_c\\
-	-z_c & 0 & x_c\\
-	y_c & -x_c & 0
-	\end{pmatrix}\nonumber	,	
-	\end{gather}
-\end{minipage}	
+$ \omega_k $ --- угловая скорость $k$-го ротора;
 
-\vspace{2mm}
+$ \bn_k $ --- орт оси вращения $k$-го ротора;
 
-где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы. 
+$\bLam_1=\diag(\lambda_1, \lambda_2, \lambda_3)$, $\bLam_2=\diag(\lambda_4, \lambda_5, \lambda_6)$ --- тензоры присоединенных масс и присоединенных моментов инерции;
 
-$\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
+\vfill
+
+Коэффициенты присоединенных масс описывают силы и моменты инерционной природы как при ускоренном движении тела в идеальной жидкости, так и при его установившемся перемещении. %Присоединенные массы описывают сопротивление среды пропорционально ускорению тела.
+%При движении тела в невязкой жидкости ее инерционные свойства определяются присоединенными массами.
+
+%Суммарная кинетическая энергия всей системы: 		
+%\footnotesize
+%\begin{gather*}
+%\begin{split}
+%T = T_f + T_s + \sum _{k=1}^3 T_k = \frac{1}{2} \bigl( {\bbI} {\bOm},\, {\bOm} \bigr) + \bigl( {\bbB} {\bOm},\, \bV \bigr) + \frac{1}{2} \bigl( {\bbC} \bV,\, \bV \bigr) + \bigl( {\bOm},\, \bK(t) \bigr) + \frac{1}{2} \sum_{k=1}^3 i \omega_k^2 (t),
+%\end{split}
+%\end{gather*}
+%
+%\small
+%Матрицы $\bbI$, $\bbB$, $\bbC$ имеют вид:	
+%
+%\begin{minipage}{0.57\linewidth}
+%	\vspace{-3mm}
+%	\begin{gather}
+%	{\bbI} = {\bLam}_2 + {\bbI}_s + \sum _{k=1}^3 {\bbI}_k + \frac{1}{2} m_R \sum _{k=1}^3 \bigl( \br_k^2{\bbE} - \br_k \otimes \br_k \bigr),\nonumber \\
+%	{\bbC} = m {\bbE} + {\bLam}_1,\nonumber \quad	 m = m_s + 3 m_R		\nonumber
+%	\end{gather}
+%\end{minipage}
+%\hfill
+%\begin{minipage}{0.4\linewidth}
+%	\vspace{-3mm}
+%	\begin{gather}
+%	{\bbB} = m \begin{pmatrix}\nonumber
+%	0 & z_c & -y_c\\
+%	-z_c & 0 & x_c\\
+%	y_c & -x_c & 0
+%	\end{pmatrix}\nonumber	,	
+%	\end{gather}
+%\end{minipage}	
+%
+%\vspace{2mm}
+%
+%где $x_c$, $y_c$, $z_c$ --- компоненты радиус-вектора $\br_c$ центра масс системы. 
+%
+%$\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гиростатического момента. 
 
 
 \end{frame}
@@ -201,61 +216,61 @@ $\bK(t)=\sum \limits_{k=0}^3 i \omega_k (t)\bn_k$ --- вектор гирост�
 \end{itemize}
 \end{frame}
 
-\begin{frame}[shrink=10]
-\frametitle{Исследование управляемости системы}
-
-Представим систему уравнений движения в виде
-{\small \begin{gather*}
-	\dot{\bq} = \bX_1 (\psi,\, \theta,\, \varphi) \Omega_1 + \bX_2 (\psi,\, \theta,\, \varphi) \Omega_2 + \bX_3 (\psi,\, \theta,\, \varphi) \Omega_3,\\
-	\begin{gathered}
-	\bX_1 = \left( \dfrac{\sin \varphi}{\sin \theta} ,\, \cos \varphi ,\, -\cot\theta \sin\varphi ,\, 
-	\dfrac{ m y_c\alpha_3 }{c_3} - \dfrac{m z_c \alpha_2}{c_2}, \, 
-	\dfrac{m y_c \beta_3 }{c_3} - \dfrac{m z_c \beta_2}{c_2} ,\, 
-	\dfrac{m y_c \gamma_3 }{c_3} - \dfrac{m z_c \gamma_2}{c_2} \right)^T,\\
-	\bX_2 = \left( \dfrac{\cos \varphi}{\sin \theta} ,\, -\sin \varphi ,\, -\cot\theta \cos\varphi ,\, 
-	\dfrac{m z_c\alpha_1 }{c_1} - \dfrac{m x_c \alpha_3}{c_3}, \, 
-	\dfrac{m z_c \beta_1 }{c_1} - \dfrac{m x_c \beta_3}{c_3} ,\, 
-	\dfrac{m z_c \gamma_1 }{c_1} - \dfrac{m x_c \gamma_3}{c_3} \right)^T,\\
-	\bX_3 = \left( 0 ,\, 0 ,\, 1 ,\, 
-	\dfrac{m x_c \alpha_2 }{c_2} - \dfrac{m y_c \alpha_1}{c_1}, \, 
-	\dfrac{m x_c \beta_2 }{c_2} - \dfrac{m y_c \beta_1}{c_1} ,\, 
-	\dfrac{m x_c \gamma_2 }{c_2} - \dfrac{m y_c \gamma_1}{c_1} \right)^T,
-	\end{gathered}
-	\end{gather*}}
-где $\bq = (x,\, y,\, z \, \psi,\, \theta,\, \varphi)$ -- вектор обобщенных координат.
-
-%Построим следующие векторные поля:
+%\begin{frame}[shrink=10]
+%\frametitle{Исследование управляемости системы}
+%
+%Представим систему уравнений движения в виде
+%{\small \begin{gather*}
+%	\dot{\bq} = \bX_1 (\psi,\, \theta,\, \varphi) \Omega_1 + \bX_2 (\psi,\, \theta,\, \varphi) \Omega_2 + \bX_3 (\psi,\, \theta,\, \varphi) \Omega_3,\\
+%	\begin{gathered}
+%	\bX_1 = \left( \dfrac{\sin \varphi}{\sin \theta} ,\, \cos \varphi ,\, -\cot\theta \sin\varphi ,\, 
+%	\dfrac{ m y_c\alpha_3 }{c_3} - \dfrac{m z_c \alpha_2}{c_2}, \, 
+%	\dfrac{m y_c \beta_3 }{c_3} - \dfrac{m z_c \beta_2}{c_2} ,\, 
+%	\dfrac{m y_c \gamma_3 }{c_3} - \dfrac{m z_c \gamma_2}{c_2} \right)^T,\\
+%	\bX_2 = \left( \dfrac{\cos \varphi}{\sin \theta} ,\, -\sin \varphi ,\, -\cot\theta \cos\varphi ,\, 
+%	\dfrac{m z_c\alpha_1 }{c_1} - \dfrac{m x_c \alpha_3}{c_3}, \, 
+%	\dfrac{m z_c \beta_1 }{c_1} - \dfrac{m x_c \beta_3}{c_3} ,\, 
+%	\dfrac{m z_c \gamma_1 }{c_1} - \dfrac{m x_c \gamma_3}{c_3} \right)^T,\\
+%	\bX_3 = \left( 0 ,\, 0 ,\, 1 ,\, 
+%	\dfrac{m x_c \alpha_2 }{c_2} - \dfrac{m y_c \alpha_1}{c_1}, \, 
+%	\dfrac{m x_c \beta_2 }{c_2} - \dfrac{m y_c \beta_1}{c_1} ,\, 
+%	\dfrac{m x_c \gamma_2 }{c_2} - \dfrac{m y_c \gamma_1}{c_1} \right)^T,
+%	\end{gathered}
+%	\end{gather*}}
+%где $\bq = (x,\, y,\, z \, \psi,\, \theta,\, \varphi)$ -- вектор обобщенных координат.
+%
+%%Построим следующие векторные поля:
+%%\begin{gather*}
+%%\begin{gathered}
+%%\bX_{1,2} = \left[ \bX_1,\, \bX_2\right],\quad \bX_{3,1} = \left[ \bX_3,\, \bX_1\right],\quad \bX_{2,3} = \left[ \bX_2,\, \bX_3\right], \\  
+%%\bX_{1,(2,3)} = \left[ \bX_1,\, \bX_{2,3}\right],\quad \bX_{2,(3,1)} = \left[ \bX_2,\, \bX_{3,1}\right], \quad \bX_{3,(1,2)} = \left[ \bX_3,\, \bX_{1,2}\right],\\
+%%\end{gathered}
+%%\end{gather*}
+%Выберем три набора векторных полей
 %\begin{gather*}
 %\begin{gathered}
-%\bX_{1,2} = \left[ \bX_1,\, \bX_2\right],\quad \bX_{3,1} = \left[ \bX_3,\, \bX_1\right],\quad \bX_{2,3} = \left[ \bX_2,\, \bX_3\right], \\  
-%\bX_{1,(2,3)} = \left[ \bX_1,\, \bX_{2,3}\right],\quad \bX_{2,(3,1)} = \left[ \bX_2,\, \bX_{3,1}\right], \quad \bX_{3,(1,2)} = \left[ \bX_3,\, \bX_{1,2}\right],\\
+%\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{1,2},\,\bX_{2,3},\,\bX_{2,(3,1)},\, \Bigr),\quad
+%\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{2,3},\,\bX_{3,1},\,\bX_{3,(1,2)},\, \Bigr), \\
+%\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{3,1},\,\bX_{1,2},\,\bX_{1,(2,3)},\, \Bigr),
 %\end{gathered}
 %\end{gather*}
-Выберем три набора векторных полей
-\begin{gather*}
-\begin{gathered}
-\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{1,2},\,\bX_{2,3},\,\bX_{2,(3,1)},\, \Bigr),\quad
-\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{2,3},\,\bX_{3,1},\,\bX_{3,(1,2)},\, \Bigr), \\
-\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{3,1},\,\bX_{1,2},\,\bX_{1,(2,3)},\, \Bigr),
-\end{gathered}
-\end{gather*}
-где $\bX_{i,j} = \left[ \bX_i,\, \bX_j\right]  $.
-
-Условия линейной зависимости векторных полей в указанных наборах имеют вид
-\begin{gather*}
-\begin{gathered}
-x_c(c_2 - c_3) = 0,\quad
-y_c(c_3-c_1) = 0, \quad
-z_c(c_1-c_2) = 0.
-\end{gathered}
-\end{gather*}
-
-%Скобка Ли для векторных полей $ \bbs v $ и $ \bbs u $ имеет выражение
+%где $\bX_{i,j} = \left[ \bX_i,\, \bX_j\right]  $.
+%
+%Условия линейной зависимости векторных полей в указанных наборах имеют вид
 %\begin{gather*}
-%[\bbs v, \bbs u]_{i}=\sum_{j}v_{j}\frac{\partial u_{i}}{\partial q_{j}}-u_{j}\frac{\partial v_{i}}{\partial q_{j}}
+%\begin{gathered}
+%x_c(c_2 - c_3) = 0,\quad
+%y_c(c_3-c_1) = 0, \quad
+%z_c(c_1-c_2) = 0.
+%\end{gathered}
 %\end{gather*}
-
-\end{frame}
+%
+%%Скобка Ли для векторных полей $ \bbs v $ и $ \bbs u $ имеет выражение
+%%\begin{gather*}
+%%[\bbs v, \bbs u]_{i}=\sum_{j}v_{j}\frac{\partial u_{i}}{\partial q_{j}}-u_{j}\frac{\partial v_{i}}{\partial q_{j}}
+%%\end{gather*}
+%
+%\end{frame}
 
 %\begin{frame}
 %\frametitle{Исследование управляемости системы}
@@ -730,12 +745,13 @@ I \dot{\omega} = g (v_1,\, v_2,\, \omega,\, \dot{v}_1,\, \dot{v}_2,\, \dot \omeg
 \begin{frame}
 \frametitle{Математическая модель. Уравнения движения}
 
-Кинетическая энергия системы с точностью до некоторой функции времени имеет вид:
+Кинетическая энергия системы, при условии совпадения оси вращения ротора с центром масс оболочки имеет вид:
 \begin{gather*}
-T = \frac{1}{2}(m + \lambda_{11}) v_1^2 + \frac{1}{2}(m + \lambda_{22}) v_2^2 + \frac{1}{2} (I + \lambda_{33}) \omega^2 + \lambda_{23} v_2\omega + \omega k(t),\label{eq.T}\\
+T = \frac{1}{2}(m + \lambda_{11}) v_1^2 + \frac{1}{2}(m + \lambda_{22}) v_2^2 + \frac{1}{2} (I + \lambda_{33}) \omega^2 + \lambda_{23} v_2\omega + \frac{1}{2}I_r \Omega^2 + \omega k;
+\label{eq.T}\\
 \begin{gathered}
-m = m_s + m_r,\quad
-I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
+m = m_s + m_r,\
+I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\ k = I_r \Omega, \ \Omega \text{ --- угловая скорость ротора}
 \end{gathered}\notag
 \end{gather*}
 
@@ -847,16 +863,16 @@ I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
 
 \scriptsize 
 \begin{equation*}
-\omega_r(t) =
+\Omega_r(t) =
 \begin{cases}
 
-\omega_1 & t \in \left[ nT;  nT + t_1 \right] ,\\
+\Omega_1 & t \in \left[ nT;  nT + t_1 \right] ,\\
 
-\frac{(\omega_2 - \omega_1)(t-nT)}{t_2} - \frac{(\omega_2 - \omega_1)(t_1+t_2)}{t_2} + \omega_2 & t \in \left[ nT + t_1;  nT + t_1+t_2 \right], \\
+\frac{(\Omega_2 - \Omega_1)(t-nT)}{t_2} - \frac{(\Omega_2 - \Omega_1)(t_1+t_2)}{t_2} + \Omega_2 & t \in \left[ nT + t_1;  nT + t_1+t_2 \right], \\
 
-\omega_2 & t \in \left[ nT + t_1+t_2;  nT + t_1+t_2+t_3 \right] ,\\
+\Omega_2 & t \in \left[ nT + t_1+t_2;  nT + t_1+t_2+t_3 \right] ,\\
 
-\frac{(\omega_1 - \omega_2)(t-nT)}{t_4} - \frac{(\omega_1 - \omega_2)(t_1+t_2+t_3+t_4)}{t_4} + \omega_1 &t \in \left[ nT + t_1 + t_2+t_3;  nT + t_1+t_2+t_3+t_4 \right] ,
+\frac{(\Omega_1 - \Omega_2)(t-nT)}{t_4} - \frac{(\Omega_1 - \Omega_2)(t_1+t_2+t_3+t_4)}{t_4} + \Omega_1 &t \in \left[ nT + t_1 + t_2+t_3;  nT + t_1+t_2+t_3+t_4 \right] ,
 
 \end{cases}
 \label{omegaRotorGeneral}
@@ -902,7 +918,7 @@ I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
 \begin{frame}
 \frametitle{Движение вдоль прямой}
 
-1. $t_1=t_3$, $ t_2 = t_4$; \quad $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $.
+1. $t_1=t_3$, $ t_2 = t_4$; \quad $ \Omega_1 = \Omega_{max} $, $ \Omega_2 = -\Omega_{max} $.
 
 \begin{minipage}[t]{0.3\linewidth}
 	\begin{figure}[!ht]
@@ -918,7 +934,7 @@ I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
 	\end{figure}
 \end{minipage}	
 	
-2. 	$t_1=t_3$, $ t_2 = t_4$, $ T=2 $ с.; \quad $ \omega_1 - \omega_2 = const$
+2. 	$t_1=t_3$, $ t_2 = t_4$, $ T=2 $ с.; \quad $ \Omega_1 - \Omega_2 = const$
 
 \begin{minipage}[h]{0.47\linewidth}
 	\center{\includegraphics[width=0.6\linewidth]{ControlActionPlots3.eps} }
@@ -936,12 +952,12 @@ I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
 \begin{frame}
 \frametitle{Движение вдоль окружности}
 
-1. $t_1 \neq t_3$, $t_2 = t_4$ с; \quad	$ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $; \quad $ k_1 = t_3 / t_1 $
+1. $t_1 \neq t_3$, $t_2 = t_4$ с; \quad	$ \Omega_1 = \Omega_{max} $, $ \Omega_2 = -\Omega_{max} $; \quad $ k_1 = t_3 / t_1 $
 		
 	
 	\begin{minipage}[t]{0.47\linewidth}
 	{Угловая скорость ротора}
-			\center{\includegraphics[width=0.7\linewidth]{ControlActionCircle.eps}}
+			\center{\includegraphics[width=0.6\linewidth]{ControlActionCircle1.eps}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.47\linewidth}
@@ -951,11 +967,11 @@ I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
 
 \vspace{4mm}
 
-2. $t_1 = t_3$, $t_2 \neq t_4$ с; \quad $ \omega_1 = \omega_{max} $, $ \omega_2 = -\omega_{max} $ \quad $ k_2 = t_2 / t_4 $
+2. $t_1 = t_3$, $t_2 \neq t_4$ с; \quad $ \Omega_1 = \Omega_{max} $, $ \Omega_2 = -\Omega_{max} $ \quad $ k_2 = t_2 / t_4 $
 
 \begin{minipage}[t]{0.47\linewidth}
 	{Угловая скорость ротора}
-	\center{\includegraphics[width=0.7\linewidth]{ControlActionOur1.eps}}
+	\center{\includegraphics[width=0.6\linewidth]{ControlActionCircle2.eps}}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.47\linewidth}
@@ -1133,13 +1149,13 @@ I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
 \textbf{Публикации:}
 \begin{itemize}
 
-\item Ветчанин Е. В, Караваев Ю.Л., Калинкин А.А., Пивоварова Е.Н., Клековкин А.В. Модель безвинтового подводного робота. Вестник Удмуртского университета. Математика. Механика. Компьютерные науки. 2015. Т.25. №.4. С. 544-553. (ВАК)
+\item Ветчанин Е. В, Караваев Ю.Л., Калинкин А.А., Пивоварова Е.Н., \textbf{Клековкин А.В.} Модель безвинтового подводного робота. Вестник Удмуртского университета. Математика. Механика. Компьютерные науки. 2015. Т.25. №.4. С. 544-553. (ВАК)
 
-\item Y. Karavaev, A. Kilin, A. Klekovkin. Experimental investigations of the controlled motion of a screwless underwater robot // Regular and Chaotic Dynamics. 2016. Т.21. №. 7-8. С. 918-926 (WoS)
+\item Y. Karavaev, A. Kilin, \textbf{A. Klekovkin}. Experimental investigations of the controlled motion of a screwless underwater robot // Regular and Chaotic Dynamics. 2016. Т.21. №. 7-8. С. 918-926 (ВАК, WoS)
 
 %\item Klekovkin A.V., Karavaev Yu.L., Kilin A.A., Mamaev I.S. Control screwless fish-like robot with internal rotor // Extreme Robotics,  2019, Vol.1, no. 1, pp. 220-225 (РИНЦ)
 
-\item Y. Karavaev, A. Klekovkin, I. Mamaev, V. Tenenev, E. Vetchanin, "A Simple Physical Model for Control of an Propellerless Aquatic Robot",  Journal of Mechanisms and Robotics, 2020. Направлена в журнал. (WoS)
+\item \textbf{А. В. Клековкин}. Моделирование движения безвинтового мобильного робота с неизменяемой формой оболочки управляемого с помощью вращения внутреннего ротора // Вестник Удмуртского университета. Математика. Механика. Компьютерные науки. 2020. Т. 30. № 4. С. 651--663. (ВАК, WoS) Принята к публикации.
 
 
 \end{itemize}
@@ -1148,13 +1164,13 @@ I = I_s + m_s \xi_s^2 + I_r + m_r \xi_r^2,\quad k(t) = I_r \Omega(t),
 \begin{itemize}
 	%	\item № 2015615728. Программа для управления безвинтовым надводным роботом // А.В. Борисов, И.С. Мамаев, А.А. Килин, Ю.Л. Караваев, А.В. Клековкин, А.В. Шелухо, А.И. Кленов, Е.В. Ветчанин, В.А. Тененев. Заявитель и патентообладатель – ФБГОУ ВО «ИжГТУ имени М.Т. Калашникова»; Заявка: 2015612643, 07.04.2015, опубл. 22.05.2015
 		
-	\item Патент на полезную модель. №172254 РФ. Безвинтовой подводный робот //  А.В. Борисов, И.С. Мамаев, А.А. Килин, А.А. Калинкин, Ю.Л. Караваев, А.В. Клековкин, Е.В. Ветчанин; %заявитель и патентообладатель – ФБГОУ ВО «ИжГТУ имени М.Т. Калашникова»; Заявка: 2016144812, 15.11.2016, опубл. 
+	\item Патент на полезную модель. №172254 РФ. Безвинтовой подводный робот //  А.В. Борисов, И.С. Мамаев, А.А. Килин, А.А. Калинкин, Ю.Л. Караваев, \textbf{А.В. Клековкин}, Е.В. Ветчанин; %заявитель и патентообладатель – ФБГОУ ВО «ИжГТУ имени М.Т. Калашникова»; Заявка: 2016144812, 15.11.2016, опубл. 
 	3.07.2017
 		
-	\item № 2017613219. Программа для управления безвинтовым подводным роботом // А.В. Борисов, И.С. Мамаев, А.А. Килин, Ю.Л. Караваев, А.В. Клековкин. %Заявитель и патентообладатель – ФБГОУ ВО «ИжГТУ имени М.Т. Калашникова»; Заявка: 2016662663, 22.11.2016, опубл. 
+	\item № 2017613219. Программа для управления безвинтовым подводным роботом // А.В. Борисов, И.С. Мамаев, А.А. Килин, Ю.Л. Караваев, \textbf{А.В. Клековкин}. %Заявитель и патентообладатель – ФБГОУ ВО «ИжГТУ имени М.Т. Калашникова»; Заявка: 2016662663, 22.11.2016, опубл. 
 	16.03.2017
 		
-	\item № 2019612284. Программа управления безвинтовым надводным роботом с внутренним ротором // А.В. Борисов, И.С. Мамаев, А.А. Килин, А.В. Клековкин, Ю.Л. Караваев. %Заявитель и патентообладатель – ФБГОУ ВО "ИжГТУ имени М.Т. Калашникова"; Заявка: 2019610925, 04.02.2019, опубл. 
+	\item № 2019612284. Программа управления безвинтовым надводным роботом с внутренним ротором // А.В. Борисов, И.С. Мамаев, А.А. Килин, \textbf{А.В. Клековкин}, Ю.Л. Караваев. %Заявитель и патентообладатель – ФБГОУ ВО "ИжГТУ имени М.Т. Калашникова"; Заявка: 2019610925, 04.02.2019, опубл. 
 	14.02.2019
 \end{itemize}
 

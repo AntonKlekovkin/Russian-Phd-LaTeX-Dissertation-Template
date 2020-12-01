@@ -1,6 +1,60 @@
 
 
+\begin{frame}[shrink=10]
+\frametitle{Исследование управляемости системы}
 
+Представим систему уравнений движения в виде
+{\small \begin{gather*}
+	\dot{\bq} = \bX_1 (\psi,\, \theta,\, \varphi) \Omega_1 + \bX_2 (\psi,\, \theta,\, \varphi) \Omega_2 + \bX_3 (\psi,\, \theta,\, \varphi) \Omega_3,\\
+	\begin{gathered}
+	\bX_1 = \left( \dfrac{\sin \varphi}{\sin \theta} ,\, \cos \varphi ,\, -\cot\theta \sin\varphi ,\, 
+	\dfrac{ m y_c\alpha_3 }{c_3} - \dfrac{m z_c \alpha_2}{c_2}, \, 
+	\dfrac{m y_c \beta_3 }{c_3} - \dfrac{m z_c \beta_2}{c_2} ,\, 
+	\dfrac{m y_c \gamma_3 }{c_3} - \dfrac{m z_c \gamma_2}{c_2} \right)^T,\\
+	\bX_2 = \left( \dfrac{\cos \varphi}{\sin \theta} ,\, -\sin \varphi ,\, -\cot\theta \cos\varphi ,\, 
+	\dfrac{m z_c\alpha_1 }{c_1} - \dfrac{m x_c \alpha_3}{c_3}, \, 
+	\dfrac{m z_c \beta_1 }{c_1} - \dfrac{m x_c \beta_3}{c_3} ,\, 
+	\dfrac{m z_c \gamma_1 }{c_1} - \dfrac{m x_c \gamma_3}{c_3} \right)^T,\\
+	\bX_3 = \left( 0 ,\, 0 ,\, 1 ,\, 
+	\dfrac{m x_c \alpha_2 }{c_2} - \dfrac{m y_c \alpha_1}{c_1}, \, 
+	\dfrac{m x_c \beta_2 }{c_2} - \dfrac{m y_c \beta_1}{c_1} ,\, 
+	\dfrac{m x_c \gamma_2 }{c_2} - \dfrac{m y_c \gamma_1}{c_1} \right)^T,
+	\end{gathered}
+	\end{gather*}}
+где $\bq = (x,\, y,\, z \, \psi,\, \theta,\, \varphi)$ -- вектор обобщенных координат.
+
+%Построим следующие векторные поля:
+%\begin{gather*}
+%\begin{gathered}
+%\bX_{1,2} = \left[ \bX_1,\, \bX_2\right],\quad \bX_{3,1} = \left[ \bX_3,\, \bX_1\right],\quad \bX_{2,3} = \left[ \bX_2,\, \bX_3\right], \\  
+%\bX_{1,(2,3)} = \left[ \bX_1,\, \bX_{2,3}\right],\quad \bX_{2,(3,1)} = \left[ \bX_2,\, \bX_{3,1}\right], \quad \bX_{3,(1,2)} = \left[ \bX_3,\, \bX_{1,2}\right],\\
+%\end{gathered}
+%\end{gather*}
+Выберем три набора векторных полей
+\begin{gather*}
+\begin{gathered}
+\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{1,2},\,\bX_{2,3},\,\bX_{2,(3,1)},\, \Bigr),\quad
+\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{2,3},\,\bX_{3,1},\,\bX_{3,(1,2)},\, \Bigr), \\
+\Bigl( \bX_1,\, \bX_2,\,\bX_3,\,\bX_{3,1},\,\bX_{1,2},\,\bX_{1,(2,3)},\, \Bigr),
+\end{gathered}
+\end{gather*}
+где $\bX_{i,j} = \left[ \bX_i,\, \bX_j\right]  $.
+
+Условия линейной зависимости векторных полей в указанных наборах имеют вид
+\begin{gather*}
+\begin{gathered}
+x_c(c_2 - c_3) = 0,\quad
+y_c(c_3-c_1) = 0, \quad
+z_c(c_1-c_2) = 0.
+\end{gathered}
+\end{gather*}
+
+%Скобка Ли для векторных полей $ \bbs v $ и $ \bbs u $ имеет выражение
+%\begin{gather*}
+%[\bbs v, \bbs u]_{i}=\sum_{j}v_{j}\frac{\partial u_{i}}{\partial q_{j}}-u_{j}\frac{\partial v_{i}}{\partial q_{j}}
+%\end{gather*}
+
+\end{frame}
 
 \begin{frame}%[shrink=10]
 \frametitle{Исследование управляемости системы}
